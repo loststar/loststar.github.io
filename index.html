@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Loststar&#39;s blog | Stay hungry. Stay foolish.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="练习时长两年半的CS练习生。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Loststar&#39;s blog">
+<meta property="og:url" content="https://loststar.tech/index.html">
+<meta property="og:site_name" content="Loststar&#39;s blog">
+<meta property="og:description" content="练习时长两年半的CS练习生。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Loststar">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="Loststar&#39;s blog" href="/rss2.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/a.jfif">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Loststar</h5>
+          <a href="mailto:loststar.hj@gmail.com" title="loststar.hj@gmail.com" class="mail">loststar.hj@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect active">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于我
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/loststar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Loststar&#39;s blog</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header index-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Loststar&#39;s blog</h1>
+        <h5 class="subtitle">
+            
+                Stay hungry. Stay foolish.
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-PDO连接缓慢的一个解决方法"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2021-01-04 22:25:58" datetime="2021-01-04T14:25:58.000Z"  itemprop="datePublished">2021-01-04</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/php/">php</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/posts/2e64231/">PDO连接缓慢的一个解决方法</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+太长不看版：把 localhost 换成 127.0.0.1 
+
+1 问题在写一个小玩具的时候，一个逻辑十分简单的接口耗时超过2s，十分不正常。
+
+                
+                    
+                    
+                
+                加载时间大大超出预期
+            
+
+2 排查2...
+    
+
+        <a href="/posts/2e64231/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PDO/" rel="tag">PDO</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/" rel="tag">方法记录</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/" rel="tag">问题排查</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-hexo只在特定页面开启mathjax"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-08-04 19:10:05" datetime="2020-08-04T11:10:05.000Z"  itemprop="datePublished">2020-08-04</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/posts/a7d694aa/">hexo只在特定页面开启mathjax</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        在 Hexo-NexT 主题中，可以选择是否在所有页面加载 mathjax。但是在切换为 indigo 主题后，只能选择全局加载。对 themes/indigo/layout/_partial/plugins/mathjax.ejs进行少许修改即可实现。
+
+在第2行加入 &lt;% if (page.mathjax){ %&gt;
+在第24行加入&lt;% } %&gt;
+在需要使用math...
+    
+
+        <a href="/posts/a7d694aa/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/indigo/" rel="tag">indigo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mathjax/" rel="tag">mathjax</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/" rel="tag">方法记录</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-创新实践课作业-图像预处理作业"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-07-14 22:31:48" datetime="2020-07-14T14:31:48.000Z"  itemprop="datePublished">2020-07-14</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E5%88%9B%E6%96%B0%E5%AE%9E%E8%B7%B5%E8%AF%BE/">创新实践课</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/posts/fdb6251f/">创新实践课作业--图像预处理作业</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+本文章由Jupyter Notebook导出
+
+任务一请用在不使用Opencv框架的情况下实现图片的镜像操作，最终显示原图片，垂直镜像图片和水平镜像图片。
+123from PIL import Image,ImageFilterimport numpy as np import matplotlib.pyplot as plt
+
+
+1234%matplotlib inline im = I...
+    
+
+        <a href="/posts/fdb6251f/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PIL/" rel="tag">PIL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A2%84%E5%A4%84%E7%90%86/" rel="tag">预处理</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Jupyter-Notebook修改默认路径"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-07-14 09:45:18" datetime="2020-07-14T01:45:18.000Z"  itemprop="datePublished">2020-07-14</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/">方法记录</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/posts/eccdc33c/">Jupyter Notebook修改默认路径</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Jupyter Notebook默认打开的路径是C:/Users/用户名，这非常不方便。修改的方法有两种。
+方法1找到Jupyter Notebook的快捷方式，将路径中的%USERPROFILE%改成想要作为根目录的地址。
+
+                
+                    
+                    
+                
+       ...
+    
+
+        <a href="/posts/eccdc33c/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JupyterNotebook/" rel="tag">JupyterNotebook</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-操作系统实验2-银行家算法模拟实现"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-07-10 22:34:11" datetime="2020-07-10T14:34:11.000Z"  itemprop="datePublished">2020-07-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/">课程实验</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/posts/aa64c4bc/">操作系统实验2--银行家算法模拟实现</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        问题描述利用 C 语言设计与实现银行家算法，构建计算机系统资源的模拟管理和处理场景并对自己的银行家算法实现方案加以测试验证。
+实验要求
+基于 C语言的银行家算法的设计与实现
+计算机系统资源的模拟管理和处理场景的构建（初始化操作包括系统各类资源配备情况、一组并发进程及相应资源最大需求明细，进程申请资源操作需要指定进程及其对所需各类资源的申请数量，进程释放资源操作需要指定进程及其对当前所占用各类...
+    
+
+        <a href="/posts/aa64c4bc/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95/" rel="tag">银行家算法</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-豆瓣apikey分享"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-06-21 09:20:56" datetime="2020-06-21T01:20:56.000Z"  itemprop="datePublished">2020-06-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hexo/">hexo</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/posts/339a8b4c/">豆瓣apikey分享</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        我的博客一直使用hexo-douban来生成读书页面，可是最近一段时间，页面变成了这样子。
+
+                
+                    
+                    
+                
+                
+            
+
+在查阅/node_modules/hexo-douban/books-generato...
+    
+
+        <a href="/posts/339a8b4c/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/apikey/" rel="tag">apikey</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B1%86%E7%93%A3/" rel="tag">豆瓣</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-操作系统实验1-Linux命令解析程序设计与实现"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-03-21 20:21:00" datetime="2020-03-21T12:21:00.000Z"  itemprop="datePublished">2020-03-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/">课程实验</a></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/posts/9de5b70b/">操作系统实验1--Linux命令解析程序设计与实现</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        问题描述​    探索、理解并掌握操作系统命令释器的设计原和实现机制，基于 Linux内核进行相应命令解释程序的设计和实现，并在 Linux操作平台上加以实现。
+实验要求Linux 命令解释程序功能设计要求：（1）选取和设计实现一组内部命令（五条以上）；（2）外部命令执行采用直接调用 exec 系统调用的方式来实现；（3）至少一条内部命令采用直接调用相应系统调用的方式来实现；（4）系统环境变...
+    
+
+        <a href="/posts/9de5b70b/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%91%BD%E4%BB%A4%E8%A7%A3%E6%9E%90/" rel="tag">命令解析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-数据结构实验2-栈和队列"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-03-01 19:12:04" datetime="2020-03-01T11:12:04.000Z"  itemprop="datePublished">2020-03-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/posts/959bb1f8/">数据结构实验2--栈和队列</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        商场停车场题目​    某商场有一个100个车位的停车场，当车位未满时，等待的车辆可以进入并计时；当车位已满时，必须有车辆离开，等待的车辆才能进入；当车辆离开时计算停留的的时间，并且按照每小时1元收费。
+​    汽车的输入信息格式可以是（进入/离开，车牌号，进入/离开时间），要求可以随时显示停车场内的车辆信息以及收费历史记录。
+解答12345678910111213141516171819...
+    
+
+        <a href="/posts/959bb1f8/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/N%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/" rel="tag">N皇后问题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%81%9C%E8%BD%A6%E5%9C%BA/" rel="tag">停车场</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/" rel="tag">斐波那契数列</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-数据结构实验1-线性表"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2020-03-01 16:46:07" datetime="2020-03-01T08:46:07.000Z"  itemprop="datePublished">2020-03-01</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/posts/e6fc5c45/">数据结构实验1--线性表</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        前言数据结构是我大二（2018-2019学年第二学期）的一门课，本文和后续文章将把课程里的约30道实验题补全到博客。
+员工储存题目​    某软件公司大约有30名员工，每名员工有姓名、工号、职务等属性，每年都有员工离职和入职。
+​    把所有员工按照顺序存储结构建立一个线性表，建立离职和入职函数，当有员工离职或入职时，修改线性表，并且打印最新的员工名单。
+解答123456789101112...
+    
+
+        <a href="/posts/e6fc5c45/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/" rel="tag">约瑟夫环</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/" rel="tag">线性表</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-生成-Outline-客户端的-accesskey"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-03-16 19:53:14" datetime="2019-03-16T11:53:14.000Z"  itemprop="datePublished">2019-03-16</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/shadowsocks/">shadowsocks</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/posts/18ecdccb/">生成 Outline 客户端的 accesskey</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Outline作为一款底层是ss的第三方梯子客户端，但是却不支持直接输入服务器信息，而是要输入ss://access-key。
+
+                
+                    
+                    
+                
+                1
+            
+
+在翻阅了ss的文档后，找到了SIP002 URI...
+    
+
+        <a href="/posts/18ecdccb/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OUTLINE/" rel="tag">OUTLINE</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" rel="tag">问题记录</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+    </ul>
+
+    
+<nav id="page-nav">
+    <div class="inner">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    </div>
+</nav>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/rss2.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Loststar &copy; 2015 - 2021</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+<script async src="//cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.min.js"></script>
+
+
+
+
+
+</body>
+</html>

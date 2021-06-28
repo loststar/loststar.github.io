@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>数据结构实验2--栈和队列 | Loststar&#39;s blog | Stay hungry. Stay foolish.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="实验,栈,队列,停车场,斐波那契数列,N皇后问题">
+    <meta name="description" content="数据结构课程里关于栈和队列的题目，包括停车场问题、银行营业厅问题、4阶斐波那契数列问题以及八皇后问题的题目、解答和运行结果。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构实验2--栈和队列">
+<meta property="og:url" content="https://loststar.tech/posts/959bb1f8/index.html">
+<meta property="og:site_name" content="Loststar&#39;s blog">
+<meta property="og:description" content="数据结构课程里关于栈和队列的题目，包括停车场问题、银行营业厅问题、4阶斐波那契数列问题以及八皇后问题的题目、解答和运行结果。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://loststar.tech/posts/959bb1f8/1-1.png">
+<meta property="og:image" content="https://loststar.tech/posts/959bb1f8/1-2.png">
+<meta property="og:image" content="https://loststar.tech/posts/959bb1f8/2-1.png">
+<meta property="og:image" content="https://loststar.tech/posts/959bb1f8/2-2.png">
+<meta property="og:image" content="https://loststar.tech/posts/959bb1f8/3.png">
+<meta property="article:published_time" content="2020-03-01T11:12:04.000Z">
+<meta property="article:modified_time" content="2021-06-28T20:24:26.338Z">
+<meta property="article:author" content="Loststar">
+<meta property="article:tag" content="实验">
+<meta property="article:tag" content="栈">
+<meta property="article:tag" content="队列">
+<meta property="article:tag" content="停车场">
+<meta property="article:tag" content="斐波那契数列">
+<meta property="article:tag" content="N皇后问题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://loststar.tech/posts/959bb1f8/1-1.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Loststar&#39;s blog" href="/rss2.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/a.jfif">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Loststar</h5>
+          <a href="mailto:loststar.hj@gmail.com" title="loststar.hj@gmail.com" class="mail">loststar.hj@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于我
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/loststar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">数据结构实验2--栈和队列</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">数据结构实验2--栈和队列</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-03-01T11:12:04.000Z" itemprop="datePublished" class="page-time">
+  2020-03-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#商场停车场"><span class="post-toc-number">1.</span> <span class="post-toc-text">商场停车场</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">题目</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解答"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">解答</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行结果"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">运行结果</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#银行营业厅"><span class="post-toc-number">2.</span> <span class="post-toc-text">银行营业厅</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">题目</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解答-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">解答</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行结果-1"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">运行结果</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4阶斐波那契序列"><span class="post-toc-number">3.</span> <span class="post-toc-text">4阶斐波那契序列</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">题目</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解答-2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">解答</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行结果-2"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">运行结果</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#八皇后问题"><span class="post-toc-number">4.</span> <span class="post-toc-text">八皇后问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#题目-3"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">题目</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解答-3"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">解答</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运行结果-3"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">运行结果</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-数据结构实验2-栈和队列"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">数据结构实验2--栈和队列</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-03-01 19:12:04" datetime="2020-03-01T11:12:04.000Z"  itemprop="datePublished">2020-03-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="商场停车场"><a href="#商场停车场" class="headerlink" title="商场停车场"></a>商场停车场</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>​    某商场有一个100个车位的停车场，当车位未满时，等待的车辆可以进入并计时；当车位已满时，必须有车辆离开，等待的车辆才能进入；当车辆离开时计算停留的的时间，并且按照每小时1元收费。</p>
+<p>​    汽车的输入信息格式可以是（进入/离开，车牌号，进入/离开时间），要求可以随时显示停车场内的车辆信息以及收费历史记录。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSPACE 100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PRICEPERSECOND 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">vehicle</span> //车辆信息</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> carNumber[<span class="number">8</span>]; <span class="comment">//车牌号码</span></span><br><span class="line">	<span class="keyword">time_t</span> parkTime; <span class="comment">//停车时间</span></span><br><span class="line">&#125;Vehicle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">space</span> //车位信息</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	Vehicle carInfo; <span class="comment">//车位里停的车</span></span><br><span class="line">	<span class="keyword">int</span> isParked; <span class="comment">//车位状态</span></span><br><span class="line">&#125;Space;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">lot</span> //停车场信息</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	Space* allSpace;  <span class="comment">//所有车位</span></span><br><span class="line">	<span class="keyword">int</span> emptySpace;  <span class="comment">//剩余车位数</span></span><br><span class="line">&#125; Lot;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">history</span> //收费记录</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> carNumber[<span class="number">8</span>];</span><br><span class="line">	<span class="keyword">time_t</span> parkTime;</span><br><span class="line">	<span class="keyword">time_t</span> leaveTime;</span><br><span class="line">	<span class="keyword">int</span> price;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">history</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;History;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printLot</span><span class="params">(Lot parkingLot)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"=================================================\n现在时间：%lld\n停车场剩余空位%d个\n"</span>, time(<span class="literal">NULL</span>), parkingLot.emptySpace);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAXSPACE; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (parkingLot.allSpace[i].isParked == <span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"---------------------\n车牌：%s\n停车时间：%lld\n"</span>, parkingLot.allSpace[i].carInfo.carNumber, parkingLot.allSpace[i].carInfo.parkTime);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"---------------------\n=================================================\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printHistory</span><span class="params">(History *head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	History *temp = head;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (temp-&gt;price != <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"第%d笔，车牌号：%s，收费：%d元\n"</span>, <span class="number">1</span>, temp-&gt;carNumber, temp-&gt;price);</span><br><span class="line">		<span class="keyword">while</span> (temp-&gt;next!=<span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			temp = temp-&gt;next;</span><br><span class="line">			i++;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"第%d笔，车牌号：%s，收费：%d元\n"</span>, i, temp-&gt;carNumber, temp-&gt;price);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Lot <span class="title">parkVehicle</span><span class="params">(Lot parkingLot)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (parkingLot.emptySpace == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"车位满，请离开"</span>);</span><br><span class="line">		<span class="keyword">return</span> parkingLot;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAXSPACE; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (parkingLot.allSpace[i].isParked == <span class="number">0</span>) <span class="comment">//找到空车位</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"请输入7位车牌号（例：JA10086）：\n"</span>);</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>, parkingLot.allSpace[i].carInfo.carNumber);</span><br><span class="line">			parkingLot.allSpace[i].carInfo.parkTime= time(<span class="literal">NULL</span>);</span><br><span class="line">			parkingLot.allSpace[i].isParked = <span class="number">1</span>;</span><br><span class="line">			parkingLot.emptySpace--;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"现在时间%lld,%s停车成功\n"</span>, parkingLot.allSpace[i].carInfo.parkTime,parkingLot.allSpace[i].carInfo.carNumber);</span><br><span class="line">			<span class="keyword">return</span> parkingLot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Lot <span class="title">leaveVehicle</span><span class="params">(Lot parkingLot, History* head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (parkingLot.emptySpace == MAXSPACE)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"停车场空\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> parkingLot;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">char</span> carNumber[<span class="number">8</span>];</span><br><span class="line">	<span class="keyword">time_t</span> nowTime;</span><br><span class="line">	<span class="keyword">int</span> parkingFee;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入7位车牌号（例：JA10086）：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, carNumber);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAXSPACE; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">strcmp</span>(parkingLot.allSpace[i].carInfo.carNumber,carNumber)==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			parkingLot.allSpace[i].isParked = <span class="number">0</span>;</span><br><span class="line">			parkingLot.emptySpace++;</span><br><span class="line">			nowTime = time(<span class="literal">NULL</span>);</span><br><span class="line">			parkingFee = PRICEPERSECOND * (nowTime - parkingLot.allSpace[i].carInfo.parkTime);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%s离开成功，收费%d元\n"</span>, parkingLot.allSpace[i].carInfo.carNumber, parkingFee);</span><br><span class="line">			<span class="comment">//储存收费记录</span></span><br><span class="line">			<span class="keyword">if</span> (head-&gt;price == <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">strcpy</span>(head-&gt;carNumber, parkingLot.allSpace[i].carInfo.carNumber);</span><br><span class="line">				head-&gt;parkTime = parkingLot.allSpace[i].carInfo.parkTime;</span><br><span class="line">				head-&gt;leaveTime = nowTime;</span><br><span class="line">				head-&gt;price = parkingFee;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				History *temp = head;</span><br><span class="line">				<span class="keyword">while</span> (temp-&gt;next!=<span class="literal">NULL</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					temp = temp-&gt;next;</span><br><span class="line">				&#125;</span><br><span class="line">				temp-&gt;next = (History*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(History));</span><br><span class="line">				temp = temp-&gt;next;</span><br><span class="line">				<span class="built_in">strcpy</span>(temp-&gt;carNumber, parkingLot.allSpace[i].carInfo.carNumber);</span><br><span class="line">				temp-&gt;parkTime = parkingLot.allSpace[i].carInfo.parkTime;</span><br><span class="line">				temp-&gt;leaveTime = nowTime;</span><br><span class="line">				temp-&gt;price = parkingFee;</span><br><span class="line">				temp-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> parkingLot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">startSystem</span><span class="params">(Lot parkingLot, History* head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"1.停车\n2.离开\n3.打印停车场状态\n4.打印收费历史\n"</span>);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line">		<span class="keyword">switch</span> (i)</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			parkingLot = parkVehicle(parkingLot);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			parkingLot = leaveVehicle(parkingLot, head);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">			printLot(parkingLot);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">			printHistory(head);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Lot parkingLot;</span><br><span class="line">	parkingLot.allSpace = (Space*)<span class="built_in">malloc</span>(MAXSPACE * <span class="keyword">sizeof</span>(Space));</span><br><span class="line">	parkingLot.emptySpace = MAXSPACE;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAXSPACE; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		parkingLot.allSpace[i].isParked = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	History* head = (History*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(History));</span><br><span class="line">	head-&gt;price = <span class="number">0</span>;</span><br><span class="line">	head-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	startSystem(parkingLot, head);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/959bb1f8/1-1.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/959bb1f8/1-2.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+
+
+<h2 id="银行营业厅"><a href="#银行营业厅" class="headerlink" title="银行营业厅"></a>银行营业厅</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p>​    某银行营业厅共有6个营业窗口，设有排队系统广播叫号，该银行的业务分为公积金、银行卡、理财卡等三种。公积金业务指定1号窗口，银行卡业务指定2、3、4号窗口，理财卡业务指定5、6号窗口。但如果5、6号窗口全忙，而2、3、4号窗口有空闲时，理财卡业务也可以在空闲的2、3、4号窗口之一办理。</p>
+<p>​    客户领号、业务完成可以作为输入信息，要求可以随时显示6个营业窗口的状态。</p>
+<h3 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> windows[<span class="number">7</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line"><span class="keyword">int</span> number = <span class="number">0</span>; <span class="comment">//顾客领取的号码</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;QNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LinkQueue</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	QNode *front;</span><br><span class="line">	QNode *rear;</span><br><span class="line">&#125;LinkQueue;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">initQueue</span><span class="params">(LinkQueue &amp;Q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Q.front = Q.rear = (QNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(QNode));</span><br><span class="line">	<span class="keyword">if</span> (!Q.front)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Q.front-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">enQueue</span><span class="params">(LinkQueue &amp;Q, <span class="keyword">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	QNode *p = (QNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(QNode));</span><br><span class="line">	<span class="keyword">if</span> (!p)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = data;</span><br><span class="line">	p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	Q.rear-&gt;next = p;</span><br><span class="line">	Q.rear = p;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">deQueue</span><span class="params">(LinkQueue &amp;Q,<span class="keyword">int</span> &amp;data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q.front == Q.rear)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	QNode *p = Q.front-&gt;next;</span><br><span class="line">	data = p-&gt;data;</span><br><span class="line">	Q.front-&gt;next = p-&gt;next;</span><br><span class="line">	<span class="keyword">if</span> (p == Q.rear)</span><br><span class="line">	&#123;</span><br><span class="line">		Q.rear = Q.front;</span><br><span class="line">		<span class="built_in">free</span>(p);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isEmpty</span><span class="params">(LinkQueue &amp;Q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q.front == Q.rear)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(LinkQueue *Q)</span>   <span class="comment">//输出队列中的元素</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	QNode *p;</span><br><span class="line">	p = Q-&gt;front-&gt;next; <span class="comment">//p结点指向链队列中存放第一个元素的结点</span></span><br><span class="line">	<span class="keyword">while</span> (p)  <span class="comment">//沿链队列从队头到队尾的方向依次输出元素的值</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d  "</span>, p-&gt;data);</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">entryBank</span><span class="params">(LinkQueue &amp;gjj, LinkQueue &amp;yhk, LinkQueue &amp;lck, LinkQueue &amp;customer1, LinkQueue &amp;customer2, LinkQueue &amp;customer3)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,data;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入要办理的业务：\n1.公积金\n2.银行卡\n3.理财卡\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line">	number++;</span><br><span class="line">	<span class="keyword">switch</span> (i)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		<span class="keyword">if</span> (!isEmpty(gjj))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(gjj,data);</span><br><span class="line">			windows[data] = <span class="number">1</span>;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, data);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			enQueue(customer1,number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到队列1等待\n"</span>, number);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">		<span class="keyword">if</span> (!isEmpty(yhk))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(yhk, data);</span><br><span class="line">			windows[data] = <span class="number">1</span>;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, data);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			enQueue(customer2, number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到队列2等待\n"</span>, number);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">		<span class="keyword">if</span> (!isEmpty(lck))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(lck, data);</span><br><span class="line">			windows[data] = <span class="number">1</span>;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, data);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(!isEmpty(yhk))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(yhk, data);</span><br><span class="line">			windows[data] = <span class="number">1</span>;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, data);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			enQueue(customer3, number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到队列3等待\n"</span>, number);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leaveBank</span><span class="params">(LinkQueue &amp;gjj, LinkQueue &amp;yhk, LinkQueue &amp;lck, LinkQueue &amp;customer1, LinkQueue &amp;customer2, LinkQueue &amp;customer3)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,number;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入办理完成的窗口（1-6）\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line">	<span class="keyword">switch</span> (i)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		<span class="keyword">if</span> (!isEmpty(customer1))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(customer1, number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			enQueue(gjj, i);</span><br><span class="line">			windows[i] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">		<span class="keyword">if</span> (!isEmpty(customer2))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(customer2, number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (!isEmpty(customer3))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(customer3, number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			enQueue(yhk, i);</span><br><span class="line">			windows[i] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">		<span class="keyword">if</span> (!isEmpty(customer3))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(customer3, number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			enQueue(lck, i);</span><br><span class="line">			windows[i] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">startSystem</span><span class="params">(LinkQueue &amp;gjj, LinkQueue &amp;yhk, LinkQueue &amp;lck, LinkQueue &amp;customer1, LinkQueue &amp;customer2, LinkQueue &amp;customer3)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入顾客行为：\n1.进入\n2.离开\n3.查看窗口状态\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line">	<span class="keyword">switch</span> (i)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		entryBank(gjj, yhk, lck, customer1, customer2, customer3);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">		leaveBank(gjj, yhk, lck, customer1, customer2, customer3);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">7</span>; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			windows[j] ? <span class="built_in">printf</span>(<span class="string">"%d号窗口有人\n"</span>, j) : <span class="built_in">printf</span>(<span class="string">"%d号窗口无人\n"</span>, j);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	LinkQueue gjj, yhk, lck; <span class="comment">//窗口队列</span></span><br><span class="line">	LinkQueue customer1, customer2, customer3; <span class="comment">//顾客队列</span></span><br><span class="line">	<span class="comment">//窗口队列初始化</span></span><br><span class="line">	initQueue(gjj);</span><br><span class="line">	enQueue(gjj, <span class="number">1</span>);</span><br><span class="line">	initQueue(yhk);</span><br><span class="line">	enQueue(yhk, <span class="number">2</span>);</span><br><span class="line">	enQueue(yhk, <span class="number">3</span>);</span><br><span class="line">	enQueue(yhk, <span class="number">4</span>);</span><br><span class="line">	initQueue(lck);</span><br><span class="line">	enQueue(lck, <span class="number">5</span>);</span><br><span class="line">	enQueue(lck, <span class="number">6</span>);</span><br><span class="line">	<span class="comment">//窗口队列初始化完毕</span></span><br><span class="line">	<span class="comment">//顾客队列初始化</span></span><br><span class="line">	initQueue(customer1);</span><br><span class="line">	initQueue(customer2);</span><br><span class="line">	initQueue(customer3);</span><br><span class="line">	<span class="comment">//顾客队列初始化完毕</span></span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		startSystem(gjj, yhk, lck, customer1, customer2, customer3);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/959bb1f8/2-1.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/959bb1f8/2-2.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+
+
+<h2 id="4阶斐波那契序列"><a href="#4阶斐波那契序列" class="headerlink" title="4阶斐波那契序列"></a>4阶斐波那契序列</h2><h3 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h3><p>​    4阶斐波那契序列如下：f0=f1=f2=0, f3=1,…,fi=fi-1+fi-2+fi-3+fi-4，</p>
+<p>​    利用容量为k=4的循环队列，构造序列的前n+1项（f0, f1 , f2 ,… fn ），要求满足fn ≤200而fn+1 &gt;200。</p>
+<h3 id="解答-2"><a href="#解答-2" class="headerlink" title="解答"></a>解答</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> kk 4</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max 200</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">queue</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> elem[kk];</span><br><span class="line">	<span class="keyword">int</span> rear;</span><br><span class="line">&#125;cq;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">100</span>], n;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fb</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= k - <span class="number">2</span>; i++) </span><br><span class="line">	&#123; </span><br><span class="line">		f[i] = <span class="number">0</span>; cq.elem[i] = <span class="number">0</span>; </span><br><span class="line">	&#125;       </span><br><span class="line">	cq.elem[k - <span class="number">1</span>] = f[k - <span class="number">1</span>] = <span class="number">1</span>;    <span class="comment">//为第k个元素赋值，并放入队列cq</span></span><br><span class="line">	cq.rear = k - <span class="number">1</span>;   </span><br><span class="line">	n = k;</span><br><span class="line">	<span class="keyword">while</span> (cq.elem[cq.rear] &lt; <span class="built_in">max</span>)    <span class="comment">//利用循环队列依次求f[n]</span></span><br><span class="line">	&#123;</span><br><span class="line">		f[n] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; k; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			f[n] = f[n] + cq.elem[j];</span><br><span class="line">		&#125;</span><br><span class="line">		cq.rear = (cq.rear + <span class="number">1</span>) % k;</span><br><span class="line">		cq.elem[cq.rear] = f[n];</span><br><span class="line">		n++;</span><br><span class="line">	&#125;                       <span class="comment">//利用循环队列依次求f[n]</span></span><br><span class="line">	<span class="keyword">if</span> (cq.elem[cq.rear] &gt; <span class="built_in">max</span>)  </span><br><span class="line">		n = n - <span class="number">2</span>; </span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		n = n - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	fb(kk);   </span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= n; i++)   </span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"  %d  "</span>, f[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果-2"><a href="#运行结果-2" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/959bb1f8/3.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+
+
+<h2 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h2><h3 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h3><p>八皇后问题：设8皇后问题的解为 (x1, x2, x3, …,x8), 约束条件为：在8x8的棋盘上，其中任意两个xi 和xj不能位于棋盘的同行、同列及同对角线。要求用一位数组进行存储，输出所有可能的排列。</p>
+<h3 id="解答-3"><a href="#解答-3" class="headerlink" title="解答"></a>解答</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;math.h&gt;</span><br><span class="line">#define N 8</span><br><span class="line">int count &#x3D; 0, position[N];</span><br><span class="line">int isLegal(int i, int j)  &#x2F;&#x2F;检查(i,j)上能否放棋子</span><br><span class="line">&#123;</span><br><span class="line">	int j1 &#x3D; j,i1 &#x3D; i,ok1 &#x3D; 1;  &#x2F;&#x2F;检查第i行上能否放棋子</span><br><span class="line">	while ((j1 &gt; 1) &amp;&amp; ok1)</span><br><span class="line">	&#123;</span><br><span class="line">		j1--;         </span><br><span class="line">		ok1 &#x3D; position[j1] !&#x3D; i;</span><br><span class="line">	&#125;</span><br><span class="line">	j1 &#x3D; j; </span><br><span class="line">	i1 &#x3D; i;    &#x2F;&#x2F;检查对角线上能否放棋子</span><br><span class="line">	while ((j1 &gt; 1) &amp;&amp; (i1 &gt; 1) &amp;&amp; ok1)</span><br><span class="line">	&#123;</span><br><span class="line">		j1--; </span><br><span class="line">		i1--; </span><br><span class="line">		ok1 &#x3D; position[j1] !&#x3D; i1;</span><br><span class="line">	&#125;</span><br><span class="line">	j1 &#x3D; j; </span><br><span class="line">	i1 &#x3D; i;     &#x2F;&#x2F;检查另一对角线上能否放棋子</span><br><span class="line">	while ((j1 &gt; 1) &amp;&amp; (i1 &lt; N) &amp;&amp; ok1)</span><br><span class="line">	&#123;</span><br><span class="line">		j1--; </span><br><span class="line">		i1++; </span><br><span class="line">		ok1 &#x3D; position[j1] !&#x3D; i1;</span><br><span class="line">	&#125;</span><br><span class="line">	return  ok1;</span><br><span class="line">&#125;</span><br><span class="line">int queen(int j) &#x2F;&#x2F;从第j列开始逐个试探</span><br><span class="line">&#123;</span><br><span class="line">	if (j &gt; N)</span><br><span class="line">	&#123;</span><br><span class="line">		count++;  </span><br><span class="line">		printf(&quot;count&#x3D;%d   &quot;, count);</span><br><span class="line">		for (int i &#x3D; 1; i &lt;&#x3D; N; i++)  </span><br><span class="line">			printf(&quot;    %d&quot;, position[i]);</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	else  </span><br><span class="line">		for (int i &#x3D; 1; i &lt;&#x3D; N; i++)</span><br><span class="line">		if (isLegal(i,j))    &#x2F;&#x2F;检查(i,j)上能否放棋子</span><br><span class="line">		&#123;</span><br><span class="line">			position[j] &#x3D; i;  &#x2F;&#x2F;在(i,j)上放一个棋子</span><br><span class="line">			queen(j + 1);</span><br><span class="line">		&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	queen(1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="运行结果-3"><a href="#运行结果-3" class="headerlink" title="运行结果"></a>运行结果</h3><p>一共92种，比较多，就不截图了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">count&#x3D;1       1    5    8    6    3    7    2    4</span><br><span class="line">count&#x3D;2       1    6    8    3    7    4    2    5</span><br><span class="line">count&#x3D;3       1    7    4    6    8    2    5    3</span><br><span class="line">count&#x3D;4       1    7    5    8    2    4    6    3</span><br><span class="line">count&#x3D;5       2    4    6    8    3    1    7    5</span><br><span class="line">count&#x3D;6       2    5    7    1    3    8    6    4</span><br><span class="line">count&#x3D;7       2    5    7    4    1    8    6    3</span><br><span class="line">count&#x3D;8       2    6    1    7    4    8    3    5</span><br><span class="line">count&#x3D;9       2    6    8    3    1    4    7    5</span><br><span class="line">count&#x3D;10       2    7    3    6    8    5    1    4</span><br><span class="line">count&#x3D;11       2    7    5    8    1    4    6    3</span><br><span class="line">count&#x3D;12       2    8    6    1    3    5    7    4</span><br><span class="line">count&#x3D;13       3    1    7    5    8    2    4    6</span><br><span class="line">count&#x3D;14       3    5    2    8    1    7    4    6</span><br><span class="line">count&#x3D;15       3    5    2    8    6    4    7    1</span><br><span class="line">count&#x3D;16       3    5    7    1    4    2    8    6</span><br><span class="line">count&#x3D;17       3    5    8    4    1    7    2    6</span><br><span class="line">count&#x3D;18       3    6    2    5    8    1    7    4</span><br><span class="line">count&#x3D;19       3    6    2    7    1    4    8    5</span><br><span class="line">count&#x3D;20       3    6    2    7    5    1    8    4</span><br><span class="line">count&#x3D;21       3    6    4    1    8    5    7    2</span><br><span class="line">count&#x3D;22       3    6    4    2    8    5    7    1</span><br><span class="line">count&#x3D;23       3    6    8    1    4    7    5    2</span><br><span class="line">count&#x3D;24       3    6    8    1    5    7    2    4</span><br><span class="line">count&#x3D;25       3    6    8    2    4    1    7    5</span><br><span class="line">count&#x3D;26       3    7    2    8    5    1    4    6</span><br><span class="line">count&#x3D;27       3    7    2    8    6    4    1    5</span><br><span class="line">count&#x3D;28       3    8    4    7    1    6    2    5</span><br><span class="line">count&#x3D;29       4    1    5    8    2    7    3    6</span><br><span class="line">count&#x3D;30       4    1    5    8    6    3    7    2</span><br><span class="line">count&#x3D;31       4    2    5    8    6    1    3    7</span><br><span class="line">count&#x3D;32       4    2    7    3    6    8    1    5</span><br><span class="line">count&#x3D;33       4    2    7    3    6    8    5    1</span><br><span class="line">count&#x3D;34       4    2    7    5    1    8    6    3</span><br><span class="line">count&#x3D;35       4    2    8    5    7    1    3    6</span><br><span class="line">count&#x3D;36       4    2    8    6    1    3    5    7</span><br><span class="line">count&#x3D;37       4    6    1    5    2    8    3    7</span><br><span class="line">count&#x3D;38       4    6    8    2    7    1    3    5</span><br><span class="line">count&#x3D;39       4    6    8    3    1    7    5    2</span><br><span class="line">count&#x3D;40       4    7    1    8    5    2    6    3</span><br><span class="line">count&#x3D;41       4    7    3    8    2    5    1    6</span><br><span class="line">count&#x3D;42       4    7    5    2    6    1    3    8</span><br><span class="line">count&#x3D;43       4    7    5    3    1    6    8    2</span><br><span class="line">count&#x3D;44       4    8    1    3    6    2    7    5</span><br><span class="line">count&#x3D;45       4    8    1    5    7    2    6    3</span><br><span class="line">count&#x3D;46       4    8    5    3    1    7    2    6</span><br><span class="line">count&#x3D;47       5    1    4    6    8    2    7    3</span><br><span class="line">count&#x3D;48       5    1    8    4    2    7    3    6</span><br><span class="line">count&#x3D;49       5    1    8    6    3    7    2    4</span><br><span class="line">count&#x3D;50       5    2    4    6    8    3    1    7</span><br><span class="line">count&#x3D;51       5    2    4    7    3    8    6    1</span><br><span class="line">count&#x3D;52       5    2    6    1    7    4    8    3</span><br><span class="line">count&#x3D;53       5    2    8    1    4    7    3    6</span><br><span class="line">count&#x3D;54       5    3    1    6    8    2    4    7</span><br><span class="line">count&#x3D;55       5    3    1    7    2    8    6    4</span><br><span class="line">count&#x3D;56       5    3    8    4    7    1    6    2</span><br><span class="line">count&#x3D;57       5    7    1    3    8    6    4    2</span><br><span class="line">count&#x3D;58       5    7    1    4    2    8    6    3</span><br><span class="line">count&#x3D;59       5    7    2    4    8    1    3    6</span><br><span class="line">count&#x3D;60       5    7    2    6    3    1    4    8</span><br><span class="line">count&#x3D;61       5    7    2    6    3    1    8    4</span><br><span class="line">count&#x3D;62       5    7    4    1    3    8    6    2</span><br><span class="line">count&#x3D;63       5    8    4    1    3    6    2    7</span><br><span class="line">count&#x3D;64       5    8    4    1    7    2    6    3</span><br><span class="line">count&#x3D;65       6    1    5    2    8    3    7    4</span><br><span class="line">count&#x3D;66       6    2    7    1    3    5    8    4</span><br><span class="line">count&#x3D;67       6    2    7    1    4    8    5    3</span><br><span class="line">count&#x3D;68       6    3    1    7    5    8    2    4</span><br><span class="line">count&#x3D;69       6    3    1    8    4    2    7    5</span><br><span class="line">count&#x3D;70       6    3    1    8    5    2    4    7</span><br><span class="line">count&#x3D;71       6    3    5    7    1    4    2    8</span><br><span class="line">count&#x3D;72       6    3    5    8    1    4    2    7</span><br><span class="line">count&#x3D;73       6    3    7    2    4    8    1    5</span><br><span class="line">count&#x3D;74       6    3    7    2    8    5    1    4</span><br><span class="line">count&#x3D;75       6    3    7    4    1    8    2    5</span><br><span class="line">count&#x3D;76       6    4    1    5    8    2    7    3</span><br><span class="line">count&#x3D;77       6    4    2    8    5    7    1    3</span><br><span class="line">count&#x3D;78       6    4    7    1    3    5    2    8</span><br><span class="line">count&#x3D;79       6    4    7    1    8    2    5    3</span><br><span class="line">count&#x3D;80       6    8    2    4    1    7    5    3</span><br><span class="line">count&#x3D;81       7    1    3    8    6    4    2    5</span><br><span class="line">count&#x3D;82       7    2    4    1    8    5    3    6</span><br><span class="line">count&#x3D;83       7    2    6    3    1    4    8    5</span><br><span class="line">count&#x3D;84       7    3    1    6    8    5    2    4</span><br><span class="line">count&#x3D;85       7    3    8    2    5    1    6    4</span><br><span class="line">count&#x3D;86       7    4    2    5    8    1    3    6</span><br><span class="line">count&#x3D;87       7    4    2    8    6    1    3    5</span><br><span class="line">count&#x3D;88       7    5    3    1    6    8    2    4</span><br><span class="line">count&#x3D;89       8    2    4    1    7    5    3    6</span><br><span class="line">count&#x3D;90       8    2    5    3    1    7    4    6</span><br><span class="line">count&#x3D;91       8    3    1    6    2    5    7    4</span><br><span class="line">count&#x3D;92       8    4    1    3    6    2    7    5</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <script>var nowtime=new Date(Date.now());var posttime=new Date("2020-03-01");var day =parseInt( (nowtime - posttime) / (1000 * 60 * 60 * 24));if(day<30){document.write("<p><strong>文章有效性提示</strong><br><br><font color='green'>本文创建于 " + day + " 天前，内容较新。</font>");}else{document.write("<p><strong>文章有效性提示</strong><br><br><font color='red'>本文创建于 " + day + " 天前，其中的信息可能已经有所发展或是发生改变。</font>");}</script>
+        
+    </div>
+    
+    <footer>
+        <a href="https://loststar.tech">
+            <img src="/img/a.jfif" alt="Loststar">
+            Loststar
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/N%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/" rel="tag">N皇后问题</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%81%9C%E8%BD%A6%E5%9C%BA/" rel="tag">停车场</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/" rel="tag">斐波那契数列</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/9de5b70b/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">操作系统实验1--Linux命令解析程序设计与实现</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/e6fc5c45/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">数据结构实验1--线性表</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "JsGHF5q6tqpxB8YJKLdfc3pw-gzGzoHsz",
+            appKey: "G3cLRzQwkYiqE93y7xbxKwWU",
+            avatar: "mm",
+            placeholder: "觉得内容还行的盆友留个言吧，我甚至不知道有没有人来过 ...(｡•ˇ‸ˇ•｡) ...\n填个昵称就可以发表了，填了邮箱会显示绑定的头像",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/rss2.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Loststar &copy; 2015 - 2021</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+<script async src="//cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.min.js"></script>
+
+
+
+
+
+</body>
+</html>

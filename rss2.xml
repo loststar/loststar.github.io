@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Loststar&#39;s blog</title>
+    <link>https://loststar.tech/</link>
+    
+    <image>
+      <url>https://www.gravatar.com/avatar/9a59b8195282bbdb9da5b6da2b704c39</url>
+      <title>Loststar&#39;s blog</title>
+      <link>https://loststar.tech/</link>
+    </image>
+    
+    <atom:link href="/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>练习时长两年半的CS练习生。</description>
+    <pubDate>Mon, 28 Jun 2021 20:24:26 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>PDO连接缓慢的一个解决方法</title>
+      <link>https://loststar.tech/posts/2e64231/</link>
+      <guid>https://loststar.tech/posts/2e64231/</guid>
+      <pubDate>Mon, 04 Jan 2021 14:25:58 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;太长不看版：把 localhost 换成 127.0.0.1 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h2
+        
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/2e64231/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>hexo只在特定页面开启mathjax</title>
+      <link>https://loststar.tech/posts/a7d694aa/</link>
+      <guid>https://loststar.tech/posts/a7d694aa/</guid>
+      <pubDate>Tue, 04 Aug 2020 11:10:05 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;在 &lt;code&gt;Hexo-NexT&lt;/code&gt; 主题中，可以选择是否在所有页面加载 mathjax。但是在切换为 &lt;code&gt;indigo&lt;/code&gt; 主题后，只能选择全局加载。对 &lt;code&gt;themes/indigo/layout/_partial/plugins/
+        
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/a7d694aa/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>创新实践课作业--图像预处理作业</title>
+      <link>https://loststar.tech/posts/fdb6251f/</link>
+      <guid>https://loststar.tech/posts/fdb6251f/</guid>
+      <pubDate>Tue, 14 Jul 2020 14:31:48 GMT</pubDate>
+      <description>
+      
+        本文是小学期课程的预热作业，主要涉及使用PIL实现图像的镜像、gamma变换、滤波、锐化等操作。
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/fdb6251f/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Jupyter Notebook修改默认路径</title>
+      <link>https://loststar.tech/posts/eccdc33c/</link>
+      <guid>https://loststar.tech/posts/eccdc33c/</guid>
+      <pubDate>Tue, 14 Jul 2020 01:45:18 GMT</pubDate>
+      <description>
+      
+        记录了学习过程中遇到的修改 Jupyter Notebook 默认路径的两种方法，包括修改快捷方式的方法和修改配置文件的方法。
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/eccdc33c/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>操作系统实验2--银行家算法模拟实现</title>
+      <link>https://loststar.tech/posts/aa64c4bc/</link>
+      <guid>https://loststar.tech/posts/aa64c4bc/</guid>
+      <pubDate>Fri, 10 Jul 2020 14:34:11 GMT</pubDate>
+      <description>
+      
+        利用 C 语言设计与实现银行家算法，构建计算机系统资源的模拟管理和处理场景并对自己的银行家算法实现方案加以测试验证。
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/aa64c4bc/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>豆瓣apikey分享</title>
+      <link>https://loststar.tech/posts/339a8b4c/</link>
+      <guid>https://loststar.tech/posts/339a8b4c/</guid>
+      <pubDate>Sun, 21 Jun 2020 01:20:56 GMT</pubDate>
+      <description>
+      
+        我的博客一直使用 hexo-douban 来生成读书页面，可是最近一段时间，页面全白。经过排查，豆瓣修改了API，需要 key 才可以获取信息。经过上网搜索，发现一个可用 key，遂分享。
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/339a8b4c/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>操作系统实验1--Linux命令解析程序设计与实现</title>
+      <link>https://loststar.tech/posts/9de5b70b/</link>
+      <guid>https://loststar.tech/posts/9de5b70b/</guid>
+      <pubDate>Sat, 21 Mar 2020 12:21:00 GMT</pubDate>
+      <description>
+      
+        探索、理解并掌握操作系统命令释器的设计原和实现机制，基于 Linux内核进行相应命令解释程序的设计和实现，并在 Linux操作平台上加以实现。
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/9de5b70b/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>数据结构实验2--栈和队列</title>
+      <link>https://loststar.tech/posts/959bb1f8/</link>
+      <guid>https://loststar.tech/posts/959bb1f8/</guid>
+      <pubDate>Sun, 01 Mar 2020 11:12:04 GMT</pubDate>
+      <description>
+      
+        数据结构课程里关于栈和队列的题目，包括停车场问题、银行营业厅问题、4阶斐波那契数列问题以及八皇后问题的题目、解答和运行结果。
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/959bb1f8/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>数据结构实验1--线性表</title>
+      <link>https://loststar.tech/posts/e6fc5c45/</link>
+      <guid>https://loststar.tech/posts/e6fc5c45/</guid>
+      <pubDate>Sun, 01 Mar 2020 08:46:07 GMT</pubDate>
+      <description>
+      
+        数据结构课程里关于线性表的题目，包括员工存储问题和约瑟夫环问题的题目、解答和运行结果。
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/e6fc5c45/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>生成 Outline 客户端的 accesskey</title>
+      <link>https://loststar.tech/posts/18ecdccb/</link>
+      <guid>https://loststar.tech/posts/18ecdccb/</guid>
+      <pubDate>Sat, 16 Mar 2019 11:53:14 GMT</pubDate>
+      <description>
+      
+        Outline作为一款底层是ss的第三方梯子客户端，但是却不支持直接输入服务器信息，而是要输入ss://access-key。本文记录了生成 access-key 的方法。
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/18ecdccb/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>推荐一个展示示repo的hexo插件</title>
+      <link>https://loststar.tech/posts/7a64e458/</link>
+      <guid>https://loststar.tech/posts/7a64e458/</guid>
+      <pubDate>Sun, 07 Jan 2018 08:13:09 GMT</pubDate>
+      <description>
+      
+        在博客展示github repo几乎是一个刚需。在使用Typecho的时候我就曾做了个小插件来自娱自乐。现在换到hexo平台，发现早有前人造好了轮子。
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/7a64e458/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>从wordpress到typecho再到hexo</title>
+      <link>https://loststar.tech/posts/c5f3d396/</link>
+      <guid>https://loststar.tech/posts/c5f3d396/</guid>
+      <pubDate>Wed, 20 Sep 2017 11:10:00 GMT</pubDate>
+      <description>
+      
+        当年，觉得blog是个酷炫的玩意，于是跟风，按照随便百度来的教程，弄了一个。然而，由于缺乏动力以及没什么好记录，从建立到倒闭，只有一篇文——如何建立blog。5年里，换了3个大平台,也有了自己的一些想法。
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/c5f3d396/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>关于json_decode转换json对象为数组的一个坑</title>
+      <link>https://loststar.tech/posts/d646a445/</link>
+      <guid>https://loststar.tech/posts/d646a445/</guid>
+      <pubDate>Sat, 05 Aug 2017 14:11:57 GMT</pubDate>
+      <description>
+      
+        今天在写一个小玩意的时候，使用了json_decode来处理一段返回结果。当我直接调用转换后数组下标的时候，提示如下错误。
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/d646a445/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>应用Travis CI摆脱Hexo博客换机难</title>
+      <link>https://loststar.tech/posts/d9cdb463/</link>
+      <guid>https://loststar.tech/posts/d9cdb463/</guid>
+      <pubDate>Mon, 31 Jul 2017 04:47:00 GMT</pubDate>
+      <description>
+      
+        用 Hexo + Github Page 写博客是很多人的习惯。但是，HEXO写博客是生成静态文件再上传。当需要在别的电脑写博客的时候会比较麻烦。所以，现在使用 Travis CI 来解决这一问题。
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/d9cdb463/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Next主题下HyperComments的优化</title>
+      <link>https://loststar.tech/posts/da438ac2/</link>
+      <guid>https://loststar.tech/posts/da438ac2/</guid>
+      <pubDate>Sun, 30 Jul 2017 02:59:00 GMT</pubDate>
+      <description>
+      
+        近日，把博客从 typecho 换到 hexo，没有了 typecho 的原生评论，开始寻找第三方评论。在选定使用 HyperComments 后，对 HyperComments 进行 js 文件本地化和繁体简化解决加载慢以及界面不友好的问题。
+      
+      </description>
+      
+      
+      <comments>https://loststar.tech/posts/da438ac2/#disqus_thread</comments>
+    </item>
+    
+  </channel>
+</rss>

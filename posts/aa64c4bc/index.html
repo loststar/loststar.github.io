@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>操作系统实验2--银行家算法模拟实现 | Loststar&#39;s blog | Stay hungry. Stay foolish.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="实验,银行家算法">
+    <meta name="description" content="利用 C 语言设计与实现银行家算法，构建计算机系统资源的模拟管理和处理场景并对自己的银行家算法实现方案加以测试验证。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统实验2--银行家算法模拟实现">
+<meta property="og:url" content="https://loststar.tech/posts/aa64c4bc/index.html">
+<meta property="og:site_name" content="Loststar&#39;s blog">
+<meta property="og:description" content="利用 C 语言设计与实现银行家算法，构建计算机系统资源的模拟管理和处理场景并对自己的银行家算法实现方案加以测试验证。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-10T14:34:11.000Z">
+<meta property="article:modified_time" content="2021-06-28T20:24:26.338Z">
+<meta property="article:author" content="Loststar">
+<meta property="article:tag" content="实验">
+<meta property="article:tag" content="银行家算法">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="Loststar&#39;s blog" href="/rss2.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/a.jfif">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Loststar</h5>
+          <a href="mailto:loststar.hj@gmail.com" title="loststar.hj@gmail.com" class="mail">loststar.hj@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于我
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/loststar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">操作系统实验2--银行家算法模拟实现</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">操作系统实验2--银行家算法模拟实现</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-07-10T14:34:11.000Z" itemprop="datePublished" class="page-time">
+  2020-07-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/">课程实验</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#问题描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题描述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实验要求"><span class="post-toc-number">2.</span> <span class="post-toc-text">实验要求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#项目结构"><span class="post-toc-number">3.</span> <span class="post-toc-text">项目结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#宏定义、全局变量和结构体定义"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">宏定义、全局变量和结构体定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数一览"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">函数一览</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#详细设计"><span class="post-toc-number">4.</span> <span class="post-toc-text">详细设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始化"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">初始化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#结构体工具函数"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">结构体工具函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#日志输出"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">日志输出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#银行家算法主体"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">银行家算法主体</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预分配"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">预分配</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安全性检测"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">安全性检测</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运行测试"><span class="post-toc-number">5.</span> <span class="post-toc-text">运行测试</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-操作系统实验2-银行家算法模拟实现"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">操作系统实验2--银行家算法模拟实现</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-07-10 22:34:11" datetime="2020-07-10T14:34:11.000Z"  itemprop="datePublished">2020-07-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%AF%BE%E7%A8%8B%E5%AE%9E%E9%AA%8C/">课程实验</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>利用 C 语言设计与实现银行家算法，构建计算机系统资源的模拟管理和处理场景并对自己的银行家算法实现方案加以测试验证。</p>
+<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><ol>
+<li>基于 C语言的银行家算法的设计与实现</li>
+<li>计算机系统资源的模拟管理和处理场景的构建（初始化操作包括系统各类资源配备情况、一组并发进程及相应资源最大需求明细，进程申请资源操作需要指定进程及其对所需各类资源的申请数量，进程释放资源操作需要指定进程及其对当前所占用各类资源的释放数量）</li>
+<li>算法原型应能正确处理进程申请/释放资源的各种操作请求</li>
+<li>针对银行家算法原型开展基于计算机系统资源管理的完备的测试验证</li>
+</ol>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><h3 id="宏定义、全局变量和结构体定义"><a href="#宏定义、全局变量和结构体定义" class="headerlink" title="宏定义、全局变量和结构体定义"></a>宏定义、全局变量和结构体定义</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TRUE 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FALSE 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ERR -1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SUCCESS 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Resource</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> A;</span><br><span class="line">    <span class="keyword">int</span> B;</span><br><span class="line">    <span class="keyword">int</span> C;</span><br><span class="line">&#125;RES;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Request</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    RES res;</span><br><span class="line">&#125;REQ;</span><br><span class="line"></span><br><span class="line">RES Available,Work,Max[N],Allocation[N]=&#123;&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;&#125;,Need[N];</span><br><span class="line">REQ Request;</span><br><span class="line"><span class="keyword">int</span> Finish[N];</span><br></pre></td></tr></table></figure>
+
+<p>N是进程数，TRUE FALSE ERR SUCCESS是标志位，Resource结构体存储资源，Request结构体存储请求，Available Work Max[N] Allocation[N] Need[N] Request Finish对应银行家算法里的各个部分。</p>
+<h3 id="函数一览"><a href="#函数一览" class="headerlink" title="函数一览"></a>函数一览</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isAllFinish</span><span class="params">(<span class="keyword">int</span>* finish)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmpReqNeed</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmpReqAvailable</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">preAllocate</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">safeCheck</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isASmallerB</span><span class="params">(RES A,RES B)</span></span>;</span><br><span class="line"><span class="function">RES <span class="title">add</span><span class="params">(RES A,RES B)</span></span>;</span><br><span class="line"><span class="function">RES <span class="title">minus</span><span class="params">(RES A,RES B)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printLog</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"输入总资源数(A B C):\n"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;Available.A,&amp;Available.B,&amp;Available.C);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"依次输入%d个进程所需最大资源(A B C):\n"</span>,N);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;Max[i].A,&amp;Max[i].B,&amp;Max[i].C);</span><br><span class="line">        Need[i]=Max[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取用户输入的总资源数和每个进程所需最大资源数，并且开始时每个Allocation 资源都是0，所以Need 赋值为 Max。</p>
+<h3 id="结构体工具函数"><a href="#结构体工具函数" class="headerlink" title="结构体工具函数"></a>结构体工具函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">RES <span class="title">add</span><span class="params">(RES A,RES B)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    RES temp;</span><br><span class="line">    temp.A=A.A+B.A;</span><br><span class="line">    temp.B=A.B+B.B;</span><br><span class="line">    temp.C=A.C+B.C;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">RES <span class="title">minus</span><span class="params">(RES A,RES B)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    RES temp;</span><br><span class="line">    temp.A=A.A-B.A;</span><br><span class="line">    temp.B=A.B-B.B;</span><br><span class="line">    temp.C=A.C-B.C;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isASmallerB</span><span class="params">(RES A,RES B)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(A.A&lt;=B.A&amp;&amp;A.B&lt;=B.B&amp;&amp;A.C&lt;=B.C)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> TRUE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> FALSE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为C语言没有运算符重载，所以自定义加、减、小于等于函数方便阅读和编写</p>
+<h3 id="日志输出"><a href="#日志输出" class="headerlink" title="日志输出"></a>日志输出</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printLog</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"***Log Start***\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"系统剩余资源:\n%d %d %d\n"</span>,Available.A,Available.B,Available.C);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"线程需求资源:\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>,Need[i].A,Need[i].B,Need[i].C);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"完成情况:\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,Finish[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n***Log End***\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="银行家算法主体"><a href="#银行家算法主体" class="headerlink" title="银行家算法主体"></a>银行家算法主体</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (!isAllFinish(Finish))</span><br><span class="line">    &#123;</span><br><span class="line">        printLog();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"---------------------------------------\n输入资源申请(id A B C):\n"</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;Request.id,&amp;Request.res.A,&amp;Request.res.B,&amp;Request.res.C);</span><br><span class="line">        <span class="keyword">if</span>(cmpReqNeed()!=ERR&amp;&amp;cmpReqAvailable()!=ERR)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(preAllocate()!=ERR)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(Need[Request.id].A==<span class="number">0</span>&amp;&amp;Need[Request.id].B==<span class="number">0</span>&amp;&amp;Need[Request.id].C==<span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    Available=add(Available,Allocation[Request.id]);</span><br><span class="line">                    Finish[Request.id]=TRUE;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过isAllFinish 函数判断是否所有进程已经完成，接收用户输入以模拟进程对资源的请求，通过cmpReqNeed 和cmpReqAvailable 检测请求是否超出，如果不超出，使用 preAllocate 进行预分配，如果预分配安全且执行完成，释放资源。</p>
+<h3 id="预分配"><a href="#预分配" class="headerlink" title="预分配"></a>预分配</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">preAllocate</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    RES tempAvailable=Available,tempAllocation=Allocation[Request.id],tempNeed=Need[Request.id];</span><br><span class="line">    Available=minus(Available,Request.res);</span><br><span class="line">    Allocation[Request.id]=add(Allocation[Request.id],Request.res);</span><br><span class="line">    Need[Request.id]=minus(Need[Request.id],Request.res);</span><br><span class="line">    <span class="keyword">if</span>(safeCheck()==ERR)</span><br><span class="line">    &#123;</span><br><span class="line">        Available=tempAvailable;</span><br><span class="line">        Allocation[Request.id]=tempAllocation;</span><br><span class="line">        Need[Request.id]=tempNeed;</span><br><span class="line">        <span class="keyword">return</span> ERR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先使用temp开头的几个变量将原始资源余量等信息暂存，然后试着去分配，调用safeCheck检测安全性，如果不安全，则撤销预分配。</p>
+<h3 id="安全性检测"><a href="#安全性检测" class="headerlink" title="安全性检测"></a>安全性检测</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">safeCheck</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tempFinish[N];</span><br><span class="line">    <span class="keyword">int</span> safeList[N],safeNum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> flag;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        tempFinish[i]=Finish[i];</span><br><span class="line">    &#125;</span><br><span class="line">    Work=Available;</span><br><span class="line">    <span class="keyword">while</span> (isAllFinish(tempFinish)!=TRUE)</span><br><span class="line">    &#123;</span><br><span class="line">        flag=FALSE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(tempFinish[i]==FALSE&amp;&amp;isASmallerB(Need[i],Work))</span><br><span class="line">            &#123;</span><br><span class="line">                Work=add(Work,Allocation[i]);</span><br><span class="line">                tempFinish[i]=TRUE;</span><br><span class="line">                safeList[safeNum++]=i;</span><br><span class="line">                flag=TRUE;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(flag==FALSE)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"不安全\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> ERR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"安全序列:\n"</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;safeNum;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"线程%d "</span>,safeList[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> SUCCESS;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>循环查找资源能否有满足的线程，直到找不到或所有线程执行完毕。如果是安全的，输出安全序列。</p>
+<h2 id="运行测试"><a href="#运行测试" class="headerlink" title="运行测试"></a>运行测试</h2><p>略</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <script>var nowtime=new Date(Date.now());var posttime=new Date("2020-07-10");var day =parseInt( (nowtime - posttime) / (1000 * 60 * 60 * 24));if(day<30){document.write("<p><strong>文章有效性提示</strong><br><br><font color='green'>本文创建于 " + day + " 天前，内容较新。</font>");}else{document.write("<p><strong>文章有效性提示</strong><br><br><font color='red'>本文创建于 " + day + " 天前，其中的信息可能已经有所发展或是发生改变。</font>");}</script>
+        
+    </div>
+    
+    <footer>
+        <a href="https://loststar.tech">
+            <img src="/img/a.jfif" alt="Loststar">
+            Loststar
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%9E%E9%AA%8C/" rel="tag">实验</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95/" rel="tag">银行家算法</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/eccdc33c/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Jupyter Notebook修改默认路径</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/339a8b4c/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">豆瓣apikey分享</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "JsGHF5q6tqpxB8YJKLdfc3pw-gzGzoHsz",
+            appKey: "G3cLRzQwkYiqE93y7xbxKwWU",
+            avatar: "mm",
+            placeholder: "觉得内容还行的盆友留个言吧，我甚至不知道有没有人来过 ...(｡•ˇ‸ˇ•｡) ...\n填个昵称就可以发表了，填了邮箱会显示绑定的头像",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/rss2.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Loststar &copy; 2015 - 2021</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+<script async src="//cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.min.js"></script>
+
+
+
+
+
+</body>
+</html>

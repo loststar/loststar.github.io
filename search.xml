@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Jupyter Notebook修改默认路径</title>
+    <url>/posts/eccdc33c/</url>
+    <content><![CDATA[<p>Jupyter Notebook默认打开的路径是<code>C:/Users/用户名</code>，这非常不方便。修改的方法有两种。</p>
+<h2 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h2><p>找到Jupyter Notebook的快捷方式，将路径中的<code>%USERPROFILE%</code>改成想要作为根目录的地址。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/eccdc33c/link.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h2 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h2><p>本方法参考了<a href="https://www.zhihu.com/question/31600197" target="_blank" rel="noopener">ipython notebook 如何修改一开始打开的文件夹路径？- 知乎</a></p>
+<ol>
+<li>打开<code>C:/Users/你的账户/.jupyter/</code>看看是否存在<code>jupyter_notebook_config.py</code>，如果有，跳到3</li>
+<li>如果没有，在命令行输入<code> jupyter notebook --generate-config</code></li>
+<li>打开<code>C:/Users/你的账户/.jupyter/jupyter_notebook_config.py</code></li>
+<li>找到<code>#c.NotebookApp.notebook_dir = &#39;&#39;</code></li>
+<li>删除井号，引号内改为需要的路径</li>
+<li>删除快捷方式里面的<code>%USERPROFILE%</code>（非常重要，否则路径不会改变，当时在这里迷惑了很久）</li>
+</ol>
+]]></content>
+      <categories>
+        <category>方法记录</category>
+      </categories>
+      <tags>
+        <tag>JupyterNotebook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Next主题下HyperComments的优化</title>
+    <url>/posts/da438ac2/</url>
+    <content><![CDATA[<p>近日，把博客从typecho换到hexo，没有了typecho的原生评论，便开始寻找第三方评论。我所用的NexT主题比较良心，提供了好几种评论选择。然而，其中有的被墙了（disqus等），有的倒闭了（多说、网易云跟帖等），只剩下LiveRe（棒子国）和HyperComments（毛子国）。然而听说LiveRe口碑不怎么样，所以积极投身HyperComments。</p>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><p>1.注册<a href="https://www.hypercomments.com/" target="_blank" rel="noopener">HyperComments</a></p>
+<p>2.获取<code>hypercomments_id</code>并填入<strong>主题目录下</strong>的<code>_config.yml</code></p>
+<p>3.你已经可以开始用HyperComments了</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>在使用过程中，会发现一些问题。比如，评论框文字是繁体，加载比较慢等。</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><h3 id="js本地化"><a href="#js本地化" class="headerlink" title="js本地化"></a>js本地化</h3><p>1.下载<code>http://w.hypercomments.com/widget/hc/你的hypercomments_id/zh/widget.js</code>[下文称js1]</p>
+<p>2.找到类似<code>h.src=(&quot;https:&quot;==d.location.protocol?&quot;https&quot;:&quot;http&quot;)+&quot;://static.hypercomments.com/widget/hcembed/*****/zh/**************/**************/&quot;+f;</code>的语句（可以搜索src）</p>
+<p>3.下载<code>static.hypercomments.com/widget/hcembed/*****/zh/**************/**************/widget.js</code>[下文称js2]</p>
+<h3 id="繁体简化"><a href="#繁体简化" class="headerlink" title="繁体简化"></a>繁体简化</h3><p>1.打开js2</p>
+<p>2.找到有繁体字的地方，修改成简体字</p>
+<p>3.上传新js2到你的存放空间，并获取新js2的外链地址</p>
+<p>4.把js1里<code>src=</code>后面，下一个分号前面换成上一步获得的地址</p>
+<p>5.上传新js1到你的空间，获取外链地址</p>
+<p>6.打开主题目录下的<code>\layout\_third-party\comments\hypercomments.swig</code>,把<code>hcc.src =</code>到<code>&quot;;</code>之间内容换成上一步获得的js1的地址</p>
+<p>7.重新部署hexo</p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>HyperComments</tag>
+        <tag>繁体简化</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PDO连接缓慢的一个解决方法</title>
+    <url>/posts/2e64231/</url>
+    <content><![CDATA[<blockquote>
+<p>太长不看版：把 localhost 换成 127.0.0.1 </p>
+</blockquote>
+<h2 id="1-问题"><a href="#1-问题" class="headerlink" title="1 问题"></a>1 问题</h2><p>在写一个小玩具的时候，一个逻辑十分简单的接口耗时超过2s，十分不正常。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/2e64231/时间.jpg" alt="加载时间大大超出预期" title>
+                </div>
+                <div class="image-caption">加载时间大大超出预期</div>
+            </figure>
+
+<h2 id="2-排查"><a href="#2-排查" class="headerlink" title="2 排查"></a>2 排查</h2><h3 id="2-1-接口检查"><a href="#2-1-接口检查" class="headerlink" title="2.1 接口检查"></a>2.1 接口检查</h3><p>接口逻辑十分简单，只包含了两个部分：数据查询、json_encode。<code>json_encode  </code>作为内置函数，加上以往经验，不太可能是问题的关键。通过比较部分执行时间，数据查询部分执行时间约为另一部分的 <strong>10E5</strong> 倍。再用 navicat 手工构造执行了一下相同语句，耗时仅有 0.017s，更加肯定了连接上的问题。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/2e64231/navicat.jpg" alt="navicat" title>
+                </div>
+                <div class="image-caption">navicat</div>
+            </figure>
+
+<h3 id="2-2-查看user表"><a href="#2-2-查看user表" class="headerlink" title="2.2 查看user表"></a>2.2 查看user表</h3><p>既然是连接上的问题，那就去看看 <code>mysql</code> 库里有没有好康的。无意之中点到了 <code>user</code> 表，突然有了一些想法。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/2e64231/old.jpg" alt="user表" title>
+                </div>
+                <div class="image-caption">user表</div>
+            </figure>
+
+<p>莫非，是 ipv6 的锅？</p>
+<p>随手 ping 了一下 <code>localhost</code> </p>
+<p><img src="/posts/2e64231/ping.jpg" alt="ping"></p>
+<p>试着用 telnet 连接了一下 3306 端口，<code>localhost</code> 和 <code>127.0.0.1</code> 成功，<code>::1</code> 失败。</p>
+<h2 id="3-解决"><a href="#3-解决" class="headerlink" title="3 解决"></a>3 解决</h2><p>于是乎，将 <code>mysql:host=localhost</code> 改为 <code>mysql:host=127.0.0.1</code> ，刷新</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/2e64231/new.png" alt="修改后" title>
+                </div>
+                <div class="image-caption">修改后</div>
+            </figure>
+
+<p>好起来了</p>
+<p>所以，估计是 localhost 默认解析为 ipv6 地址，导致无法连接和超时。体现在应用上就是加载时间长了。</p>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
+        <tag>问题排查</tag>
+        <tag>PDO</tag>
+        <tag>方法记录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo只在特定页面开启mathjax</title>
+    <url>/posts/a7d694aa/</url>
+    <content><![CDATA[<p>在 <code>Hexo-NexT</code> 主题中，可以选择是否在所有页面加载 mathjax。但是在切换为 <code>indigo</code> 主题后，只能选择全局加载。对 <code>themes/indigo/layout/_partial/plugins/mathjax.ejs</code>进行少许修改即可实现。</p>
+<ol>
+<li>在第2行加入 <code>&lt;% if (page.mathjax){ %&gt;</code></li>
+<li>在第24行加入<code>&lt;% } %&gt;</code></li>
+<li>在需要使用mathjax的文章头部加入 <code>mathjax: true</code> 即可</li>
+</ol>
+<p>修改后 <code>mathjax.ejs</code> 全部内容如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;% if (theme.mathjax)&#123; %&gt;</span><br><span class="line">&lt;% if (page.mathjax)&#123; %&gt;</span><br><span class="line">&lt;!-- mathjax config similar to math.stackexchange --&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;x-mathjax-config&quot;&gt;</span><br><span class="line">MathJax.Hub.Config(&#123;</span><br><span class="line">    tex2jax: &#123;</span><br><span class="line">        inlineMath: [ [&#39;$&#39;,&#39;$&#39;], [&quot;\\(&quot;,&quot;\\)&quot;]  ],</span><br><span class="line">        processEscapes: true,</span><br><span class="line">        skipTags: [&#39;script&#39;, &#39;noscript&#39;, &#39;style&#39;, &#39;textarea&#39;, &#39;pre&#39;, &#39;code&#39;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">MathJax.Hub.Queue(function() &#123;</span><br><span class="line">    var all &#x3D; MathJax.Hub.getAllJax(), i;</span><br><span class="line">    for(i&#x3D;0; i &lt; all.length; i +&#x3D; 1) &#123;</span><br><span class="line">        all[i].SourceElement().parentNode.className +&#x3D; &#39; has-jax&#39;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script async src&#x3D;&quot;&#x2F;&#x2F;cdn.bootcss.com&#x2F;mathjax&#x2F;2.7.0&#x2F;MathJax.js?config&#x3D;TeX-MML-AM_CHTML&quot; async&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>方法记录</tag>
+        <tag>mathjax</tag>
+        <tag>indigo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从wordpress到typecho再到hexo</title>
+    <url>/posts/c5f3d396/</url>
+    <content><![CDATA[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://7xr0vd.dl1.z0.glb.clouddn.com/tit.jpg" alt="tit" title>
+                </div>
+                <div class="image-caption">tit</div>
+            </figure>
+<pre><code>序：2017已不足百天，也差不多是入博坑5年时间了。5年里，换了3个大平台（略 unbelievable）。回顾这 ~~一生~~ 5年，也有些感想。</code></pre>
+<h2 id="初入博坑：WordPress"><a href="#初入博坑：WordPress" class="headerlink" title="初入博坑：WordPress"></a>初入博坑：WordPress</h2><p>当年，觉得blog是个酷炫的玩意，于是跟风，按照随便百度来的教程，弄了一个。然而，由于缺乏动力以及没什么好记录，从建立到倒闭，只有一篇文——如何建立blog。</p>
+<p>后来，进入新的学校，认识了 <a href="zzfly.net">烟花</a>，在烟花学长的指导下，入了vps，正正经经写文。再加上那时候在研究一些黑科技，出现了第一次产文高峰，也认识了很多志同道合的小伙伴。但是当时并没有关于网站的知识，php水平不知低到哪里去，对wordpress的实现原理也不甚了解，所以仅仅相当于娱乐，改改外观而已。</p>
+<p>随着对php能力的进一步提升，开始模仿着写一些小插件，尝试同样功能的不同实现。不过，遇到了一个问题吧。当时使用的是搬瓦工的佛罗里达机房（貌似是的），访问速度堪忧，调试不方便。解决途径大概两 条。其一，学习前端知识，自行优化wp。其二，换一个更轻量级的平台。（不要问我为什么不在本地调试，因为不能<del>装逼</del>展示给人看）于是，我入了typecho的坑。</p>
+<h2 id="小试牛刀：Typecho"><a href="#小试牛刀：Typecho" class="headerlink" title="小试牛刀：Typecho"></a>小试牛刀：Typecho</h2><p>一方面为了快，另一方面可以支持国产，typecho进入了视线。typecho的配置和wordpress一样简单。typecho示例页面打开时，这种简洁、清爽让我瞬间喜欢上这个平台。</p>
+<p>在尝试typecho的时候，也是时间和点子较多的时候。文章第二次高产到来。除了写写小插件，小主题外，也尝试了二次开发（虽然没wp二次开发方便但也很舒服）。曾经有一次我甚至想为typecho修bug，只不过我自己的测试一直没过，时间原因，只好作罢。</p>
+<p>typecho在我心里地位极高，除了没有主题商城外，其他都挺满意。或许是这样子码字太舒服，水文越来越多，有意思的内容越来越少。再加上忽然发现所用的主题最开始来自hexo平台，于是趁此机会，试试hexo。</p>
+<h2 id="由恨生爱：hexo"><a href="#由恨生爱：hexo" class="headerlink" title="由恨生爱：hexo"></a>由恨生爱：hexo</h2><p>相比于wp和ty的安装方式，hexo堪称反人类。手撸markdown和命令行形式提交一开始也挺不适应。</p>
+<p>要不是每月可以省一笔vps的钱，当时应该会放弃了吧。后来想起来，幸好当时没放弃。</p>
+<p>自从用了hexo，不用当心文章什么时候丢失了找不回来了，也可以把静态html直接部署到某个主机上，同步很舒服。当然，省钱不能不提。gayhub真是好东西。</p>
+<p>Anyway，这也是一种新的开始。平台不重要，希望内容质量能提升上来，不忘写博初心就好。</p>
+]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>wordpress</tag>
+        <tag>hexo</tag>
+        <tag>typecho</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于json_decode转换json对象为数组的一个坑</title>
+    <url>/posts/d646a445/</url>
+    <content><![CDATA[<p>今天在写一个小玩意的时候，使用了json_decode来处理一段返回结果。当我直接调用转换后数组下标的时候，提示如下错误。</p>
+<p><code>PHP Fatal error:  Cannot use object of type stdClass as array in *:\*.php on line *</code></p>
+<p>于是乎，前往<a href="http://php.net/manual/zh/function.json-decode.php" target="_blank" rel="noopener">php.net关于json_decode的页面</a>查看文档。<br>发现json_decode完整用法如下。</p>
+<p><code>mixed json_decode ( string $json [, bool $assoc = false [, int $depth = 512 [, int $options = 0 ]]] )</code></p>
+<p>上面问题的原因就在于第二个参数<code>assoc</code>，文档内的解析是——<strong>当该参数为 TRUE 时，将返回 array 而非 object</strong>。</p>
+<p>真相大白，刚刚我们操作并没有加上这个参数，而这个参数默认为<code>false</code>。所以操作的是一个对象而不是一个数组，自然会出错。</p>
+<p>以php.net的示例代码结束本文。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例子：</span><br><span class="line">&lt;?php</span><br><span class="line">$json &#x3D; &#39;&#123;&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3,&quot;d&quot;:4,&quot;e&quot;:5&#125;&#39;;</span><br><span class="line">var_dump(json_decode($json));</span><br><span class="line">var_dump(json_decode($json, true));</span><br><span class="line">?&gt; </span><br><span class="line">输出：</span><br><span class="line">object(stdClass)#1 (5) &#123;</span><br><span class="line">    [&quot;a&quot;] &#x3D;&gt; int(1)</span><br><span class="line">    [&quot;b&quot;] &#x3D;&gt; int(2)</span><br><span class="line">    [&quot;c&quot;] &#x3D;&gt; int(3)</span><br><span class="line">    [&quot;d&quot;] &#x3D;&gt; int(4)</span><br><span class="line">    [&quot;e&quot;] &#x3D;&gt; int(5)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">array(5) &#123;</span><br><span class="line">    [&quot;a&quot;] &#x3D;&gt; int(1)</span><br><span class="line">    [&quot;b&quot;] &#x3D;&gt; int(2)</span><br><span class="line">    [&quot;c&quot;] &#x3D;&gt; int(3)</span><br><span class="line">    [&quot;d&quot;] &#x3D;&gt; int(4)</span><br><span class="line">    [&quot;e&quot;] &#x3D;&gt; int(5)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>json</tag>
+        <tag>坑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>创新实践课作业--图像预处理作业</title>
+    <url>/posts/fdb6251f/</url>
+    <content><![CDATA[<blockquote>
+<p>本文章由Jupyter Notebook导出</p>
+</blockquote>
+<h2 id="任务一"><a href="#任务一" class="headerlink" title="任务一"></a>任务一</h2><p>请用在不使用Opencv框架的情况下实现图片的镜像操作，最终显示原图片，垂直镜像图片和水平镜像图片。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image,ImageFilter</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">%matplotlib inline </span><br><span class="line">im = Image.open(<span class="string">"./lena.png"</span>) </span><br><span class="line">plt.figure(<span class="string">"Text"</span>) <span class="comment"># 图像窗口名称 </span></span><br><span class="line">plt.imshow(im)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p><img src="/posts/fdb6251f/output_3_1.png" alt="png"></p>
+<p>水平镜像</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im2=im.transpose(Image.FLIP_LEFT_RIGHT)</span><br><span class="line">plt.imshow(im2)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p><img src="/posts/fdb6251f/output_5_1.png" alt="png"></p>
+<p>垂直镜像</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im3=im.transpose(Image.FLIP_TOP_BOTTOM)</span><br><span class="line">plt.imshow(im3)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p><img src="/posts/fdb6251f/output_7_1.png" alt="png"></p>
+<h2 id="任务二"><a href="#任务二" class="headerlink" title="任务二"></a>任务二</h2><p>请在不使用Opencv框架的情况下实现Gamma变换，并显示原图像，Gamma值为0.5和2时的图像。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im_G=im.convert(<span class="string">"L"</span>)</span><br><span class="line">plt.imshow(im_G)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p><img src="/posts/fdb6251f/output_9_1.png" alt="png"></p>
+<p>gamma函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gamma_fun</span><span class="params">(gm)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">lambda</span> x:pow(x/<span class="number">255</span>,gm)*<span class="number">255</span></span><br></pre></td></tr></table></figure>
+
+<p>gamma=0.5</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im_gm05=im_G.point(gamma_fun(<span class="number">0.5</span>))</span><br><span class="line">plt.imshow(im_gm05)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p><img src="/posts/fdb6251f/output_13_1.png" alt="png"></p>
+<p>gamma=2</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im_gm2=im_G.point(gamma_fun(<span class="number">2</span>))</span><br><span class="line">plt.imshow(im_gm2)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p><img src="/posts/fdb6251f/output_15_1.png" alt="png"></p>
+<h2 id="任务三"><a href="#任务三" class="headerlink" title="任务三"></a>任务三</h2><p>请在不使用Opencv框架的情况下完成中值滤波操作，最终显示原图像，滤波窗口大小为3时的滤波效果和滤波窗口大小为5时的滤波效果。</p>
+<p>原始图像</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.imshow(im)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p><img src="/posts/fdb6251f/output_18_1.png" alt="png"></p>
+<p>窗口为3</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im_mid3=im.filter(ImageFilter.MedianFilter(<span class="number">3</span>))</span><br><span class="line">plt.imshow(im_mid3)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p><img src="/posts/fdb6251f/output_20_1.png" alt="png"></p>
+<p>窗口为5</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im_mid5=im.filter(ImageFilter.MedianFilter(<span class="number">5</span>))</span><br><span class="line">plt.imshow(im_mid5)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p><img src="/posts/fdb6251f/output_22_1.png" alt="png"></p>
+<h2 id="任务四"><a href="#任务四" class="headerlink" title="任务四"></a>任务四</h2><p>请在不使用Opencv框架的情况下完成锐化操作，最终显示原图像，并使用1.2.19中的两个锐化算子进行锐化，然后显示图像效果，再使用PIL库内置锐化方法进行锐化操作，并显示结果。</p>
+<p>原始图片</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plt.imshow(im)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p><img src="/posts/fdb6251f/output_25_1.png" alt="png"></p>
+<p>算子1</p>
+<p>$$<br>\begin{bmatrix}<br>   -1 &amp; -1 &amp; -1 \<br>   -1 &amp; 9 &amp; -1 \<br>   -1 &amp; -1 &amp; -1<br>  \end{bmatrix}<br>$$</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im_s1=im.filter(ImageFilter.Kernel((<span class="number">3</span>,<span class="number">3</span>),(<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">9</span>,<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>,<span class="number">-1</span>)))</span><br><span class="line">plt.imshow(im_s1)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p><img src="/posts/fdb6251f/output_27_1.png" alt="png"></p>
+<p>算子2<br>$$<br>\begin{bmatrix}<br>   0 &amp; -1 &amp; 0 \<br>   -1 &amp; 8 &amp; -1 \<br>   0 &amp; 1 &amp; 0<br> \end{bmatrix}/4<br>$$</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im_s2=im.filter(ImageFilter.Kernel((<span class="number">3</span>,<span class="number">3</span>),(<span class="number">0</span>/<span class="number">4</span>,<span class="number">-1</span>/<span class="number">4</span>,<span class="number">0</span>/<span class="number">4</span>,<span class="number">-1</span>/<span class="number">4</span>,<span class="number">8</span>/<span class="number">4</span>,<span class="number">-1</span>/<span class="number">4</span>,<span class="number">0</span>/<span class="number">4</span>,<span class="number">-1</span>/<span class="number">4</span>,<span class="number">0</span>/<span class="number">4</span>)))</span><br><span class="line">plt.imshow(im_s1)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p><img src="/posts/fdb6251f/output_29_1.png" alt="png"></p>
+<p>内置方法</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im_spil=im.filter(ImageFilter.SHARPEN)</span><br><span class="line">plt.imshow(im_spil)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p><img src="/posts/fdb6251f/output_31_1.png" alt="png"></p>
+<h2 id="ipynb下载链接"><a href="#ipynb下载链接" class="headerlink" title="ipynb下载链接"></a>ipynb下载链接</h2><p><a href="/download/%E5%B0%8F%E5%AD%A6%E6%9C%9F%E5%8D%8E%E4%B8%BA%E5%88%9B%E6%96%B0%E5%AE%9E%E8%B7%B5%E8%AF%BE/%E5%9B%BE%E5%83%8F%E9%A2%84%E5%A4%84%E7%90%86%E4%BD%9C%E4%B8%9A.ipynb">图像预处理作业.ipynb</a></p>
+]]></content>
+      <categories>
+        <category>创新实践课</category>
+      </categories>
+      <tags>
+        <tag>预处理</tag>
+        <tag>PIL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>应用Travis CI摆脱Hexo博客换机难</title>
+    <url>/posts/d9cdb463/</url>
+    <content><![CDATA[<p>一直以来，用Hexo+Github Page写博客都是一种<del>装逼</del>高端的做法。但是，HEXO写博客是生成静态文件再上传。当需要在别的电脑写博客的时候会比较麻烦。所以，现在使用Travis CI来解决这一问题。</p>
+<h2 id="获取Personal-Access-Token"><a href="#获取Personal-Access-Token" class="headerlink" title="获取Personal Access Token"></a>获取Personal Access Token</h2><p>1.进入设置</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://swzl.s3-cn-east-1.qiniucs.com/Travis-CI-hexo1.JPG" alt="setting" title>
+                </div>
+                <div class="image-caption">setting</div>
+            </figure>
+
+<p>2.点击Personal Access Token</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://7xr0vd.dl1.z0.glb.clouddn.com/Travis-CI-hexo2.JPG" alt="Personal Access Token" title>
+                </div>
+                <div class="image-caption">Personal Access Token</div>
+            </figure>
+
+<p>3.点击右上角的Generate new token</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://7xr0vd.dl1.z0.glb.clouddn.com/Travis-CI-hexo3.JPG" alt="new" title>
+                </div>
+                <div class="image-caption">new</div>
+            </figure>
+
+<p>4.设置Token description，选择权限</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://7xr0vd.dl1.z0.glb.clouddn.com/Travis-CI-hexo4.JPG" alt="to-des" title>
+                </div>
+                <div class="image-caption">to-des</div>
+            </figure>
+
+<p>5.点击Generate token</p>
+<p>6.复制生成的Personal access tokens（注意：token只会在刚刚创建完成后<strong>显示一次</strong>，关闭页面后再打开不再显示）    </p>
+<h2 id="配置Travis-CI"><a href="#配置Travis-CI" class="headerlink" title="配置Travis CI"></a>配置Travis CI</h2><p>1.用Github账号登陆Travis CI</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://7xr0vd.dl1.z0.glb.clouddn.com/5.JPG" alt="sign" title>
+                </div>
+                <div class="image-caption">sign</div>
+            </figure>
+
+<p>2.点击左上角的“+”</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://7xr0vd.dl1.z0.glb.clouddn.com/6.JPG" alt="add" title>
+                </div>
+                <div class="image-caption">add</div>
+            </figure>
+
+<p>3.点击博客源码仓库前面的滑块</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://7xr0vd.dl1.z0.glb.clouddn.com/7.JPG" alt="open" title>
+                </div>
+                <div class="image-caption">open</div>
+            </figure>
+
+<p>4.点击滑块旁边的设置</p>
+<p>5.点击<code>Build only if .travis.yml is present</code>前面的滑块</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://7xr0vd.dl1.z0.glb.clouddn.com/8.JPG" alt="open" title>
+                </div>
+                <div class="image-caption">open</div>
+            </figure>
+
+<p>6.在<code>Environment Variables</code>添加你的<code>Personal access tokens</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://7xr0vd.dl1.z0.glb.clouddn.com/9.JPG" alt="token" title>
+                </div>
+                <div class="image-caption">token</div>
+            </figure>
+
+<p>7.点击add</p>
+<h2 id="配置仓库文件"><a href="#配置仓库文件" class="headerlink" title="配置仓库文件"></a>配置仓库文件</h2><p>1.在源码仓库创建<code>.travis.yml</code></p>
+<p>2.在文件内写入信息（以下供参考，更详细请参考<a href="https://docs.travis-ci.com/" target="_blank" rel="noopener">Travis CI文档</a> )</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">language: node_js</span><br><span class="line">node_js: stable</span><br><span class="line"></span><br><span class="line"># S: Build Lifecycle</span><br><span class="line">install:</span><br><span class="line">- npm install</span><br><span class="line"></span><br><span class="line">#before_script:</span><br><span class="line"># - npm install -g gulp</span><br><span class="line"></span><br><span class="line">before_install:</span><br><span class="line">- export TZ&#x3D;&#39;Asia&#x2F;Shanghai&#39;  # 设置时区</span><br><span class="line">- npm install -g hexo</span><br><span class="line">- npm install -g hexo-cli</span><br><span class="line"></span><br><span class="line">script:</span><br><span class="line">- hexo clean</span><br><span class="line">- hexo g</span><br><span class="line"></span><br><span class="line">after_script:</span><br><span class="line">- cd .&#x2F;public</span><br><span class="line">- git init</span><br><span class="line">- git config user.name &quot;你的昵称&quot;</span><br><span class="line">- git config user.email &quot;你的邮箱&quot;</span><br><span class="line">- git add .</span><br><span class="line">- git commit -m &quot;Update docs&quot;</span><br><span class="line">- git push --force --quiet &quot;https:&#x2F;&#x2F;$&#123;GH_TOKEN&#125;@$&#123;GH_REF&#125;&quot; master:master</span><br><span class="line"># E: Build LifeCycle</span><br><span class="line"></span><br><span class="line">branches:</span><br><span class="line">  only:</span><br><span class="line">    - master</span><br><span class="line">env:</span><br><span class="line"> global:</span><br><span class="line">   - GH_REF: github.com&#x2F;*******&#x2F;********.github.io.git（Github Page仓库）</span><br></pre></td></tr></table></figure>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>1.写一篇新文章，push源码到github</p>
+<p>2.在Travis CI就可以看到正在构建了（黄色）</p>
+<p>3.build passing之后（绿色）就可以在博客网页看到新文章了。</p>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>Travis CI</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>推荐一个展示示repo的hexo插件</title>
+    <url>/posts/7a64e458/</url>
+    <content><![CDATA[<p>在博客展示github repo几乎是一个刚需。<br>在使用Typecho的时候我就曾做了个小插件来自娱自乐。</p>
+<div style="text-align: center">
+  <div class="github-card" data-user="loststar" data-repo="ShowGithubRepo" data-height="200" data-width="400" data-theme="default" data-target data-client-id data-client-secret></div>
+</div>
+<script src="/github-card-lib/githubcard.js"></script>
+
+
+<p>现在换到hexo平台，发现早有前人造好了轮子。</p>
+<div style="text-align: center">
+  <div class="github-card" data-user="Gisonrg" data-repo="hexo-github-card" data-height="200" data-width="400" data-theme="default" data-target data-client-id data-client-secret></div>
+</div>
+<script src="/github-card-lib/githubcard.js"></script>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>插件</tag>
+        <tag>github</tag>
+        <tag>repo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统实验1--Linux命令解析程序设计与实现</title>
+    <url>/posts/9de5b70b/</url>
+    <content><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>​    探索、理解并掌握操作系统命令释器的设计原和实现机制，基于 Linux内核进行相应命令解释程序的设计和实现，并在 Linux操作平台上加以实现。</p>
+<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><p>Linux 命令解释程序功能设计要求：<br>（1）选取和设计实现一组内部命令（五条以上）；<br>（2）外部命令执行采用直接调用 exec 系统调用的方式来实现；<br>（3）至少一条内部命令采用直接调用相应系统调用的方式来实现；<br>（4）系统环境变量（至少包括当前目录）支持；<br>（5）在 Linux 操作系统上启用（或替换原命令解释程序 Shell）并测试验证。</p>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><h3 id="函数一览"><a href="#函数一览" class="headerlink" title="函数一览"></a>函数一览</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_welcome</span><span class="params">()</span></span>; <span class="comment">//打印欢迎信息</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">split</span><span class="params">(<span class="keyword">char</span> *src,<span class="keyword">const</span> <span class="keyword">char</span> *separator,<span class="keyword">char</span> **dest,<span class="keyword">int</span> *num)</span></span>; <span class="comment">//分割输入的命令</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">my_cd</span><span class="params">(<span class="keyword">char</span> **arr)</span></span>; <span class="comment">//内部命令cd的实现</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">my_pwd</span><span class="params">(<span class="keyword">char</span> **arr)</span></span>; <span class="comment">//内部命令pwd的实现</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">my_echo</span><span class="params">()</span></span>; <span class="comment">//内部命令echo的实现</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">my_exit</span><span class="params">()</span></span>; <span class="comment">//内部命令exit的实现</span></span><br><span class="line"><span class="function">HQueue <span class="title">init_history</span><span class="params">(HQueue q)</span></span>; <span class="comment">//历史记录队列初始化</span></span><br><span class="line"><span class="function">HQueue <span class="title">add_history</span><span class="params">(HQueue q,<span class="keyword">int</span> num)</span></span>; <span class="comment">//添加历史记录</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">my_history</span><span class="params">(HQueue q)</span></span>; <span class="comment">//内部命令history的实现</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">check_env</span><span class="params">(<span class="keyword">char</span> **arr)</span></span>; <span class="comment">//环境变量的支持</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">my_outer</span><span class="params">(<span class="keyword">char</span> **arr)</span></span>; <span class="comment">//外部命令的实现</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数据结构和全局变量定义"><a href="#数据结构和全局变量定义" class="headerlink" title="数据结构和全局变量定义"></a>数据结构和全局变量定义</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> IS_STOP=<span class="number">0</span>; <span class="comment">//是否退出myshell</span></span><br><span class="line"><span class="keyword">char</span> cmd[<span class="number">256</span>]; <span class="comment">//输入的命令</span></span><br><span class="line"><span class="keyword">char</span> historycmd[<span class="number">256</span>]; <span class="comment">//输入的命令的备份，用作历史记录</span></span><br><span class="line"><span class="keyword">char</span> *arr[<span class="number">128</span>]; <span class="comment">//命令分割后存储</span></span><br><span class="line"><span class="keyword">char</span> *env[<span class="number">256</span>]=&#123;<span class="string">"/home"</span>,<span class="string">"/usr"</span>&#125;; <span class="comment">//环境变量</span></span><br><span class="line"><span class="keyword">int</span> env_N=<span class="number">2</span>;  <span class="comment">//环境变量数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HistoryNode</span></span></span><br><span class="line"><span class="class">&#123;</span> <span class="comment">//历史记录队列节点</span></span><br><span class="line">    <span class="keyword">char</span> cmd[<span class="number">256</span>];</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">HistoryNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;HNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HistoryQueue</span></span></span><br><span class="line"><span class="class">&#123;</span> <span class="comment">//历史记录队列</span></span><br><span class="line">    HNode *head,*tail;</span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">&#125;HQueue;</span><br></pre></td></tr></table></figure>
+
+<h2 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h2><h3 id="内部命令cd的设计"><a href="#内部命令cd的设计" class="headerlink" title="内部命令cd的设计"></a>内部命令cd的设计</h3><p>​    cd命令的作用是切换工作目录，直接使用了系统调用，设计如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">my_cd</span><span class="params">(<span class="keyword">char</span> **arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (arr[<span class="number">1</span>]&amp;&amp;!syscall(SYS_access,arr[<span class="number">1</span>],<span class="number">0</span>)) &#123;</span><br><span class="line">        syscall(SYS_chdir,arr[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"目录不存在！\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    该函数使用了syscall 来调用系统调用SYS_access 来判断目录是否存在，以及使用了系统调用 SYS_chdir 来切换目录。</p>
+<h3 id="内部命令pwd的设计"><a href="#内部命令pwd的设计" class="headerlink" title="内部命令pwd的设计"></a>内部命令pwd的设计</h3><p>​    pwd命令的作用是显示工作目录，设计如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">my_pwd</span><span class="params">(<span class="keyword">char</span> **arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> wd[<span class="number">4096</span>];</span><br><span class="line">        <span class="built_in">puts</span>(getcwd(wd, <span class="number">4096</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    该函数使用了 getcwd 函数来获取路径并且存入字符数组wd中，用puts输出</p>
+<h3 id="内部命令echo的设计"><a href="#内部命令echo的设计" class="headerlink" title="内部命令echo的设计"></a>内部命令echo的设计</h3><p>​    echo命令的作用是输出命令里的字符，设计如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">my_echo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> temp[<span class="number">256</span>];</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">5</span>;i&lt;<span class="built_in">strlen</span>(historycmd);i++)</span><br><span class="line">    &#123;</span><br><span class="line">        temp[i<span class="number">-5</span>]=historycmd[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">puts</span>(temp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="内部命令history的设计"><a href="#内部命令history的设计" class="headerlink" title="内部命令history的设计"></a>内部命令history的设计</h3><p>​    history命令的作用是显示历史输入的命令，设计如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//在程序开始之初调用，初始化链队列</span></span><br><span class="line"><span class="function">HQueue <span class="title">init_history</span><span class="params">(HQueue q)</span> </span>&#123;</span><br><span class="line">    q.head=(HNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(HNode));</span><br><span class="line">    <span class="keyword">if</span>(q.head==<span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"init_history申请内存错误"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    q.tail=q.head;</span><br><span class="line">    q.num=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> q;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//该函数在每输入一条非空指令后调用，将新输入的指令存入链队列</span></span><br><span class="line"><span class="function">HQueue <span class="title">add_history</span><span class="params">(HQueue q,<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    HNode *temp=(HNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(HNode));</span><br><span class="line">    <span class="keyword">if</span>(temp==<span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"add_history申请内存错误"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    q.tail-&gt;next=temp;</span><br><span class="line">    q.tail=q.tail-&gt;next;</span><br><span class="line">    q.num=q.num+<span class="number">1</span>;</span><br><span class="line">    <span class="built_in">strcpy</span>(q.tail-&gt;cmd,historycmd);</span><br><span class="line">    <span class="keyword">return</span> q;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//该函数按顺序输出序号和历史指令</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">my_history</span><span class="params">(HQueue q)</span> </span>&#123;</span><br><span class="line">    HNode *temp=q.head-&gt;next;</span><br><span class="line">    <span class="keyword">if</span>(temp==<span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"链表错误！\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;q.num;i++) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,i+<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">puts</span>(temp-&gt;cmd);</span><br><span class="line">        temp=temp-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="内部命令exit的设计"><a href="#内部命令exit的设计" class="headerlink" title="内部命令exit的设计"></a>内部命令exit的设计</h3><p>​    exit的作用是退出shell</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void my_exit()</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;即将退出myshell\n&quot;);</span><br><span class="line">    IS_STOP&#x3D;1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    该函数将全局变量 IS_STOP 置为1，主循环独取后会停止</p>
+<h3 id="环境变量的支持"><a href="#环境变量的支持" class="headerlink" title="环境变量的支持"></a>环境变量的支持</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">check_env</span><span class="params">(<span class="keyword">char</span>** arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> is_exist=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">char</span> wd[<span class="number">256</span>];</span><br><span class="line">    <span class="keyword">if</span>(!(access(arr[<span class="number">0</span>],<span class="number">0</span>))) &#123;</span><br><span class="line">        getcwd(wd, <span class="number">256</span>);</span><br><span class="line">        <span class="built_in">strcat</span>(wd,<span class="string">"/"</span>);</span><br><span class="line">        <span class="built_in">strcat</span>(wd,arr[<span class="number">0</span>]);</span><br><span class="line">        is_exist=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> i;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;env_N;i++) &#123;</span><br><span class="line">            <span class="built_in">strcpy</span>(wd,env[i]);</span><br><span class="line">            <span class="built_in">strcat</span>(wd,<span class="string">"/"</span>);</span><br><span class="line">            <span class="built_in">strcat</span>(wd,arr[<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">if</span>(!(access(wd,<span class="number">0</span>))) &#123;</span><br><span class="line">                is_exist=<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(is_exist) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s在环境变量内!"</span>,arr[<span class="number">0</span>]);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"路径是：%s\n执行结果：\n"</span>,wd);</span><br><span class="line">        <span class="keyword">pid_t</span> pid = fork();</span><br><span class="line">            <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;</span><br><span class="line">                execvp(wd, arr);</span><br><span class="line">                <span class="keyword">return</span> <span class="number">255</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            wait(<span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> is_exist;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    该函数使用access搜索在给定路径集合env里是否存在名为 arr[0] 的可执行程序，若存在则执行。</p>
+<h3 id="外部命令的实现"><a href="#外部命令的实现" class="headerlink" title="外部命令的实现"></a>外部命令的实现</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">my_outer</span><span class="params">(<span class="keyword">char</span> **arr)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%s是外部命令！\n执行结果：\n"</span>,arr[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">pid_t</span> pid = fork();</span><br><span class="line">    <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;</span><br><span class="line">        execvp(arr[<span class="number">0</span>], arr);</span><br><span class="line">    &#125;</span><br><span class="line">    wait(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该函数使用exec调用外部命令</p>
+<h3 id="主函数设计"><a href="#主函数设计" class="headerlink" title="主函数设计"></a>主函数设计</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    print_welcome(); <span class="comment">//输出欢迎信息</span></span><br><span class="line">    <span class="keyword">int</span> num;</span><br><span class="line">    <span class="comment">//链队列初始化</span></span><br><span class="line">    HQueue history;</span><br><span class="line">    history=init_history(history);</span><br><span class="line">    <span class="keyword">while</span> (!IS_STOP) &#123; <span class="comment">//循环直到遇到exit</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"myshell&gt; "</span>); <span class="comment">//命令提示符</span></span><br><span class="line">        fflush(<span class="built_in">stdin</span>);</span><br><span class="line">        fgets(cmd, <span class="number">256</span>, <span class="built_in">stdin</span>); <span class="comment">//读入命令</span></span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (cmd[i]!=<span class="string">'\n'</span>)    </span><br><span class="line">        &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        cmd[i] = <span class="string">'\0'</span>; <span class="comment">//将\n替换为\0</span></span><br><span class="line">        <span class="built_in">strcpy</span>(historycmd,cmd);</span><br><span class="line">        arr[<span class="number">0</span>] = cmd;</span><br><span class="line">        split(cmd,<span class="string">" "</span>,&amp;arr[<span class="number">0</span>],&amp;num); <span class="comment">//分割命令</span></span><br><span class="line">        arr[num]=<span class="literal">NULL</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//无输入</span></span><br><span class="line">        <span class="keyword">if</span> (!arr[<span class="number">0</span>])&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//内部命令</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(arr[<span class="number">0</span>], <span class="string">"cd"</span>) == <span class="number">0</span>) &#123; <span class="comment">//内部命令cd</span></span><br><span class="line">            my_cd(arr);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(arr[<span class="number">0</span>], <span class="string">"pwd"</span>) == <span class="number">0</span>) &#123; <span class="comment">//内部命令pwd</span></span><br><span class="line">            my_pwd(arr);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(arr[<span class="number">0</span>], <span class="string">"echo"</span>) == <span class="number">0</span>) &#123; <span class="comment">//内部命令echo</span></span><br><span class="line">            my_echo(arr);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(arr[<span class="number">0</span>], <span class="string">"history"</span>) == <span class="number">0</span>) &#123; <span class="comment">//内部命令history</span></span><br><span class="line">            my_history(history);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(arr[<span class="number">0</span>], <span class="string">"exit"</span>) == <span class="number">0</span>) &#123; <span class="comment">//内部命令exit</span></span><br><span class="line">            my_exit();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//环境变量</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (check_env(arr)) &#123;&#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//外部命令</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            my_outer(arr);</span><br><span class="line">        &#125;</span><br><span class="line">        history=add_history(history,i); <span class="comment">//历史记录</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="验证测试"><a href="#验证测试" class="headerlink" title="验证测试"></a>验证测试</h2><h3 id="欢迎界面"><a href="#欢迎界面" class="headerlink" title="欢迎界面"></a>欢迎界面</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/9de5b70b/1.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<h3 id="内部命令"><a href="#内部命令" class="headerlink" title="内部命令"></a>内部命令</h3><h4 id="cd-和-pwd-命令"><a href="#cd-和-pwd-命令" class="headerlink" title="cd 和 pwd 命令"></a>cd 和 pwd 命令</h4><p>用pwd命令显示当前目录，cd切换后再用pwd显示切换后的目录</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/9de5b70b/2.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>与预期相符</p>
+<h4 id="echo-命令"><a href="#echo-命令" class="headerlink" title="echo 命令"></a>echo 命令</h4><p>输出hello 17281144</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/9de5b70b/3.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>与预期相符</p>
+<h4 id="history-命令"><a href="#history-命令" class="headerlink" title="history 命令"></a>history 命令</h4><p>输出历史</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/9de5b70b/4.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>与预期相符</p>
+<h4 id="exit命令"><a href="#exit命令" class="headerlink" title="exit命令"></a>exit命令</h4><p>退出shell</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/9de5b70b/5.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>与预期相符</p>
+<h3 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h3><p>将如下代码编译成为名为 hello 的可执行文件，放在 /home 目录下，并且将目录加入 env 数组。</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Hello World\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>直接输入hello</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/9de5b70b/6.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>与预期相符</p>
+<h3 id="外部命令"><a href="#外部命令" class="headerlink" title="外部命令"></a>外部命令</h3><p>以ping 命令作为示例</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/9de5b70b/7.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>与预期相符</p>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+        <category>课程实验</category>
+      </categories>
+      <tags>
+        <tag>实验</tag>
+        <tag>命令解析</tag>
+        <tag>shell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统实验2--银行家算法模拟实现</title>
+    <url>/posts/aa64c4bc/</url>
+    <content><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>利用 C 语言设计与实现银行家算法，构建计算机系统资源的模拟管理和处理场景并对自己的银行家算法实现方案加以测试验证。</p>
+<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><ol>
+<li>基于 C语言的银行家算法的设计与实现</li>
+<li>计算机系统资源的模拟管理和处理场景的构建（初始化操作包括系统各类资源配备情况、一组并发进程及相应资源最大需求明细，进程申请资源操作需要指定进程及其对所需各类资源的申请数量，进程释放资源操作需要指定进程及其对当前所占用各类资源的释放数量）</li>
+<li>算法原型应能正确处理进程申请/释放资源的各种操作请求</li>
+<li>针对银行家算法原型开展基于计算机系统资源管理的完备的测试验证</li>
+</ol>
+<h2 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h2><h3 id="宏定义、全局变量和结构体定义"><a href="#宏定义、全局变量和结构体定义" class="headerlink" title="宏定义、全局变量和结构体定义"></a>宏定义、全局变量和结构体定义</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TRUE 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FALSE 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ERR -1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SUCCESS 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Resource</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> A;</span><br><span class="line">    <span class="keyword">int</span> B;</span><br><span class="line">    <span class="keyword">int</span> C;</span><br><span class="line">&#125;RES;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Request</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    RES res;</span><br><span class="line">&#125;REQ;</span><br><span class="line"></span><br><span class="line">RES Available,Work,Max[N],Allocation[N]=&#123;&#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>&#125;&#125;,Need[N];</span><br><span class="line">REQ Request;</span><br><span class="line"><span class="keyword">int</span> Finish[N];</span><br></pre></td></tr></table></figure>
+
+<p>N是进程数，TRUE FALSE ERR SUCCESS是标志位，Resource结构体存储资源，Request结构体存储请求，Available Work Max[N] Allocation[N] Need[N] Request Finish对应银行家算法里的各个部分。</p>
+<h3 id="函数一览"><a href="#函数一览" class="headerlink" title="函数一览"></a>函数一览</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isAllFinish</span><span class="params">(<span class="keyword">int</span>* finish)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmpReqNeed</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmpReqAvailable</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">preAllocate</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">safeCheck</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isASmallerB</span><span class="params">(RES A,RES B)</span></span>;</span><br><span class="line"><span class="function">RES <span class="title">add</span><span class="params">(RES A,RES B)</span></span>;</span><br><span class="line"><span class="function">RES <span class="title">minus</span><span class="params">(RES A,RES B)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printLog</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"输入总资源数(A B C):\n"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;Available.A,&amp;Available.B,&amp;Available.C);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"依次输入%d个进程所需最大资源(A B C):\n"</span>,N);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;Max[i].A,&amp;Max[i].B,&amp;Max[i].C);</span><br><span class="line">        Need[i]=Max[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获取用户输入的总资源数和每个进程所需最大资源数，并且开始时每个Allocation 资源都是0，所以Need 赋值为 Max。</p>
+<h3 id="结构体工具函数"><a href="#结构体工具函数" class="headerlink" title="结构体工具函数"></a>结构体工具函数</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function">RES <span class="title">add</span><span class="params">(RES A,RES B)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    RES temp;</span><br><span class="line">    temp.A=A.A+B.A;</span><br><span class="line">    temp.B=A.B+B.B;</span><br><span class="line">    temp.C=A.C+B.C;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">RES <span class="title">minus</span><span class="params">(RES A,RES B)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    RES temp;</span><br><span class="line">    temp.A=A.A-B.A;</span><br><span class="line">    temp.B=A.B-B.B;</span><br><span class="line">    temp.C=A.C-B.C;</span><br><span class="line">    <span class="keyword">return</span> temp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isASmallerB</span><span class="params">(RES A,RES B)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(A.A&lt;=B.A&amp;&amp;A.B&lt;=B.B&amp;&amp;A.C&lt;=B.C)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> TRUE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> FALSE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为C语言没有运算符重载，所以自定义加、减、小于等于函数方便阅读和编写</p>
+<h3 id="日志输出"><a href="#日志输出" class="headerlink" title="日志输出"></a>日志输出</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printLog</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"***Log Start***\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"系统剩余资源:\n%d %d %d\n"</span>,Available.A,Available.B,Available.C);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"线程需求资源:\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>,Need[i].A,Need[i].B,Need[i].C);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"完成情况:\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,Finish[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n***Log End***\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="银行家算法主体"><a href="#银行家算法主体" class="headerlink" title="银行家算法主体"></a>银行家算法主体</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (!isAllFinish(Finish))</span><br><span class="line">    &#123;</span><br><span class="line">        printLog();</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"---------------------------------------\n输入资源申请(id A B C):\n"</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;Request.id,&amp;Request.res.A,&amp;Request.res.B,&amp;Request.res.C);</span><br><span class="line">        <span class="keyword">if</span>(cmpReqNeed()!=ERR&amp;&amp;cmpReqAvailable()!=ERR)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(preAllocate()!=ERR)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(Need[Request.id].A==<span class="number">0</span>&amp;&amp;Need[Request.id].B==<span class="number">0</span>&amp;&amp;Need[Request.id].C==<span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    Available=add(Available,Allocation[Request.id]);</span><br><span class="line">                    Finish[Request.id]=TRUE;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过isAllFinish 函数判断是否所有进程已经完成，接收用户输入以模拟进程对资源的请求，通过cmpReqNeed 和cmpReqAvailable 检测请求是否超出，如果不超出，使用 preAllocate 进行预分配，如果预分配安全且执行完成，释放资源。</p>
+<h3 id="预分配"><a href="#预分配" class="headerlink" title="预分配"></a>预分配</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">preAllocate</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    RES tempAvailable=Available,tempAllocation=Allocation[Request.id],tempNeed=Need[Request.id];</span><br><span class="line">    Available=minus(Available,Request.res);</span><br><span class="line">    Allocation[Request.id]=add(Allocation[Request.id],Request.res);</span><br><span class="line">    Need[Request.id]=minus(Need[Request.id],Request.res);</span><br><span class="line">    <span class="keyword">if</span>(safeCheck()==ERR)</span><br><span class="line">    &#123;</span><br><span class="line">        Available=tempAvailable;</span><br><span class="line">        Allocation[Request.id]=tempAllocation;</span><br><span class="line">        Need[Request.id]=tempNeed;</span><br><span class="line">        <span class="keyword">return</span> ERR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> SUCCESS;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先使用temp开头的几个变量将原始资源余量等信息暂存，然后试着去分配，调用safeCheck检测安全性，如果不安全，则撤销预分配。</p>
+<h3 id="安全性检测"><a href="#安全性检测" class="headerlink" title="安全性检测"></a>安全性检测</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">safeCheck</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> tempFinish[N];</span><br><span class="line">    <span class="keyword">int</span> safeList[N],safeNum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> flag;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        tempFinish[i]=Finish[i];</span><br><span class="line">    &#125;</span><br><span class="line">    Work=Available;</span><br><span class="line">    <span class="keyword">while</span> (isAllFinish(tempFinish)!=TRUE)</span><br><span class="line">    &#123;</span><br><span class="line">        flag=FALSE;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(tempFinish[i]==FALSE&amp;&amp;isASmallerB(Need[i],Work))</span><br><span class="line">            &#123;</span><br><span class="line">                Work=add(Work,Allocation[i]);</span><br><span class="line">                tempFinish[i]=TRUE;</span><br><span class="line">                safeList[safeNum++]=i;</span><br><span class="line">                flag=TRUE;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(flag==FALSE)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"不安全\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> ERR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"安全序列:\n"</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;safeNum;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"线程%d "</span>,safeList[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> SUCCESS;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>循环查找资源能否有满足的线程，直到找不到或所有线程执行完毕。如果是安全的，输出安全序列。</p>
+<h2 id="运行测试"><a href="#运行测试" class="headerlink" title="运行测试"></a>运行测试</h2><p>略</p>
+]]></content>
+      <categories>
+        <category>操作系统</category>
+        <category>课程实验</category>
+      </categories>
+      <tags>
+        <tag>实验</tag>
+        <tag>银行家算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构实验1--线性表</title>
+    <url>/posts/e6fc5c45/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>数据结构是我大二（2018-2019学年第二学期）的一门课，本文和后续文章将把课程里的约30道实验题补全到博客。</p>
+<h2 id="员工储存"><a href="#员工储存" class="headerlink" title="员工储存"></a>员工储存</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>​    某软件公司大约有30名员工，每名员工有姓名、工号、职务等属性，每年都有员工离职和入职。</p>
+<p>​    把所有员工按照顺序存储结构建立一个线性表，建立离职和入职函数，当有员工离职或入职时，修改线性表，并且打印最新的员工名单。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MEMBER_NUMBER 30</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> maxid = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">member</span> &#123;</span></span><br><span class="line">	<span class="keyword">char</span> name[<span class="number">10</span>];</span><br><span class="line">	<span class="keyword">int</span> id;</span><br><span class="line">	<span class="keyword">char</span> job[<span class="number">10</span>];</span><br><span class="line">&#125;Member;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">company</span> &#123;</span></span><br><span class="line">	Member* member;</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">	<span class="keyword">int</span> last;</span><br><span class="line">&#125;Company;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printMembers</span><span class="params">(Company* company)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; company-&gt;last; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s,%d,%s\n"</span>, company-&gt;member[i].name, company-&gt;member[i].id, company-&gt;member[i].job);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"*************************************\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initCompany</span><span class="params">(Company* company)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	company-&gt;member = (Member*)<span class="built_in">malloc</span>(MEMBER_NUMBER * <span class="keyword">sizeof</span>(Member));</span><br><span class="line">	company-&gt;length = MEMBER_NUMBER;</span><br><span class="line">	company-&gt;last = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">joinCompany</span><span class="params">(Company* company, <span class="keyword">char</span>* name, <span class="keyword">char</span>* job)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (company-&gt;last &gt;= company-&gt;length)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"full"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">strcpy</span>(company-&gt;member[company-&gt;last].name, name);</span><br><span class="line">		company-&gt;member[company-&gt;last].id = maxid + <span class="number">1</span>;</span><br><span class="line">		<span class="built_in">strcpy</span>(company-&gt;member[company-&gt;last].job, job);</span><br><span class="line">		company-&gt;last += <span class="number">1</span>;</span><br><span class="line">		maxid += <span class="number">1</span>;</span><br><span class="line">		printMembers(company);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">leaveCompany</span><span class="params">(Company* company, <span class="keyword">int</span> id)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (company-&gt;last == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"empty"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; company-&gt;last; i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (company-&gt;member[i].id == id)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; company-&gt;last; j++)</span><br><span class="line">				&#123;</span><br><span class="line">					company-&gt;member[j - <span class="number">1</span>] = company-&gt;member[j];</span><br><span class="line">				&#125;</span><br><span class="line">				company-&gt;last -= <span class="number">1</span>;</span><br><span class="line">				printMembers(company);</span><br><span class="line">				<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"not found"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Company company;</span><br><span class="line">	<span class="keyword">char</span> joinname[<span class="number">10</span>], joinjob[<span class="number">10</span>];</span><br><span class="line">	<span class="keyword">int</span> leaveid;</span><br><span class="line">	<span class="keyword">int</span> choose;</span><br><span class="line">	initCompany(&amp;company);</span><br><span class="line">	<span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"请选择：\n1.入职\n2.离职\n3.退出程序\n"</span>);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;choose);</span><br><span class="line">		<span class="keyword">switch</span> (choose)</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"输入姓名：\n"</span>);</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>, &amp;joinname);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"输入职位：\n"</span>);</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>, &amp;joinjob);</span><br><span class="line">			joinCompany(&amp;company, joinname, joinjob);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"输入离职id：\n"</span>);</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;leaveid);</span><br><span class="line">			leaveCompany(&amp;company, leaveid);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/e6fc5c45/1.png" alt="res1" title>
+                </div>
+                <div class="image-caption">res1</div>
+            </figure>
+
+<h2 id="约瑟夫环"><a href="#约瑟夫环" class="headerlink" title="约瑟夫环"></a>约瑟夫环</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p>​    约瑟夫（Josephus）环问题：编号为1,2,3,…,n的n个人按顺时针方向围坐一圈，每人持有一个密码（正整数）。一开始任选一个正整数作为报数的上限值m，从第一个人开始按顺时针方向自1开始顺序报数,报到m时停止。报m的人出列，将他的密码作为新的m值，从他在顺时针方向上的下一人开始重新从1报数，如此下去，直到所有人全部出列为止。</p>
+<p>​    建立n个人的单循环链表存储结构，运行结束后，输出依次出队的人的序号。</p>
+<h3 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 30</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> num;</span><br><span class="line">	<span class="keyword">int</span> pass;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">node</span>* <span class="title">next</span>;</span></span><br><span class="line">&#125;Node;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">randNumber</span><span class="params">(<span class="keyword">int</span> <span class="built_in">max</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	srand((<span class="keyword">unsigned</span>)time(<span class="literal">NULL</span>));</span><br><span class="line">	<span class="keyword">return</span> rand() % <span class="built_in">max</span> + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> m = randNumber(N * <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="function">Node* <span class="title">initList</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	srand((<span class="keyword">int</span>)time(<span class="number">0</span>));</span><br><span class="line">	Node* head = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">	head-&gt;num = <span class="number">1</span>;</span><br><span class="line">	head-&gt;pass = randNumber(N * <span class="number">3</span>);</span><br><span class="line">	Node* temp = head;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; N; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		Node* p = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));</span><br><span class="line">		p-&gt;num = i + <span class="number">1</span>;</span><br><span class="line">		p-&gt;pass = randNumber(N * <span class="number">3</span>);</span><br><span class="line">		temp-&gt;next = p;</span><br><span class="line">		temp = temp-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	temp-&gt;next = head; <span class="comment">//末尾指向头部，构成单循环链表</span></span><br><span class="line">	<span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">playGame</span><span class="params">(Node* head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Node* temp1 = head, * temp2;</span><br><span class="line">	<span class="keyword">while</span> (head != head-&gt;next)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (m == <span class="number">1</span>) <span class="comment">//删除头结点</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">while</span> (temp1-&gt;next != head)</span><br><span class="line">			&#123;</span><br><span class="line">				temp1 = temp1-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">			temp2 = head;</span><br><span class="line">			temp1-&gt;next = head-&gt;next;</span><br><span class="line">			head = head-&gt;next;</span><br><span class="line">			m = temp2-&gt;pass;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"delete id:%d\n"</span>, temp2-&gt;num);</span><br><span class="line">			<span class="built_in">free</span>(temp2);</span><br><span class="line">			<span class="comment">//printList(head);</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; m - <span class="number">1</span>; i++)</span><br><span class="line">			&#123;</span><br><span class="line">				temp1 = temp1-&gt;next;</span><br><span class="line">			&#125;</span><br><span class="line">			temp2 = temp1-&gt;next;</span><br><span class="line">			temp1-&gt;next = temp2-&gt;next;</span><br><span class="line">			m = temp2-&gt;pass;</span><br><span class="line">			head = temp1-&gt;next;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"delete id:%d\n"</span>, temp2-&gt;num);</span><br><span class="line">			<span class="built_in">free</span>(temp2);</span><br><span class="line">			<span class="comment">//printList(head);</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"Number m=%d\n"</span>, m);</span><br><span class="line">	Node* head = initList();</span><br><span class="line">	<span class="comment">//printList(head);</span></span><br><span class="line">	playGame(head);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/e6fc5c45/2.png" alt="res2" title>
+                </div>
+                <div class="image-caption">res2</div>
+            </figure>]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>实验</tag>
+        <tag>线性表</tag>
+        <tag>约瑟夫环</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数据结构实验2--栈和队列</title>
+    <url>/posts/959bb1f8/</url>
+    <content><![CDATA[<h2 id="商场停车场"><a href="#商场停车场" class="headerlink" title="商场停车场"></a>商场停车场</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>​    某商场有一个100个车位的停车场，当车位未满时，等待的车辆可以进入并计时；当车位已满时，必须有车辆离开，等待的车辆才能进入；当车辆离开时计算停留的的时间，并且按照每小时1元收费。</p>
+<p>​    汽车的输入信息格式可以是（进入/离开，车牌号，进入/离开时间），要求可以随时显示停车场内的车辆信息以及收费历史记录。</p>
+<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSPACE 100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PRICEPERSECOND 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">vehicle</span> //车辆信息</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> carNumber[<span class="number">8</span>]; <span class="comment">//车牌号码</span></span><br><span class="line">	<span class="keyword">time_t</span> parkTime; <span class="comment">//停车时间</span></span><br><span class="line">&#125;Vehicle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">space</span> //车位信息</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	Vehicle carInfo; <span class="comment">//车位里停的车</span></span><br><span class="line">	<span class="keyword">int</span> isParked; <span class="comment">//车位状态</span></span><br><span class="line">&#125;Space;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">lot</span> //停车场信息</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	Space* allSpace;  <span class="comment">//所有车位</span></span><br><span class="line">	<span class="keyword">int</span> emptySpace;  <span class="comment">//剩余车位数</span></span><br><span class="line">&#125; Lot;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">history</span> //收费记录</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> carNumber[<span class="number">8</span>];</span><br><span class="line">	<span class="keyword">time_t</span> parkTime;</span><br><span class="line">	<span class="keyword">time_t</span> leaveTime;</span><br><span class="line">	<span class="keyword">int</span> price;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">history</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;History;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printLot</span><span class="params">(Lot parkingLot)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"=================================================\n现在时间：%lld\n停车场剩余空位%d个\n"</span>, time(<span class="literal">NULL</span>), parkingLot.emptySpace);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAXSPACE; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (parkingLot.allSpace[i].isParked == <span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"---------------------\n车牌：%s\n停车时间：%lld\n"</span>, parkingLot.allSpace[i].carInfo.carNumber, parkingLot.allSpace[i].carInfo.parkTime);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"---------------------\n=================================================\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printHistory</span><span class="params">(History *head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	History *temp = head;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span> (temp-&gt;price != <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"第%d笔，车牌号：%s，收费：%d元\n"</span>, <span class="number">1</span>, temp-&gt;carNumber, temp-&gt;price);</span><br><span class="line">		<span class="keyword">while</span> (temp-&gt;next!=<span class="literal">NULL</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			temp = temp-&gt;next;</span><br><span class="line">			i++;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"第%d笔，车牌号：%s，收费：%d元\n"</span>, i, temp-&gt;carNumber, temp-&gt;price);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Lot <span class="title">parkVehicle</span><span class="params">(Lot parkingLot)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (parkingLot.emptySpace == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"车位满，请离开"</span>);</span><br><span class="line">		<span class="keyword">return</span> parkingLot;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAXSPACE; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (parkingLot.allSpace[i].isParked == <span class="number">0</span>) <span class="comment">//找到空车位</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"请输入7位车牌号（例：JA10086）：\n"</span>);</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%s"</span>, parkingLot.allSpace[i].carInfo.carNumber);</span><br><span class="line">			parkingLot.allSpace[i].carInfo.parkTime= time(<span class="literal">NULL</span>);</span><br><span class="line">			parkingLot.allSpace[i].isParked = <span class="number">1</span>;</span><br><span class="line">			parkingLot.emptySpace--;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"现在时间%lld,%s停车成功\n"</span>, parkingLot.allSpace[i].carInfo.parkTime,parkingLot.allSpace[i].carInfo.carNumber);</span><br><span class="line">			<span class="keyword">return</span> parkingLot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Lot <span class="title">leaveVehicle</span><span class="params">(Lot parkingLot, History* head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (parkingLot.emptySpace == MAXSPACE)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"停车场空\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> parkingLot;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">char</span> carNumber[<span class="number">8</span>];</span><br><span class="line">	<span class="keyword">time_t</span> nowTime;</span><br><span class="line">	<span class="keyword">int</span> parkingFee;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入7位车牌号（例：JA10086）：\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, carNumber);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAXSPACE; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">strcmp</span>(parkingLot.allSpace[i].carInfo.carNumber,carNumber)==<span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			parkingLot.allSpace[i].isParked = <span class="number">0</span>;</span><br><span class="line">			parkingLot.emptySpace++;</span><br><span class="line">			nowTime = time(<span class="literal">NULL</span>);</span><br><span class="line">			parkingFee = PRICEPERSECOND * (nowTime - parkingLot.allSpace[i].carInfo.parkTime);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%s离开成功，收费%d元\n"</span>, parkingLot.allSpace[i].carInfo.carNumber, parkingFee);</span><br><span class="line">			<span class="comment">//储存收费记录</span></span><br><span class="line">			<span class="keyword">if</span> (head-&gt;price == <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="built_in">strcpy</span>(head-&gt;carNumber, parkingLot.allSpace[i].carInfo.carNumber);</span><br><span class="line">				head-&gt;parkTime = parkingLot.allSpace[i].carInfo.parkTime;</span><br><span class="line">				head-&gt;leaveTime = nowTime;</span><br><span class="line">				head-&gt;price = parkingFee;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				History *temp = head;</span><br><span class="line">				<span class="keyword">while</span> (temp-&gt;next!=<span class="literal">NULL</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					temp = temp-&gt;next;</span><br><span class="line">				&#125;</span><br><span class="line">				temp-&gt;next = (History*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(History));</span><br><span class="line">				temp = temp-&gt;next;</span><br><span class="line">				<span class="built_in">strcpy</span>(temp-&gt;carNumber, parkingLot.allSpace[i].carInfo.carNumber);</span><br><span class="line">				temp-&gt;parkTime = parkingLot.allSpace[i].carInfo.parkTime;</span><br><span class="line">				temp-&gt;leaveTime = nowTime;</span><br><span class="line">				temp-&gt;price = parkingFee;</span><br><span class="line">				temp-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> parkingLot;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">startSystem</span><span class="params">(Lot parkingLot, History* head)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> i;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"1.停车\n2.离开\n3.打印停车场状态\n4.打印收费历史\n"</span>);</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line">		<span class="keyword">switch</span> (i)</span><br><span class="line">		&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			parkingLot = parkVehicle(parkingLot);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">			parkingLot = leaveVehicle(parkingLot, head);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">			printLot(parkingLot);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">			printHistory(head);</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Lot parkingLot;</span><br><span class="line">	parkingLot.allSpace = (Space*)<span class="built_in">malloc</span>(MAXSPACE * <span class="keyword">sizeof</span>(Space));</span><br><span class="line">	parkingLot.emptySpace = MAXSPACE;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; MAXSPACE; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		parkingLot.allSpace[i].isParked = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	History* head = (History*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(History));</span><br><span class="line">	head-&gt;price = <span class="number">0</span>;</span><br><span class="line">	head-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	startSystem(parkingLot, head);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/959bb1f8/1-1.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/959bb1f8/1-2.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+
+
+<h2 id="银行营业厅"><a href="#银行营业厅" class="headerlink" title="银行营业厅"></a>银行营业厅</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p>​    某银行营业厅共有6个营业窗口，设有排队系统广播叫号，该银行的业务分为公积金、银行卡、理财卡等三种。公积金业务指定1号窗口，银行卡业务指定2、3、4号窗口，理财卡业务指定5、6号窗口。但如果5、6号窗口全忙，而2、3、4号窗口有空闲时，理财卡业务也可以在空闲的2、3、4号窗口之一办理。</p>
+<p>​    客户领号、业务完成可以作为输入信息，要求可以随时显示6个营业窗口的状态。</p>
+<h3 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> windows[<span class="number">7</span>] = &#123; <span class="number">0</span> &#125;;</span><br><span class="line"><span class="keyword">int</span> number = <span class="number">0</span>; <span class="comment">//顾客领取的号码</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125;QNode;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LinkQueue</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	QNode *front;</span><br><span class="line">	QNode *rear;</span><br><span class="line">&#125;LinkQueue;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">initQueue</span><span class="params">(LinkQueue &amp;Q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Q.front = Q.rear = (QNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(QNode));</span><br><span class="line">	<span class="keyword">if</span> (!Q.front)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Q.front-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">enQueue</span><span class="params">(LinkQueue &amp;Q, <span class="keyword">int</span> data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	QNode *p = (QNode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(QNode));</span><br><span class="line">	<span class="keyword">if</span> (!p)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	p-&gt;data = data;</span><br><span class="line">	p-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">	Q.rear-&gt;next = p;</span><br><span class="line">	Q.rear = p;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">deQueue</span><span class="params">(LinkQueue &amp;Q,<span class="keyword">int</span> &amp;data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q.front == Q.rear)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	QNode *p = Q.front-&gt;next;</span><br><span class="line">	data = p-&gt;data;</span><br><span class="line">	Q.front-&gt;next = p-&gt;next;</span><br><span class="line">	<span class="keyword">if</span> (p == Q.rear)</span><br><span class="line">	&#123;</span><br><span class="line">		Q.rear = Q.front;</span><br><span class="line">		<span class="built_in">free</span>(p);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isEmpty</span><span class="params">(LinkQueue &amp;Q)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (Q.front == Q.rear)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(LinkQueue *Q)</span>   <span class="comment">//输出队列中的元素</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	QNode *p;</span><br><span class="line">	p = Q-&gt;front-&gt;next; <span class="comment">//p结点指向链队列中存放第一个元素的结点</span></span><br><span class="line">	<span class="keyword">while</span> (p)  <span class="comment">//沿链队列从队头到队尾的方向依次输出元素的值</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d  "</span>, p-&gt;data);</span><br><span class="line">		p = p-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">entryBank</span><span class="params">(LinkQueue &amp;gjj, LinkQueue &amp;yhk, LinkQueue &amp;lck, LinkQueue &amp;customer1, LinkQueue &amp;customer2, LinkQueue &amp;customer3)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,data;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入要办理的业务：\n1.公积金\n2.银行卡\n3.理财卡\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line">	number++;</span><br><span class="line">	<span class="keyword">switch</span> (i)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		<span class="keyword">if</span> (!isEmpty(gjj))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(gjj,data);</span><br><span class="line">			windows[data] = <span class="number">1</span>;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, data);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			enQueue(customer1,number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到队列1等待\n"</span>, number);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">		<span class="keyword">if</span> (!isEmpty(yhk))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(yhk, data);</span><br><span class="line">			windows[data] = <span class="number">1</span>;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, data);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			enQueue(customer2, number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到队列2等待\n"</span>, number);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">		<span class="keyword">if</span> (!isEmpty(lck))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(lck, data);</span><br><span class="line">			windows[data] = <span class="number">1</span>;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, data);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(!isEmpty(yhk))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(yhk, data);</span><br><span class="line">			windows[data] = <span class="number">1</span>;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, data);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			enQueue(customer3, number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到队列3等待\n"</span>, number);</span><br><span class="line">		&#125;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">leaveBank</span><span class="params">(LinkQueue &amp;gjj, LinkQueue &amp;yhk, LinkQueue &amp;lck, LinkQueue &amp;customer1, LinkQueue &amp;customer2, LinkQueue &amp;customer3)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i,number;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入办理完成的窗口（1-6）\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line">	<span class="keyword">switch</span> (i)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		<span class="keyword">if</span> (!isEmpty(customer1))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(customer1, number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			enQueue(gjj, i);</span><br><span class="line">			windows[i] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">		<span class="keyword">if</span> (!isEmpty(customer2))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(customer2, number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (!isEmpty(customer3))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(customer3, number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			enQueue(yhk, i);</span><br><span class="line">			windows[i] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">	<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">		<span class="keyword">if</span> (!isEmpty(customer3))</span><br><span class="line">		&#123;</span><br><span class="line">			deQueue(customer3, number);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d号顾客到%d号柜台办理\n"</span>, number, i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			enQueue(lck, i);</span><br><span class="line">			windows[i] = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">startSystem</span><span class="params">(LinkQueue &amp;gjj, LinkQueue &amp;yhk, LinkQueue &amp;lck, LinkQueue &amp;customer1, LinkQueue &amp;customer2, LinkQueue &amp;customer3)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"请输入顾客行为：\n1.进入\n2.离开\n3.查看窗口状态\n"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;i);</span><br><span class="line">	<span class="keyword">switch</span> (i)</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">		entryBank(gjj, yhk, lck, customer1, customer2, customer3);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">		leaveBank(gjj, yhk, lck, customer1, customer2, customer3);</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">7</span>; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			windows[j] ? <span class="built_in">printf</span>(<span class="string">"%d号窗口有人\n"</span>, j) : <span class="built_in">printf</span>(<span class="string">"%d号窗口无人\n"</span>, j);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">default</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	LinkQueue gjj, yhk, lck; <span class="comment">//窗口队列</span></span><br><span class="line">	LinkQueue customer1, customer2, customer3; <span class="comment">//顾客队列</span></span><br><span class="line">	<span class="comment">//窗口队列初始化</span></span><br><span class="line">	initQueue(gjj);</span><br><span class="line">	enQueue(gjj, <span class="number">1</span>);</span><br><span class="line">	initQueue(yhk);</span><br><span class="line">	enQueue(yhk, <span class="number">2</span>);</span><br><span class="line">	enQueue(yhk, <span class="number">3</span>);</span><br><span class="line">	enQueue(yhk, <span class="number">4</span>);</span><br><span class="line">	initQueue(lck);</span><br><span class="line">	enQueue(lck, <span class="number">5</span>);</span><br><span class="line">	enQueue(lck, <span class="number">6</span>);</span><br><span class="line">	<span class="comment">//窗口队列初始化完毕</span></span><br><span class="line">	<span class="comment">//顾客队列初始化</span></span><br><span class="line">	initQueue(customer1);</span><br><span class="line">	initQueue(customer2);</span><br><span class="line">	initQueue(customer3);</span><br><span class="line">	<span class="comment">//顾客队列初始化完毕</span></span><br><span class="line">	<span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		startSystem(gjj, yhk, lck, customer1, customer2, customer3);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/959bb1f8/2-1.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/959bb1f8/2-2.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+
+
+<h2 id="4阶斐波那契序列"><a href="#4阶斐波那契序列" class="headerlink" title="4阶斐波那契序列"></a>4阶斐波那契序列</h2><h3 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h3><p>​    4阶斐波那契序列如下：f0=f1=f2=0, f3=1,…,fi=fi-1+fi-2+fi-3+fi-4，</p>
+<p>​    利用容量为k=4的循环队列，构造序列的前n+1项（f0, f1 , f2 ,… fn ），要求满足fn ≤200而fn+1 &gt;200。</p>
+<h3 id="解答-2"><a href="#解答-2" class="headerlink" title="解答"></a>解答</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> kk 4</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> max 200</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">queue</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> elem[kk];</span><br><span class="line">	<span class="keyword">int</span> rear;</span><br><span class="line">&#125;cq;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">100</span>], n;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fb</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i, j;</span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= k - <span class="number">2</span>; i++) </span><br><span class="line">	&#123; </span><br><span class="line">		f[i] = <span class="number">0</span>; cq.elem[i] = <span class="number">0</span>; </span><br><span class="line">	&#125;       </span><br><span class="line">	cq.elem[k - <span class="number">1</span>] = f[k - <span class="number">1</span>] = <span class="number">1</span>;    <span class="comment">//为第k个元素赋值，并放入队列cq</span></span><br><span class="line">	cq.rear = k - <span class="number">1</span>;   </span><br><span class="line">	n = k;</span><br><span class="line">	<span class="keyword">while</span> (cq.elem[cq.rear] &lt; <span class="built_in">max</span>)    <span class="comment">//利用循环队列依次求f[n]</span></span><br><span class="line">	&#123;</span><br><span class="line">		f[n] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; k; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			f[n] = f[n] + cq.elem[j];</span><br><span class="line">		&#125;</span><br><span class="line">		cq.rear = (cq.rear + <span class="number">1</span>) % k;</span><br><span class="line">		cq.elem[cq.rear] = f[n];</span><br><span class="line">		n++;</span><br><span class="line">	&#125;                       <span class="comment">//利用循环队列依次求f[n]</span></span><br><span class="line">	<span class="keyword">if</span> (cq.elem[cq.rear] &gt; <span class="built_in">max</span>)  </span><br><span class="line">		n = n - <span class="number">2</span>; </span><br><span class="line">	<span class="keyword">else</span> </span><br><span class="line">		n = n - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	fb(kk);   </span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt;= n; i++)   </span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"  %d  "</span>, f[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="运行结果-2"><a href="#运行结果-2" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/959bb1f8/3.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+
+
+<h2 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h2><h3 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h3><p>八皇后问题：设8皇后问题的解为 (x1, x2, x3, …,x8), 约束条件为：在8x8的棋盘上，其中任意两个xi 和xj不能位于棋盘的同行、同列及同对角线。要求用一位数组进行存储，输出所有可能的排列。</p>
+<h3 id="解答-3"><a href="#解答-3" class="headerlink" title="解答"></a>解答</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;math.h&gt;</span><br><span class="line">#define N 8</span><br><span class="line">int count &#x3D; 0, position[N];</span><br><span class="line">int isLegal(int i, int j)  &#x2F;&#x2F;检查(i,j)上能否放棋子</span><br><span class="line">&#123;</span><br><span class="line">	int j1 &#x3D; j,i1 &#x3D; i,ok1 &#x3D; 1;  &#x2F;&#x2F;检查第i行上能否放棋子</span><br><span class="line">	while ((j1 &gt; 1) &amp;&amp; ok1)</span><br><span class="line">	&#123;</span><br><span class="line">		j1--;         </span><br><span class="line">		ok1 &#x3D; position[j1] !&#x3D; i;</span><br><span class="line">	&#125;</span><br><span class="line">	j1 &#x3D; j; </span><br><span class="line">	i1 &#x3D; i;    &#x2F;&#x2F;检查对角线上能否放棋子</span><br><span class="line">	while ((j1 &gt; 1) &amp;&amp; (i1 &gt; 1) &amp;&amp; ok1)</span><br><span class="line">	&#123;</span><br><span class="line">		j1--; </span><br><span class="line">		i1--; </span><br><span class="line">		ok1 &#x3D; position[j1] !&#x3D; i1;</span><br><span class="line">	&#125;</span><br><span class="line">	j1 &#x3D; j; </span><br><span class="line">	i1 &#x3D; i;     &#x2F;&#x2F;检查另一对角线上能否放棋子</span><br><span class="line">	while ((j1 &gt; 1) &amp;&amp; (i1 &lt; N) &amp;&amp; ok1)</span><br><span class="line">	&#123;</span><br><span class="line">		j1--; </span><br><span class="line">		i1++; </span><br><span class="line">		ok1 &#x3D; position[j1] !&#x3D; i1;</span><br><span class="line">	&#125;</span><br><span class="line">	return  ok1;</span><br><span class="line">&#125;</span><br><span class="line">int queen(int j) &#x2F;&#x2F;从第j列开始逐个试探</span><br><span class="line">&#123;</span><br><span class="line">	if (j &gt; N)</span><br><span class="line">	&#123;</span><br><span class="line">		count++;  </span><br><span class="line">		printf(&quot;count&#x3D;%d   &quot;, count);</span><br><span class="line">		for (int i &#x3D; 1; i &lt;&#x3D; N; i++)  </span><br><span class="line">			printf(&quot;    %d&quot;, position[i]);</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	else  </span><br><span class="line">		for (int i &#x3D; 1; i &lt;&#x3D; N; i++)</span><br><span class="line">		if (isLegal(i,j))    &#x2F;&#x2F;检查(i,j)上能否放棋子</span><br><span class="line">		&#123;</span><br><span class="line">			position[j] &#x3D; i;  &#x2F;&#x2F;在(i,j)上放一个棋子</span><br><span class="line">			queen(j + 1);</span><br><span class="line">		&#125;</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	queen(1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="运行结果-3"><a href="#运行结果-3" class="headerlink" title="运行结果"></a>运行结果</h3><p>一共92种，比较多，就不截图了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">count&#x3D;1       1    5    8    6    3    7    2    4</span><br><span class="line">count&#x3D;2       1    6    8    3    7    4    2    5</span><br><span class="line">count&#x3D;3       1    7    4    6    8    2    5    3</span><br><span class="line">count&#x3D;4       1    7    5    8    2    4    6    3</span><br><span class="line">count&#x3D;5       2    4    6    8    3    1    7    5</span><br><span class="line">count&#x3D;6       2    5    7    1    3    8    6    4</span><br><span class="line">count&#x3D;7       2    5    7    4    1    8    6    3</span><br><span class="line">count&#x3D;8       2    6    1    7    4    8    3    5</span><br><span class="line">count&#x3D;9       2    6    8    3    1    4    7    5</span><br><span class="line">count&#x3D;10       2    7    3    6    8    5    1    4</span><br><span class="line">count&#x3D;11       2    7    5    8    1    4    6    3</span><br><span class="line">count&#x3D;12       2    8    6    1    3    5    7    4</span><br><span class="line">count&#x3D;13       3    1    7    5    8    2    4    6</span><br><span class="line">count&#x3D;14       3    5    2    8    1    7    4    6</span><br><span class="line">count&#x3D;15       3    5    2    8    6    4    7    1</span><br><span class="line">count&#x3D;16       3    5    7    1    4    2    8    6</span><br><span class="line">count&#x3D;17       3    5    8    4    1    7    2    6</span><br><span class="line">count&#x3D;18       3    6    2    5    8    1    7    4</span><br><span class="line">count&#x3D;19       3    6    2    7    1    4    8    5</span><br><span class="line">count&#x3D;20       3    6    2    7    5    1    8    4</span><br><span class="line">count&#x3D;21       3    6    4    1    8    5    7    2</span><br><span class="line">count&#x3D;22       3    6    4    2    8    5    7    1</span><br><span class="line">count&#x3D;23       3    6    8    1    4    7    5    2</span><br><span class="line">count&#x3D;24       3    6    8    1    5    7    2    4</span><br><span class="line">count&#x3D;25       3    6    8    2    4    1    7    5</span><br><span class="line">count&#x3D;26       3    7    2    8    5    1    4    6</span><br><span class="line">count&#x3D;27       3    7    2    8    6    4    1    5</span><br><span class="line">count&#x3D;28       3    8    4    7    1    6    2    5</span><br><span class="line">count&#x3D;29       4    1    5    8    2    7    3    6</span><br><span class="line">count&#x3D;30       4    1    5    8    6    3    7    2</span><br><span class="line">count&#x3D;31       4    2    5    8    6    1    3    7</span><br><span class="line">count&#x3D;32       4    2    7    3    6    8    1    5</span><br><span class="line">count&#x3D;33       4    2    7    3    6    8    5    1</span><br><span class="line">count&#x3D;34       4    2    7    5    1    8    6    3</span><br><span class="line">count&#x3D;35       4    2    8    5    7    1    3    6</span><br><span class="line">count&#x3D;36       4    2    8    6    1    3    5    7</span><br><span class="line">count&#x3D;37       4    6    1    5    2    8    3    7</span><br><span class="line">count&#x3D;38       4    6    8    2    7    1    3    5</span><br><span class="line">count&#x3D;39       4    6    8    3    1    7    5    2</span><br><span class="line">count&#x3D;40       4    7    1    8    5    2    6    3</span><br><span class="line">count&#x3D;41       4    7    3    8    2    5    1    6</span><br><span class="line">count&#x3D;42       4    7    5    2    6    1    3    8</span><br><span class="line">count&#x3D;43       4    7    5    3    1    6    8    2</span><br><span class="line">count&#x3D;44       4    8    1    3    6    2    7    5</span><br><span class="line">count&#x3D;45       4    8    1    5    7    2    6    3</span><br><span class="line">count&#x3D;46       4    8    5    3    1    7    2    6</span><br><span class="line">count&#x3D;47       5    1    4    6    8    2    7    3</span><br><span class="line">count&#x3D;48       5    1    8    4    2    7    3    6</span><br><span class="line">count&#x3D;49       5    1    8    6    3    7    2    4</span><br><span class="line">count&#x3D;50       5    2    4    6    8    3    1    7</span><br><span class="line">count&#x3D;51       5    2    4    7    3    8    6    1</span><br><span class="line">count&#x3D;52       5    2    6    1    7    4    8    3</span><br><span class="line">count&#x3D;53       5    2    8    1    4    7    3    6</span><br><span class="line">count&#x3D;54       5    3    1    6    8    2    4    7</span><br><span class="line">count&#x3D;55       5    3    1    7    2    8    6    4</span><br><span class="line">count&#x3D;56       5    3    8    4    7    1    6    2</span><br><span class="line">count&#x3D;57       5    7    1    3    8    6    4    2</span><br><span class="line">count&#x3D;58       5    7    1    4    2    8    6    3</span><br><span class="line">count&#x3D;59       5    7    2    4    8    1    3    6</span><br><span class="line">count&#x3D;60       5    7    2    6    3    1    4    8</span><br><span class="line">count&#x3D;61       5    7    2    6    3    1    8    4</span><br><span class="line">count&#x3D;62       5    7    4    1    3    8    6    2</span><br><span class="line">count&#x3D;63       5    8    4    1    3    6    2    7</span><br><span class="line">count&#x3D;64       5    8    4    1    7    2    6    3</span><br><span class="line">count&#x3D;65       6    1    5    2    8    3    7    4</span><br><span class="line">count&#x3D;66       6    2    7    1    3    5    8    4</span><br><span class="line">count&#x3D;67       6    2    7    1    4    8    5    3</span><br><span class="line">count&#x3D;68       6    3    1    7    5    8    2    4</span><br><span class="line">count&#x3D;69       6    3    1    8    4    2    7    5</span><br><span class="line">count&#x3D;70       6    3    1    8    5    2    4    7</span><br><span class="line">count&#x3D;71       6    3    5    7    1    4    2    8</span><br><span class="line">count&#x3D;72       6    3    5    8    1    4    2    7</span><br><span class="line">count&#x3D;73       6    3    7    2    4    8    1    5</span><br><span class="line">count&#x3D;74       6    3    7    2    8    5    1    4</span><br><span class="line">count&#x3D;75       6    3    7    4    1    8    2    5</span><br><span class="line">count&#x3D;76       6    4    1    5    8    2    7    3</span><br><span class="line">count&#x3D;77       6    4    2    8    5    7    1    3</span><br><span class="line">count&#x3D;78       6    4    7    1    3    5    2    8</span><br><span class="line">count&#x3D;79       6    4    7    1    8    2    5    3</span><br><span class="line">count&#x3D;80       6    8    2    4    1    7    5    3</span><br><span class="line">count&#x3D;81       7    1    3    8    6    4    2    5</span><br><span class="line">count&#x3D;82       7    2    4    1    8    5    3    6</span><br><span class="line">count&#x3D;83       7    2    6    3    1    4    8    5</span><br><span class="line">count&#x3D;84       7    3    1    6    8    5    2    4</span><br><span class="line">count&#x3D;85       7    3    8    2    5    1    6    4</span><br><span class="line">count&#x3D;86       7    4    2    5    8    1    3    6</span><br><span class="line">count&#x3D;87       7    4    2    8    6    1    3    5</span><br><span class="line">count&#x3D;88       7    5    3    1    6    8    2    4</span><br><span class="line">count&#x3D;89       8    2    4    1    7    5    3    6</span><br><span class="line">count&#x3D;90       8    2    5    3    1    7    4    6</span><br><span class="line">count&#x3D;91       8    3    1    6    2    5    7    4</span><br><span class="line">count&#x3D;92       8    4    1    3    6    2    7    5</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>实验</tag>
+        <tag>栈</tag>
+        <tag>队列</tag>
+        <tag>停车场</tag>
+        <tag>斐波那契数列</tag>
+        <tag>N皇后问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>生成 Outline 客户端的 accesskey</title>
+    <url>/posts/18ecdccb/</url>
+    <content><![CDATA[<p>Outline作为一款底层是ss的第三方梯子客户端，但是却不支持直接输入服务器信息，而是要输入ss://access-key。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/18ecdccb/1.png" alt="1" title>
+                </div>
+                <div class="image-caption">1</div>
+            </figure>
+
+<p>在翻阅了ss的文档后，找到了<a href="https://shadowsocks.org/en/spec/SIP002-URI-Scheme.html" target="_blank" rel="noopener">SIP002 URI方案</a>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SS-URI &#x3D;&quot;ss:&#x2F;&#x2F;&quot;userinfo&quot;@&quot;hostname&quot;:&quot;port[ &quot;&#x2F;&quot; ][ &quot;?&quot; plugin ][ &quot;#&quot; tag ]userinfo&#x3D;websafe-base64-encode-utf8(method &quot;:&quot;password)</span><br></pre></td></tr></table></figure>
+
+<p>也就是<code>SS：//base64加密(方法：密码)@主机名：端口</code></p>
+]]></content>
+      <categories>
+        <category>shadowsocks</category>
+      </categories>
+      <tags>
+        <tag>OUTLINE</tag>
+        <tag>问题记录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>豆瓣apikey分享</title>
+    <url>/posts/339a8b4c/</url>
+    <content><![CDATA[<p>我的博客一直使用<code>hexo-douban</code>来生成读书页面，可是最近一段时间，页面变成了这样子。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/339a8b4c/1.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>在查阅<code>/node_modules/hexo-douban/books-generator.js</code>后，发现抓取的API为<code>&#39;https://api.douban.com/v2/book/user/&#39; + user + &#39;/collections?start=&#39; + start + &#39;&amp;count=100&#39;</code></p>
+<p>在浏览器中访问API，发现返回<code>invalid_apikey</code></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/posts/339a8b4c/2.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+<p>在网络搜索后发现了一个可以用的key:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0df993c66c0c636e29ecbb5344252a4a</span><br></pre></td></tr></table></figure>
+
+<p>也就是说，将第21行的API地址改为<code>&#39;https://api.douban.com/v2/book/user/&#39; + user + &#39;/collections?apikey=0df993c66c0c636e29ecbb5344252a4a&amp;start=&#39; + start + &#39;&amp;count=100&#39;</code>即可解决。</p>
+<p>最后，推荐一下这个插件，挺好用的。</p>
+<div style="text-align: center">
+  <div class="github-card" data-user="mythsman" data-repo="hexo-douban" data-height="200" data-width="400" data-theme="default" data-target data-client-id data-client-secret></div>
+</div>
+<script src="/github-card-lib/githubcard.js"></script>
+]]></content>
+      <categories>
+        <category>hexo</category>
+      </categories>
+      <tags>
+        <tag>豆瓣</tag>
+        <tag>apikey</tag>
+      </tags>
+  </entry>
+</search>

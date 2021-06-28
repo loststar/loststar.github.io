@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>关于json_decode转换json对象为数组的一个坑 | Loststar&#39;s blog | Stay hungry. Stay foolish.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="json,坑">
+    <meta name="description" content="今天在写一个小玩意的时候，使用了json_decode来处理一段返回结果。当我直接调用转换后数组下标的时候，提示如下错误。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于json_decode转换json对象为数组的一个坑">
+<meta property="og:url" content="https://loststar.tech/posts/d646a445/index.html">
+<meta property="og:site_name" content="Loststar&#39;s blog">
+<meta property="og:description" content="今天在写一个小玩意的时候，使用了json_decode来处理一段返回结果。当我直接调用转换后数组下标的时候，提示如下错误。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-08-05T14:11:57.000Z">
+<meta property="article:modified_time" content="2021-06-28T20:24:26.330Z">
+<meta property="article:author" content="Loststar">
+<meta property="article:tag" content="json">
+<meta property="article:tag" content="坑">
+<meta name="twitter:card" content="summary">
+    
+        <link rel="alternate" type="application/atom+xml" title="Loststar&#39;s blog" href="/rss2.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/a.jfif">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Loststar</h5>
+          <a href="mailto:loststar.hj@gmail.com" title="loststar.hj@gmail.com" class="mail">loststar.hj@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于我
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间线
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/loststar" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">关于json_decode转换json对象为数组的一个坑</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">关于json_decode转换json对象为数组的一个坑</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-08-05T14:11:57.000Z" itemprop="datePublished" class="page-time">
+  2017-08-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/php/">php</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-关于json-decode转换json对象为数组的一个坑"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">关于json_decode转换json对象为数组的一个坑</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-08-05 22:11:57" datetime="2017-08-05T14:11:57.000Z"  itemprop="datePublished">2017-08-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/php/">php</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>今天在写一个小玩意的时候，使用了json_decode来处理一段返回结果。当我直接调用转换后数组下标的时候，提示如下错误。</p>
+<p><code>PHP Fatal error:  Cannot use object of type stdClass as array in *:\*.php on line *</code></p>
+<p>于是乎，前往<a href="http://php.net/manual/zh/function.json-decode.php" target="_blank" rel="noopener">php.net关于json_decode的页面</a>查看文档。<br>发现json_decode完整用法如下。</p>
+<p><code>mixed json_decode ( string $json [, bool $assoc = false [, int $depth = 512 [, int $options = 0 ]]] )</code></p>
+<p>上面问题的原因就在于第二个参数<code>assoc</code>，文档内的解析是——<strong>当该参数为 TRUE 时，将返回 array 而非 object</strong>。</p>
+<p>真相大白，刚刚我们操作并没有加上这个参数，而这个参数默认为<code>false</code>。所以操作的是一个对象而不是一个数组，自然会出错。</p>
+<p>以php.net的示例代码结束本文。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">例子：</span><br><span class="line">&lt;?php</span><br><span class="line">$json &#x3D; &#39;&#123;&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3,&quot;d&quot;:4,&quot;e&quot;:5&#125;&#39;;</span><br><span class="line">var_dump(json_decode($json));</span><br><span class="line">var_dump(json_decode($json, true));</span><br><span class="line">?&gt; </span><br><span class="line">输出：</span><br><span class="line">object(stdClass)#1 (5) &#123;</span><br><span class="line">    [&quot;a&quot;] &#x3D;&gt; int(1)</span><br><span class="line">    [&quot;b&quot;] &#x3D;&gt; int(2)</span><br><span class="line">    [&quot;c&quot;] &#x3D;&gt; int(3)</span><br><span class="line">    [&quot;d&quot;] &#x3D;&gt; int(4)</span><br><span class="line">    [&quot;e&quot;] &#x3D;&gt; int(5)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">array(5) &#123;</span><br><span class="line">    [&quot;a&quot;] &#x3D;&gt; int(1)</span><br><span class="line">    [&quot;b&quot;] &#x3D;&gt; int(2)</span><br><span class="line">    [&quot;c&quot;] &#x3D;&gt; int(3)</span><br><span class="line">    [&quot;d&quot;] &#x3D;&gt; int(4)</span><br><span class="line">    [&quot;e&quot;] &#x3D;&gt; int(5)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+
+        
+        <script>var nowtime=new Date(Date.now());var posttime=new Date("2017-08-05");var day =parseInt( (nowtime - posttime) / (1000 * 60 * 60 * 24));if(day<30){document.write("<p><strong>文章有效性提示</strong><br><br><font color='green'>本文创建于 " + day + " 天前，内容较新。</font>");}else{document.write("<p><strong>文章有效性提示</strong><br><br><font color='red'>本文创建于 " + day + " 天前，其中的信息可能已经有所发展或是发生改变。</font>");}</script>
+        
+    </div>
+    
+    <footer>
+        <a href="https://loststar.tech">
+            <img src="/img/a.jfif" alt="Loststar">
+            Loststar
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9D%91/" rel="tag">坑</a></li></ul>
+
+
+            
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/posts/c5f3d396/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">从wordpress到typecho再到hexo</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/posts/d9cdb463/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">应用Travis CI摆脱Hexo博客换机难</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "JsGHF5q6tqpxB8YJKLdfc3pw-gzGzoHsz",
+            appKey: "G3cLRzQwkYiqE93y7xbxKwWU",
+            avatar: "mm",
+            placeholder: "觉得内容还行的盆友留个言吧，我甚至不知道有没有人来过 ...(｡•ˇ‸ˇ•｡) ...\n填个昵称就可以发表了，填了邮箱会显示绑定的头像",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/rss2.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Loststar &copy; 2015 - 2021</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: false, REWARD: false };
+
+
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+
+<script async src="//cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.min.js"></script>
+
+
+
+
+
+</body>
+</html>
