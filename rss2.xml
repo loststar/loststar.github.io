@@ -1,0 +1,831 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Loststar&#39;s blog</title>
+    <link>https://loststar.tech/</link>
+    
+    <image>
+      <url>https://www.gravatar.com/avatar/e8b8289872e1337821f0d2a1b78472ac</url>
+      <title>Loststar&#39;s blog</title>
+      <link>https://loststar.tech/</link>
+    </image>
+    
+    <atom:link href="https://loststar.tech/rss2.xml" rel="self" type="application/rss+xml"/>
+    
+    <description>搞点薯条</description>
+    <pubDate>Thu, 17 Feb 2022 09:11:28 GMT</pubDate>
+    <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>MIT 6.830 Lab 2: SimpleDB Operators</title>
+      <link>https://loststar.tech/posts/fba26ec9/</link>
+      <guid>https://loststar.tech/posts/fba26ec9/</guid>
+      <pubDate>Wed, 16 Feb 2022 02:00:25 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;其他 MIT 6.830 的实验记录请查看：&lt;a href=&quot;http://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/MIT-6-830/&quot;&gt;Lab | MIT 6.830 | Loststa</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/">课程作业</category>
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/MIT-6-830/">MIT 6.830</category>
+      
+      
+      <category domain="https://loststar.tech/tags/Database-Systems/">Database Systems</category>
+      
+      <category domain="https://loststar.tech/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      
+      
+      <comments>https://loststar.tech/posts/fba26ec9/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>MIT 6.830 Lab 1: SimpleDB</title>
+      <link>https://loststar.tech/posts/3c1ea5b1/</link>
+      <guid>https://loststar.tech/posts/3c1ea5b1/</guid>
+      <pubDate>Sat, 12 Feb 2022 10:19:34 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;其他 MIT 6.830 的实验记录请查看：&lt;a href=&quot;http://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/MIT-6-830/&quot;&gt;Lab | MIT 6.830 | Loststa</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/">课程作业</category>
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/MIT-6-830/">MIT 6.830</category>
+      
+      
+      <category domain="https://loststar.tech/tags/Database-Systems/">Database Systems</category>
+      
+      <category domain="https://loststar.tech/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</category>
+      
+      
+      <comments>https://loststar.tech/posts/3c1ea5b1/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>一种可扩容布隆过滤器设计</title>
+      <link>https://loststar.tech/posts/cd44be17/</link>
+      <guid>https://loststar.tech/posts/cd44be17/</guid>
+      <pubDate>Sat, 05 Feb 2022 12:41:12 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;h2 id=&quot;猜想&quot;&gt;&lt;a href=&quot;#猜想&quot; class=&quot;headerlink&quot; title=&quot;猜想&quot;&gt;&lt;/a&gt;猜想&lt;/h2&gt;&lt;p&gt;&lt;a </description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/">布隆过滤器</category>
+      
+      <category domain="https://loststar.tech/tags/Bloom-Filter/">Bloom Filter</category>
+      
+      <category domain="https://loststar.tech/tags/%E6%89%A9%E5%AE%B9/">扩容</category>
+      
+      
+      <comments>https://loststar.tech/posts/cd44be17/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>布隆过滤器的学习与JAVA实现</title>
+      <link>https://loststar.tech/posts/de1ff129/</link>
+      <guid>https://loststar.tech/posts/de1ff129/</guid>
+      <pubDate>Tue, 01 Feb 2022 08:24:25 GMT</pubDate>
+      
+        
+        
+      <description>&lt;blockquote&gt;
+&lt;p&gt;扩展：&lt;a href=&quot;https://loststar.tech/posts/cd44be17/&quot;&gt;一种可扩容布隆过滤器设计&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;什么是布隆过滤器&quot;&gt;&lt;a href=&quot;#什么是布隆过滤器&quot; </description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/">布隆过滤器</category>
+      
+      <category domain="https://loststar.tech/tags/Bloom-Filter/">Bloom Filter</category>
+      
+      <category domain="https://loststar.tech/tags/JAVA/">JAVA</category>
+      
+      <category domain="https://loststar.tech/tags/%E9%80%A0%E8%BD%AE%E5%AD%90/">造轮子</category>
+      
+      
+      <comments>https://loststar.tech/posts/de1ff129/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>对ThreadPoolTaskExecutor及其源码的观察</title>
+      <link>https://loststar.tech/posts/3be9af02/</link>
+      <guid>https://loststar.tech/posts/3be9af02/</guid>
+      <pubDate>Tue, 04 Jan 2022 15:37:02 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h1 id=&quot;实验概要&quot;&gt;&lt;a href=&quot;#实验概要&quot; class=&quot;headerlink&quot; title=&quot;实验概要&quot;&gt;&lt;/a&gt;实验概要&lt;/h1&gt;&lt;p&gt;在我的一个SpringBoot小项目中，用到了&lt;code&gt;ThreadPoolTaskExecutor&lt;/code&gt;。对此，</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      <category domain="https://loststar.tech/categories/%E6%8A%80%E6%9C%AF/%E9%A1%B9%E7%9B%AE%E8%AE%B0%E5%BD%95/">项目记录</category>
+      
+      
+      <category domain="https://loststar.tech/tags/JAVA/">JAVA</category>
+      
+      <category domain="https://loststar.tech/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</category>
+      
+      <category domain="https://loststar.tech/tags/%E5%8F%82%E6%95%B0/">参数</category>
+      
+      <category domain="https://loststar.tech/tags/jmeter/">jmeter</category>
+      
+      
+      <comments>https://loststar.tech/posts/3be9af02/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>结合JDK源码学习单例模式</title>
+      <link>https://loststar.tech/posts/ff220a60/</link>
+      <guid>https://loststar.tech/posts/ff220a60/</guid>
+      <pubDate>Sat, 25 Dec 2021 14:05:32 GMT</pubDate>
+      
+        
+        
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本文JDK源码基于JDK17&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;饿汉式&quot;&gt;&lt;a href=&quot;#饿汉式&quot; class=&quot;headerlink&quot; title=&quot;饿汉式&quot;&gt;&lt;/a&gt;饿汉式&lt;/h1&gt;&lt;p&gt;使用&lt;code&gt;static&lt;/c</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      <category domain="https://loststar.tech/categories/%E6%8A%80%E6%9C%AF/java/">java</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">单例模式</category>
+      
+      <category domain="https://loststar.tech/tags/JDK/">JDK</category>
+      
+      <category domain="https://loststar.tech/tags/%E6%BA%90%E7%A0%81/">源码</category>
+      
+      
+      <comments>https://loststar.tech/posts/ff220a60/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>计算二进制中1的个数</title>
+      <link>https://loststar.tech/posts/34ac3997/</link>
+      <guid>https://loststar.tech/posts/34ac3997/</guid>
+      <pubDate>Mon, 20 Dec 2021 11:39:24 GMT</pubDate>
+      
+        
+        
+      <description>&lt;blockquote&gt;
+&lt;p&gt;相关题目：&lt;a href=&quot;https://leetcode-cn.com/problems/number-of-1-bits/&quot;&gt;191. 位1的个数 - 力扣（LeetCode）&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;编写一个函数，输入是一个无符号整数（以二进</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      
+      <comments>https://loststar.tech/posts/34ac3997/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>引用不可变和对象不可变的例子</title>
+      <link>https://loststar.tech/posts/8bda9476/</link>
+      <guid>https://loststar.tech/posts/8bda9476/</guid>
+      <pubDate>Tue, 14 Dec 2021 08:43:01 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h1 id=&quot;对象不可变&quot;&gt;&lt;a href=&quot;#对象不可变&quot; class=&quot;headerlink&quot; title=&quot;对象不可变&quot;&gt;&lt;/a&gt;对象不可变&lt;/h1&gt;&lt;pre class=&quot;line-numbers language-java&quot; data-language=&quot;java&quot;&gt;</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      <category domain="https://loststar.tech/categories/%E6%8A%80%E6%9C%AF/java/">java</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E5%AF%B9%E8%B1%A1%E4%B8%8D%E5%8F%AF%E5%8F%98/">对象不可变</category>
+      
+      <category domain="https://loststar.tech/tags/%E5%BC%95%E7%94%A8%E4%B8%8D%E5%8F%AF%E5%8F%98/">引用不可变</category>
+      
+      
+      <comments>https://loststar.tech/posts/8bda9476/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Mark Text 初体验</title>
+      <link>https://loststar.tech/posts/5f3c13b2/</link>
+      <guid>https://loststar.tech/posts/5f3c13b2/</guid>
+      <pubDate>Tue, 30 Nov 2021 13:38:51 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;一觉醒来，发现Typora要收费了。虽然依然能用旧版，但是感觉一直用旧版也不是个办法。再加上个人感觉Typora目前没有特别多值得付费的功能，就打算先找个代替品，继续观望。以后要是有很coooooooooool的功能再考虑付费支持。&lt;/p&gt;
+&lt;h1 id=&quot;下载地址&quot;&gt;&lt;a</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/">工具分享</category>
+      
+      
+      <category domain="https://loststar.tech/tags/markdown/">markdown</category>
+      
+      <category domain="https://loststar.tech/tags/marktext/">marktext</category>
+      
+      
+      <comments>https://loststar.tech/posts/5f3c13b2/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>排序复习</title>
+      <link>https://loststar.tech/posts/e45aa11e/</link>
+      <guid>https://loststar.tech/posts/e45aa11e/</guid>
+      <pubDate>Sun, 28 Nov 2021 13:57:26 GMT</pubDate>
+      
+        
+        
+      <description>&lt;blockquote&gt;
+&lt;p&gt;更多请参考：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Sorting_algorithm&quot;&gt;Sorting algorithm - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;ht</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E7%AE%97%E6%B3%95/">算法</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/">冒泡排序</category>
+      
+      <category domain="https://loststar.tech/tags/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/">插入排序</category>
+      
+      <category domain="https://loststar.tech/tags/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">选择排序</category>
+      
+      
+      <comments>https://loststar.tech/posts/e45aa11e/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>hexo文章内折叠插件</title>
+      <link>https://loststar.tech/posts/174f11e7/</link>
+      <guid>https://loststar.tech/posts/174f11e7/</guid>
+      <pubDate>Sun, 28 Nov 2021 13:48:48 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;通过使用该插件可以实现文章内容的折叠：&lt;/p&gt;
+&lt;div style=&quot;text-align: center&quot;&gt;
+  &lt;div class=&quot;github-card&quot; data-user=&quot;fletchto99&quot; data-repo=&quot;hexo-sliding-spoile</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/">工具分享</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E6%8F%92%E4%BB%B6/">插件</category>
+      
+      <category domain="https://loststar.tech/tags/%E6%8A%98%E5%8F%A0/">折叠</category>
+      
+      
+      <comments>https://loststar.tech/posts/174f11e7/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>通过merge方法实现HashMap的value自增</title>
+      <link>https://loststar.tech/posts/5f2205e5/</link>
+      <guid>https://loststar.tech/posts/5f2205e5/</guid>
+      <pubDate>Fri, 19 Nov 2021 15:58:23 GMT</pubDate>
+      
+        
+        
+      <description>&lt;h1 id=&quot;解决问题&quot;&gt;&lt;a href=&quot;#解决问题&quot; class=&quot;headerlink&quot; title=&quot;解决问题&quot;&gt;&lt;/a&gt;解决问题&lt;/h1&gt;&lt;p&gt;在水leetcode的时候，想要实现map里指定key对应的value自增的功能。&lt;/p&gt;
+&lt;p&gt;最开始想到的是之前经常使用</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      <category domain="https://loststar.tech/categories/%E6%8A%80%E6%9C%AF/java/">java</category>
+      
+      
+      <category domain="https://loststar.tech/tags/map/">map</category>
+      
+      <category domain="https://loststar.tech/tags/merge/">merge</category>
+      
+      
+      <comments>https://loststar.tech/posts/5f2205e5/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>PasteEx，将剪贴板粘贴为文件的工具</title>
+      <link>https://loststar.tech/posts/259390eb/</link>
+      <guid>https://loststar.tech/posts/259390eb/</guid>
+      <pubDate>Tue, 20 Jul 2021 01:37:54 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;在写作业的时候，经常需要保存一些截图。最开始的解决方法是截图后打开画图，然后保存。在使用了 PasteEx 之后，只需直接在想保存的地方右键即可保存。剪贴板内的文字同理也可以直接保存为txt文件，不需要打开其他程序。&lt;/p&gt;
+&lt;div style=&quot;text-align: </description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/">工具分享</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E5%89%AA%E8%B4%B4%E6%9D%BF/">剪贴板</category>
+      
+      <category domain="https://loststar.tech/tags/%E4%B8%80%E9%94%AE%E4%BF%9D%E5%AD%98/">一键保存</category>
+      
+      
+      <comments>https://loststar.tech/posts/259390eb/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>数据结构实验3—-数组与广义表</title>
+      <link>https://loststar.tech/posts/5a6e9197/</link>
+      <guid>https://loststar.tech/posts/5a6e9197/</guid>
+      <pubDate>Tue, 23 Mar 2021 00:38:11 GMT</pubDate>
+      
+        
+        
+      <description>&lt;blockquote&gt;
+&lt;p&gt;本系列文章广泛借鉴了各种教材和博客文章，由于完成时间比较久远，如果有遗漏标注的请联系我补充或删除解答。本文中解答仅供参考学习。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;鞍点问题&quot;&gt;&lt;a href=&quot;#鞍点问题&quot; class=&quot;heade</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/">课程作业</category>
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E6%95%B0%E7%BB%84/">数组</category>
+      
+      <category domain="https://loststar.tech/tags/%E5%B9%BF%E4%B9%89%E8%A1%A8/">广义表</category>
+      
+      <category domain="https://loststar.tech/tags/%E9%9E%8D%E7%82%B9/">鞍点</category>
+      
+      <category domain="https://loststar.tech/tags/%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5%E8%BD%AC%E7%BD%AE/">稀疏矩阵转置</category>
+      
+      
+      <comments>https://loststar.tech/posts/5a6e9197/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>PDO连接缓慢的一个解决方法</title>
+      <link>https://loststar.tech/posts/2e64231/</link>
+      <guid>https://loststar.tech/posts/2e64231/</guid>
+      <pubDate>Mon, 04 Jan 2021 14:25:58 GMT</pubDate>
+      
+        
+        
+      <description>&lt;blockquote&gt;
+&lt;p&gt;太长不看版：把 localhost 换成 127.0.0.1 &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;1-问题&quot;&gt;&lt;a href=&quot;#1-问题&quot; class=&quot;headerlink&quot; title=&quot;1 问题&quot;&gt;&lt;/a&gt;1 问题&lt;/h2</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      <category domain="https://loststar.tech/categories/%E6%8A%80%E6%9C%AF/php/">php</category>
+      
+      
+      <category domain="https://loststar.tech/tags/mysql/">mysql</category>
+      
+      <category domain="https://loststar.tech/tags/%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/">问题排查</category>
+      
+      <category domain="https://loststar.tech/tags/PDO/">PDO</category>
+      
+      <category domain="https://loststar.tech/tags/%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/">方法记录</category>
+      
+      
+      <comments>https://loststar.tech/posts/2e64231/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>hexo只在特定页面开启mathjax</title>
+      <link>https://loststar.tech/posts/a7d694aa/</link>
+      <guid>https://loststar.tech/posts/a7d694aa/</guid>
+      <pubDate>Tue, 04 Aug 2020 11:10:05 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;在 &lt;code&gt;Hexo-NexT&lt;/code&gt; 主题中，可以选择是否在所有页面加载 mathjax。但是在切换为 &lt;code&gt;indigo&lt;/code&gt; 主题后，只能选择全局加载。对 &lt;code&gt;themes/indigo/layout/_partial/plugins/</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</category>
+      
+      <category domain="https://loststar.tech/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/hexo/">hexo</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/">方法记录</category>
+      
+      <category domain="https://loststar.tech/tags/mathjax/">mathjax</category>
+      
+      <category domain="https://loststar.tech/tags/indigo/">indigo</category>
+      
+      
+      <comments>https://loststar.tech/posts/a7d694aa/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>创新实践课作业--图像预处理作业</title>
+      <link>https://loststar.tech/posts/fdb6251f/</link>
+      <guid>https://loststar.tech/posts/fdb6251f/</guid>
+      <pubDate>Tue, 14 Jul 2020 14:31:48 GMT</pubDate>
+      
+      <description>本文是小学期课程的预热作业，主要涉及使用PIL实现图像的镜像、gamma变换、滤波、锐化等操作。</description>
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/">课程作业</category>
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E5%88%9B%E6%96%B0%E5%AE%9E%E8%B7%B5%E8%AF%BE/">创新实践课</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E9%A2%84%E5%A4%84%E7%90%86/">预处理</category>
+      
+      <category domain="https://loststar.tech/tags/PIL/">PIL</category>
+      
+      
+      <comments>https://loststar.tech/posts/fdb6251f/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Jupyter Notebook修改默认路径</title>
+      <link>https://loststar.tech/posts/eccdc33c/</link>
+      <guid>https://loststar.tech/posts/eccdc33c/</guid>
+      <pubDate>Tue, 14 Jul 2020 01:45:18 GMT</pubDate>
+      
+      <description>记录了学习过程中遇到的修改 Jupyter Notebook 默认路径的两种方法，包括修改快捷方式的方法和修改配置文件的方法。</description>
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/">方法记录</category>
+      
+      
+      <category domain="https://loststar.tech/tags/JupyterNotebook/">JupyterNotebook</category>
+      
+      
+      <comments>https://loststar.tech/posts/eccdc33c/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>操作系统实验2--银行家算法模拟实现</title>
+      <link>https://loststar.tech/posts/aa64c4bc/</link>
+      <guid>https://loststar.tech/posts/aa64c4bc/</guid>
+      <pubDate>Fri, 10 Jul 2020 14:34:11 GMT</pubDate>
+      
+      <description>利用 C 语言设计与实现银行家算法，构建计算机系统资源的模拟管理和处理场景并对自己的银行家算法实现方案加以测试验证。</description>
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/">课程作业</category>
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E5%AE%9E%E9%AA%8C/">实验</category>
+      
+      <category domain="https://loststar.tech/tags/%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95/">银行家算法</category>
+      
+      
+      <comments>https://loststar.tech/posts/aa64c4bc/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>豆瓣apikey分享</title>
+      <link>https://loststar.tech/posts/339a8b4c/</link>
+      <guid>https://loststar.tech/posts/339a8b4c/</guid>
+      <pubDate>Sun, 21 Jun 2020 01:20:56 GMT</pubDate>
+      
+      <description>我的博客一直使用 hexo-douban 来生成读书页面，可是最近一段时间，页面全白。经过排查，豆瓣修改了API，需要 key 才可以获取信息。经过上网搜索，发现一个可用 key，遂分享。</description>
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</category>
+      
+      <category domain="https://loststar.tech/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/hexo/">hexo</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E8%B1%86%E7%93%A3/">豆瓣</category>
+      
+      <category domain="https://loststar.tech/tags/apikey/">apikey</category>
+      
+      
+      <comments>https://loststar.tech/posts/339a8b4c/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>操作系统实验1--Linux命令解析程序设计与实现</title>
+      <link>https://loststar.tech/posts/9de5b70b/</link>
+      <guid>https://loststar.tech/posts/9de5b70b/</guid>
+      <pubDate>Sat, 21 Mar 2020 12:21:00 GMT</pubDate>
+      
+      <description>探索、理解并掌握操作系统命令释器的设计原和实现机制，基于 Linux内核进行相应命令解释程序的设计和实现，并在 Linux操作平台上加以实现。</description>
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/">课程作业</category>
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E5%AE%9E%E9%AA%8C/">实验</category>
+      
+      <category domain="https://loststar.tech/tags/%E5%91%BD%E4%BB%A4%E8%A7%A3%E6%9E%90/">命令解析</category>
+      
+      <category domain="https://loststar.tech/tags/shell/">shell</category>
+      
+      
+      <comments>https://loststar.tech/posts/9de5b70b/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>数据结构实验2--栈和队列</title>
+      <link>https://loststar.tech/posts/959bb1f8/</link>
+      <guid>https://loststar.tech/posts/959bb1f8/</guid>
+      <pubDate>Sun, 01 Mar 2020 11:12:04 GMT</pubDate>
+      
+      <description>数据结构课程里关于栈和队列的题目，包括停车场问题、银行营业厅问题、4阶斐波那契数列问题以及八皇后问题的题目、解答和运行结果。</description>
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/">课程作业</category>
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E5%AE%9E%E9%AA%8C/">实验</category>
+      
+      <category domain="https://loststar.tech/tags/%E6%A0%88/">栈</category>
+      
+      <category domain="https://loststar.tech/tags/%E9%98%9F%E5%88%97/">队列</category>
+      
+      <category domain="https://loststar.tech/tags/%E5%81%9C%E8%BD%A6%E5%9C%BA/">停车场</category>
+      
+      <category domain="https://loststar.tech/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/">斐波那契数列</category>
+      
+      <category domain="https://loststar.tech/tags/N%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/">N皇后问题</category>
+      
+      
+      <comments>https://loststar.tech/posts/959bb1f8/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>数据结构实验1--线性表</title>
+      <link>https://loststar.tech/posts/e6fc5c45/</link>
+      <guid>https://loststar.tech/posts/e6fc5c45/</guid>
+      <pubDate>Sun, 01 Mar 2020 08:46:07 GMT</pubDate>
+      
+      <description>数据结构课程里关于线性表的题目，包括员工存储问题和约瑟夫环问题的题目、解答和运行结果。</description>
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/">课程作业</category>
+      
+      <category domain="https://loststar.tech/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E5%AE%9E%E9%AA%8C/">实验</category>
+      
+      <category domain="https://loststar.tech/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/">线性表</category>
+      
+      <category domain="https://loststar.tech/tags/%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/">约瑟夫环</category>
+      
+      
+      <comments>https://loststar.tech/posts/e6fc5c45/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>生成 Outline 客户端的 accesskey</title>
+      <link>https://loststar.tech/posts/18ecdccb/</link>
+      <guid>https://loststar.tech/posts/18ecdccb/</guid>
+      <pubDate>Sat, 16 Mar 2019 11:53:14 GMT</pubDate>
+      
+      <description>Outline作为一款底层是ss的第三方梯子客户端，但是却不支持直接输入服务器信息，而是要输入ss://access-key。本文记录了生成 access-key 的方法。</description>
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E6%96%B9%E6%B3%95%E8%AE%B0%E5%BD%95/">方法记录</category>
+      
+      
+      <category domain="https://loststar.tech/tags/OUTLINE/">OUTLINE</category>
+      
+      <category domain="https://loststar.tech/tags/shadowsocks/">shadowsocks</category>
+      
+      
+      <comments>https://loststar.tech/posts/18ecdccb/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>推荐一个展示示repo的hexo插件</title>
+      <link>https://loststar.tech/posts/7a64e458/</link>
+      <guid>https://loststar.tech/posts/7a64e458/</guid>
+      <pubDate>Sun, 07 Jan 2018 08:13:09 GMT</pubDate>
+      
+      <description>在博客展示github repo几乎是一个刚需。在使用Typecho的时候我就曾做了个小插件来自娱自乐。现在换到hexo平台，发现早有前人造好了轮子。</description>
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E5%B7%A5%E5%85%B7%E5%88%86%E4%BA%AB/">工具分享</category>
+      
+      
+      <category domain="https://loststar.tech/tags/%E6%8F%92%E4%BB%B6/">插件</category>
+      
+      <category domain="https://loststar.tech/tags/github/">github</category>
+      
+      <category domain="https://loststar.tech/tags/repo/">repo</category>
+      
+      
+      <comments>https://loststar.tech/posts/7a64e458/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>从wordpress到typecho再到hexo</title>
+      <link>https://loststar.tech/posts/c5f3d396/</link>
+      <guid>https://loststar.tech/posts/c5f3d396/</guid>
+      <pubDate>Wed, 20 Sep 2017 11:10:00 GMT</pubDate>
+      
+      <description>当年，觉得blog是个酷炫的玩意，于是跟风，按照随便百度来的教程，弄了一个。然而，由于缺乏动力以及没什么好记录，从建立到倒闭，只有一篇文——如何建立blog。5年里，换了3个大平台,也有了自己的一些想法。</description>
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</category>
+      
+      <category domain="https://loststar.tech/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/hexo/">hexo</category>
+      
+      
+      <category domain="https://loststar.tech/tags/wordpress/">wordpress</category>
+      
+      <category domain="https://loststar.tech/tags/hexo/">hexo</category>
+      
+      <category domain="https://loststar.tech/tags/typecho/">typecho</category>
+      
+      
+      <comments>https://loststar.tech/posts/c5f3d396/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>关于json_decode转换json对象为数组的一个坑</title>
+      <link>https://loststar.tech/posts/d646a445/</link>
+      <guid>https://loststar.tech/posts/d646a445/</guid>
+      <pubDate>Sat, 05 Aug 2017 14:11:57 GMT</pubDate>
+      
+      <description>今天在写一个小玩意的时候，使用了json_decode来处理一段返回结果。当我直接调用转换后数组下标的时候，提示如下错误。</description>
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E6%8A%80%E6%9C%AF/">技术</category>
+      
+      <category domain="https://loststar.tech/categories/%E6%8A%80%E6%9C%AF/php/">php</category>
+      
+      
+      <category domain="https://loststar.tech/tags/json/">json</category>
+      
+      <category domain="https://loststar.tech/tags/%E6%95%B0%E7%BB%84/">数组</category>
+      
+      
+      <comments>https://loststar.tech/posts/d646a445/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>应用Travis CI摆脱Hexo博客换机难</title>
+      <link>https://loststar.tech/posts/d9cdb463/</link>
+      <guid>https://loststar.tech/posts/d9cdb463/</guid>
+      <pubDate>Mon, 31 Jul 2017 04:47:00 GMT</pubDate>
+      
+        
+        
+      <description>&lt;p&gt;一直以来，用Hexo+Github Page写博客都是一种&lt;del&gt;装逼&lt;/del&gt;高端的做法。但是，HEXO写博客是生成静态文件再上传。当需要在别的电脑写博客的时候会比较麻烦。所以，现在使用Travis CI来解决这一问题。&lt;/p&gt;
+&lt;h2 id=&quot;获取Personal-</description>
+        
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</category>
+      
+      
+      <category domain="https://loststar.tech/tags/Travis-CI/">Travis CI</category>
+      
+      
+      <comments>https://loststar.tech/posts/d9cdb463/#disqus_thread</comments>
+      
+    </item>
+    
+    <item>
+      <title>Next主题下HyperComments的优化</title>
+      <link>https://loststar.tech/posts/da438ac2/</link>
+      <guid>https://loststar.tech/posts/da438ac2/</guid>
+      <pubDate>Sun, 30 Jul 2017 02:59:00 GMT</pubDate>
+      
+      <description>近日，把博客从 typecho 换到 hexo，没有了 typecho 的原生评论，开始寻找第三方评论。在选定使用 HyperComments 后，对 HyperComments 进行 js 文件本地化和繁体简化解决加载慢以及界面不友好的问题。</description>
+      
+      
+      
+      
+      <category domain="https://loststar.tech/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/">博客相关</category>
+      
+      <category domain="https://loststar.tech/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/hexo/">hexo</category>
+      
+      
+      <category domain="https://loststar.tech/tags/HyperComments/">HyperComments</category>
+      
+      <category domain="https://loststar.tech/tags/%E7%B9%81%E4%BD%93%E7%AE%80%E5%8C%96/">繁体简化</category>
+      
+      
+      <comments>https://loststar.tech/posts/da438ac2/#disqus_thread</comments>
+      
+    </item>
+    
+  </channel>
+</rss>

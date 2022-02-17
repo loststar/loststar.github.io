@@ -1,0 +1,602 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>数据结构实验2--栈和队列 | Loststar's blog</title><meta name="keywords" content="实验,栈,队列,停车场,斐波那契数列,N皇后问题"><meta name="author" content="Loststar,chenjintao1999@foxmail.com"><meta name="copyright" content="Loststar"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="数据结构课程里关于栈和队列的题目，包括停车场问题、银行营业厅问题、4阶斐波那契数列问题以及八皇后问题的题目、解答和运行结果。"><meta property="og:type" content="article"><meta property="og:title" content="数据结构实验2--栈和队列"><meta property="og:url" content="https://loststar.tech/posts/959bb1f8/index.html"><meta property="og:site_name" content="Loststar&#39;s blog"><meta property="og:description" content="数据结构课程里关于栈和队列的题目，包括停车场问题、银行营业厅问题、4阶斐波那契数列问题以及八皇后问题的题目、解答和运行结果。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><meta property="article:published_time" content="2020-03-01T11:12:04.000Z"><meta property="article:modified_time" content="2021-11-23T01:37:31.197Z"><meta property="article:author" content="Loststar"><meta property="article:tag" content="实验"><meta property="article:tag" content="栈"><meta property="article:tag" content="队列"><meta property="article:tag" content="停车场"><meta property="article:tag" content="斐波那契数列"><meta property="article:tag" content="N皇后问题"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://loststar.tech/posts/959bb1f8/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//hm.baidu.com"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload='this.media="all"'><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script"),t=(e.src="https://hm.baidu.com/hm.js?589c09bb19686dd5ef819c32b717c8f6",document.getElementsByTagName("script")[0]);t.parentNode.insertBefore(e,t)}()</script><script>const GLOBAL_CONFIG={root:"/",algolia:void 0,localSearch:{path:"search.xml",languages:{hits_empty:"找不到您查询的内容：${query}"}},translate:void 0,noticeOutdate:{limitDay:30,position:"top",messagePrev:"文章于",messageNext:"天前发布, 内容可能已经过时。"},highlight:{plugin:"prismjs",highlightCopy:!0,highlightLang:!0,highlightHeightLimit:!1},copy:{success:"复制成功",error:"复制错误",noSupport:"浏览器不支持"},relativeDate:{homepage:!0,post:!1},runtime:"",date_suffix:{just:"刚刚",min:"分钟前",hour:"小时前",day:"天前",month:"个月前"},copyright:void 0,lightbox:"fancybox",Snackbar:void 0,source:{jQuery:"https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js",justifiedGallery:{js:"https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js",css:"https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css"},fancybox:{js:"https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js",css:"https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"}},isPhotoFigcaption:!0,islazyload:!1,isanchor:!1}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"数据结构实验2--栈和队列",isPost:!0,isHome:!1,isHighlightShrink:!0,isToc:!0,postUpdate:"2021-11-23 09:37:31"}</script><noscript><style>#nav{opacity:1}.justified-gallery img{opacity:1}#post-meta time,#recent-posts time{display:inline!important}</style></noscript><script>(e=>{e.saveToLocal={set:function(e,t,a){if(0!==a){const o=new Date;a=864e5*a,t={value:t,expiry:o.getTime()+a};localStorage.setItem(e,JSON.stringify(t))}},get:function(e){var t=localStorage.getItem(e);if(t){t=JSON.parse(t);const a=new Date;if(!(a.getTime()>t.expiry))return t.value;localStorage.removeItem(e)}}},e.getScript=o=>new Promise((t,e)=>{const a=document.createElement("script");a.src=o,a.async=!0,a.onerror=e,a.onload=a.onreadystatechange=function(){var e=this.readyState;e&&"loaded"!==e&&"complete"!==e||(a.onload=a.onreadystatechange=null,t())},document.head.appendChild(a)}),e.activateDarkMode=function(){document.documentElement.setAttribute("data-theme","dark"),null!==document.querySelector('meta[name="theme-color"]')&&document.querySelector('meta[name="theme-color"]').setAttribute("content","#0d0d0d")},e.activateLightMode=function(){document.documentElement.setAttribute("data-theme","light"),null!==document.querySelector('meta[name="theme-color"]')&&document.querySelector('meta[name="theme-color"]').setAttribute("content","#ffffff")};var e=saveToLocal.get("theme"),t=window.matchMedia("(prefers-color-scheme: dark)").matches,a=window.matchMedia("(prefers-color-scheme: light)").matches,o=window.matchMedia("(prefers-color-scheme: no-preference)").matches,c=!t&&!a&&!o;if(void 0===e){if(a)activateLightMode();else if(t)activateDarkMode();else if(o||c){const n=new Date;a=n.getHours();(a<=6||18<=a?activateDarkMode:activateLightMode)()}window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){void 0===saveToLocal.get("theme")&&(e.matches?activateDarkMode:activateLightMode)()})}else("light"===e?activateLightMode:activateDarkMode)();t=saveToLocal.get("aside-status"),void 0!==t&&("hide"===t?document.documentElement.classList.add("hide-aside"):document.documentElement.classList.remove("hide-aside")),o=()=>{GLOBAL_CONFIG_SITE.isHome&&/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)&&document.documentElement.classList.add("apple")};o(),document.addEventListener("pjax:complete",o)})(window)</script><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/rss2.xml" title="Loststar's blog" type="application/rss+xml"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror='onerror=null,src="/img/friend_404.gif"' alt="avatar"></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">29</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">63</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">15</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 读书</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Loststar's blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);" rel="external nofollow noreferrer"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/books/"><i class="fa-fw fas fa-book"></i><span> 读书</span></a></li><li><a class="site-page child" href="/games/"><i class="fa-fw fas fa-gamepad"></i><span> 游戏</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">数据结构实验2--栈和队列</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-03-01T11:12:04.000Z" title="发表于 2020-03-01 19:12:04">2020-03-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-11-23T01:37:31.197Z" title="更新于 2021-11-23 09:37:31">2021-11-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/">课程作业</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AF%BE%E7%A8%8B%E4%BD%9C%E4%B8%9A/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.5k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>18分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" data-flag-title="数据结构实验2--栈和队列"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><blockquote><p>本系列文章广泛借鉴了各种教材和博客文章，由于完成时间比较久远，如果有遗漏标注的请联系我补充或删除解答。本文中解答仅供参考学习。</p></blockquote><h2 id="商场停车场"><a href="#商场停车场" class="headerlink" title="商场停车场"></a>商场停车场</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>​ 某商场有一个100个车位的停车场，当车位未满时，等待的车辆可以进入并计时；当车位已满时，必须有车辆离开，等待的车辆才能进入；当车辆离开时计算停留的的时间，并且按照每小时1元收费。</p><p>​ 汽车的输入信息格式可以是（进入/离开，车牌号，进入/离开时间），要求可以随时显示停车场内的车辆信息以及收费历史记录。</p><h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;time.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;string.h></span></span>
+
+<span class="token macro property">#<span class="token directive keyword">define</span> MAXSPACE 100</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> PRICEPERSECOND 1</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">vehicle</span> <span class="token comment">//车辆信息</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">char</span> carNumber<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//车牌号码</span>
+	time_t parkTime<span class="token punctuation">;</span> <span class="token comment">//停车时间</span>
+<span class="token punctuation">&#125;</span>Vehicle<span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">space</span> <span class="token comment">//车位信息</span>
+<span class="token punctuation">&#123;</span>
+	Vehicle carInfo<span class="token punctuation">;</span> <span class="token comment">//车位里停的车</span>
+	<span class="token keyword">int</span> isParked<span class="token punctuation">;</span> <span class="token comment">//车位状态</span>
+<span class="token punctuation">&#125;</span>Space<span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">lot</span> <span class="token comment">//停车场信息</span>
+<span class="token punctuation">&#123;</span>
+	Space<span class="token operator">*</span> allSpace<span class="token punctuation">;</span>  <span class="token comment">//所有车位</span>
+	<span class="token keyword">int</span> emptySpace<span class="token punctuation">;</span>  <span class="token comment">//剩余车位数</span>
+<span class="token punctuation">&#125;</span> Lot<span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">history</span> <span class="token comment">//收费记录</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">char</span> carNumber<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	time_t parkTime<span class="token punctuation">;</span>
+	time_t leaveTime<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> price<span class="token punctuation">;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">history</span> <span class="token operator">*</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>History<span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">printLot</span><span class="token punctuation">(</span>Lot parkingLot<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"=================================================\n现在时间：%lld\n停车场剩余空位%d个\n"</span><span class="token punctuation">,</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">,</span> parkingLot<span class="token punctuation">.</span>emptySpace<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> MAXSPACE<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>isParked <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"---------------------\n车牌：%s\n停车时间：%lld\n"</span><span class="token punctuation">,</span> parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>carInfo<span class="token punctuation">.</span>carNumber<span class="token punctuation">,</span> parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>carInfo<span class="token punctuation">.</span>parkTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"---------------------\n=================================================\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">printHistory</span><span class="token punctuation">(</span>History <span class="token operator">*</span>head<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	History <span class="token operator">*</span>temp <span class="token operator">=</span> head<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>temp<span class="token operator">-></span>price <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"第%d笔，车牌号：%s，收费：%d元\n"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> temp<span class="token operator">-></span>carNumber<span class="token punctuation">,</span> temp<span class="token operator">-></span>price<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">while</span> <span class="token punctuation">(</span>temp<span class="token operator">-></span>next<span class="token operator">!=</span><span class="token constant">NULL</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			temp <span class="token operator">=</span> temp<span class="token operator">-></span>next<span class="token punctuation">;</span>
+			i<span class="token operator">++</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"第%d笔，车牌号：%s，收费：%d元\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> temp<span class="token operator">-></span>carNumber<span class="token punctuation">,</span> temp<span class="token operator">-></span>price<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+Lot <span class="token function">parkVehicle</span><span class="token punctuation">(</span>Lot parkingLot<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>parkingLot<span class="token punctuation">.</span>emptySpace <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"车位满，请离开"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> parkingLot<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> MAXSPACE<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>isParked <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment">//找到空车位</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"请输入7位车牌号（例：JA10086）：\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>carInfo<span class="token punctuation">.</span>carNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>carInfo<span class="token punctuation">.</span>parkTime<span class="token operator">=</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>isParked <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+			parkingLot<span class="token punctuation">.</span>emptySpace<span class="token operator">--</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"现在时间%lld,%s停车成功\n"</span><span class="token punctuation">,</span> parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>carInfo<span class="token punctuation">.</span>parkTime<span class="token punctuation">,</span>parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>carInfo<span class="token punctuation">.</span>carNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">return</span> parkingLot<span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+Lot <span class="token function">leaveVehicle</span><span class="token punctuation">(</span>Lot parkingLot<span class="token punctuation">,</span> History<span class="token operator">*</span> head<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>parkingLot<span class="token punctuation">.</span>emptySpace <span class="token operator">==</span> MAXSPACE<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"停车场空\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">return</span> parkingLot<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">char</span> carNumber<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	time_t nowTime<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> parkingFee<span class="token punctuation">;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"请输入7位车牌号（例：JA10086）：\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> carNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> MAXSPACE<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">strcmp</span><span class="token punctuation">(</span>parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>carInfo<span class="token punctuation">.</span>carNumber<span class="token punctuation">,</span>carNumber<span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>isParked <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+			parkingLot<span class="token punctuation">.</span>emptySpace<span class="token operator">++</span><span class="token punctuation">;</span>
+			nowTime <span class="token operator">=</span> <span class="token function">time</span><span class="token punctuation">(</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			parkingFee <span class="token operator">=</span> PRICEPERSECOND <span class="token operator">*</span> <span class="token punctuation">(</span>nowTime <span class="token operator">-</span> parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>carInfo<span class="token punctuation">.</span>parkTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%s离开成功，收费%d元\n"</span><span class="token punctuation">,</span> parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>carInfo<span class="token punctuation">.</span>carNumber<span class="token punctuation">,</span> parkingFee<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token comment">//储存收费记录</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>head<span class="token operator">-></span>price <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+			<span class="token punctuation">&#123;</span>
+				<span class="token function">strcpy</span><span class="token punctuation">(</span>head<span class="token operator">-></span>carNumber<span class="token punctuation">,</span> parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>carInfo<span class="token punctuation">.</span>carNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				head<span class="token operator">-></span>parkTime <span class="token operator">=</span> parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>carInfo<span class="token punctuation">.</span>parkTime<span class="token punctuation">;</span>
+				head<span class="token operator">-></span>leaveTime <span class="token operator">=</span> nowTime<span class="token punctuation">;</span>
+				head<span class="token operator">-></span>price <span class="token operator">=</span> parkingFee<span class="token punctuation">;</span>
+			<span class="token punctuation">&#125;</span>
+			<span class="token keyword">else</span>
+			<span class="token punctuation">&#123;</span>
+				History <span class="token operator">*</span>temp <span class="token operator">=</span> head<span class="token punctuation">;</span>
+				<span class="token keyword">while</span> <span class="token punctuation">(</span>temp<span class="token operator">-></span>next<span class="token operator">!=</span><span class="token constant">NULL</span><span class="token punctuation">)</span>
+				<span class="token punctuation">&#123;</span>
+					temp <span class="token operator">=</span> temp<span class="token operator">-></span>next<span class="token punctuation">;</span>
+				<span class="token punctuation">&#125;</span>
+				temp<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token punctuation">(</span>History<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>History<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				temp <span class="token operator">=</span> temp<span class="token operator">-></span>next<span class="token punctuation">;</span>
+				<span class="token function">strcpy</span><span class="token punctuation">(</span>temp<span class="token operator">-></span>carNumber<span class="token punctuation">,</span> parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>carInfo<span class="token punctuation">.</span>carNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				temp<span class="token operator">-></span>parkTime <span class="token operator">=</span> parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>carInfo<span class="token punctuation">.</span>parkTime<span class="token punctuation">;</span>
+				temp<span class="token operator">-></span>leaveTime <span class="token operator">=</span> nowTime<span class="token punctuation">;</span>
+				temp<span class="token operator">-></span>price <span class="token operator">=</span> parkingFee<span class="token punctuation">;</span>
+				temp<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+			<span class="token punctuation">&#125;</span>
+			<span class="token keyword">return</span> parkingLot<span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">startSystem</span><span class="token punctuation">(</span>Lot parkingLot<span class="token punctuation">,</span> History<span class="token operator">*</span> head<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>true<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token keyword">int</span> i<span class="token punctuation">;</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"1.停车\n2.离开\n3.打印停车场状态\n4.打印收费历史\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">switch</span> <span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+		<span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+			parkingLot <span class="token operator">=</span> <span class="token function">parkVehicle</span><span class="token punctuation">(</span>parkingLot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+			parkingLot <span class="token operator">=</span> <span class="token function">leaveVehicle</span><span class="token punctuation">(</span>parkingLot<span class="token punctuation">,</span> head<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span>
+			<span class="token function">printLot</span><span class="token punctuation">(</span>parkingLot<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token keyword">case</span> <span class="token number">4</span><span class="token operator">:</span>
+			<span class="token function">printHistory</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token keyword">default</span><span class="token operator">:</span>
+			<span class="token keyword">break</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	Lot parkingLot<span class="token punctuation">;</span>
+	parkingLot<span class="token punctuation">.</span>allSpace <span class="token operator">=</span> <span class="token punctuation">(</span>Space<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span>MAXSPACE <span class="token operator">*</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>Space<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	parkingLot<span class="token punctuation">.</span>emptySpace <span class="token operator">=</span> MAXSPACE<span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> MAXSPACE<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		parkingLot<span class="token punctuation">.</span>allSpace<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>isParked <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	History<span class="token operator">*</span> head <span class="token operator">=</span> <span class="token punctuation">(</span>History<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>History<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	head<span class="token operator">-></span>price <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	head<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	<span class="token function">startSystem</span><span class="token punctuation">(</span>parkingLot<span class="token punctuation">,</span> head<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/posts/959bb1f8/1-1.png"></p><p><img src="/posts/959bb1f8/1-2.png"></p><h2 id="银行营业厅"><a href="#银行营业厅" class="headerlink" title="银行营业厅"></a>银行营业厅</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p>​ 某银行营业厅共有6个营业窗口，设有排队系统广播叫号，该银行的业务分为公积金、银行卡、理财卡等三种。公积金业务指定1号窗口，银行卡业务指定2、3、4号窗口，理财卡业务指定5、6号窗口。但如果5、6号窗口全忙，而2、3、4号窗口有空闲时，理财卡业务也可以在空闲的2、3、4号窗口之一办理。</p><p>​ 客户领号、业务完成可以作为输入信息，要求可以随时显示6个营业窗口的状态。</p><h3 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdlib.h></span></span>
+
+<span class="token keyword">int</span> windows<span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token number">0</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> number <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//顾客领取的号码</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">QNode</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">int</span> data<span class="token punctuation">;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">QNode</span> <span class="token operator">*</span>next<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>QNode<span class="token punctuation">;</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">LinkQueue</span>
+<span class="token punctuation">&#123;</span>
+	QNode <span class="token operator">*</span>front<span class="token punctuation">;</span>
+	QNode <span class="token operator">*</span>rear<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>LinkQueue<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">initQueue</span><span class="token punctuation">(</span>LinkQueue <span class="token operator">&amp;</span>Q<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	Q<span class="token punctuation">.</span>front <span class="token operator">=</span> Q<span class="token punctuation">.</span>rear <span class="token operator">=</span> <span class="token punctuation">(</span>QNode<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>QNode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>Q<span class="token punctuation">.</span>front<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	Q<span class="token punctuation">.</span>front<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">enQueue</span><span class="token punctuation">(</span>LinkQueue <span class="token operator">&amp;</span>Q<span class="token punctuation">,</span> <span class="token keyword">int</span> data<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	QNode <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token punctuation">(</span>QNode<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>QNode<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>p<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	p<span class="token operator">-></span>data <span class="token operator">=</span> data<span class="token punctuation">;</span>
+	p<span class="token operator">-></span>next <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+	Q<span class="token punctuation">.</span>rear<span class="token operator">-></span>next <span class="token operator">=</span> p<span class="token punctuation">;</span>
+	Q<span class="token punctuation">.</span>rear <span class="token operator">=</span> p<span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">deQueue</span><span class="token punctuation">(</span>LinkQueue <span class="token operator">&amp;</span>Q<span class="token punctuation">,</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>data<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>Q<span class="token punctuation">.</span>front <span class="token operator">==</span> Q<span class="token punctuation">.</span>rear<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	QNode <span class="token operator">*</span>p <span class="token operator">=</span> Q<span class="token punctuation">.</span>front<span class="token operator">-></span>next<span class="token punctuation">;</span>
+	data <span class="token operator">=</span> p<span class="token operator">-></span>data<span class="token punctuation">;</span>
+	Q<span class="token punctuation">.</span>front<span class="token operator">-></span>next <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">==</span> Q<span class="token punctuation">.</span>rear<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		Q<span class="token punctuation">.</span>rear <span class="token operator">=</span> Q<span class="token punctuation">.</span>front<span class="token punctuation">;</span>
+		<span class="token function">free</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">isEmpty</span><span class="token punctuation">(</span>LinkQueue <span class="token operator">&amp;</span>Q<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>Q<span class="token punctuation">.</span>front <span class="token operator">==</span> Q<span class="token punctuation">.</span>rear<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">print</span><span class="token punctuation">(</span>LinkQueue <span class="token operator">*</span>Q<span class="token punctuation">)</span>   <span class="token comment">//输出队列中的元素</span>
+<span class="token punctuation">&#123;</span>
+	QNode <span class="token operator">*</span>p<span class="token punctuation">;</span>
+	p <span class="token operator">=</span> Q<span class="token operator">-></span>front<span class="token operator">-></span>next<span class="token punctuation">;</span> <span class="token comment">//p结点指向链队列中存放第一个元素的结点</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>p<span class="token punctuation">)</span>  <span class="token comment">//沿链队列从队头到队尾的方向依次输出元素的值</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d  "</span><span class="token punctuation">,</span> p<span class="token operator">-></span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		p <span class="token operator">=</span> p<span class="token operator">-></span>next<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">entryBank</span><span class="token punctuation">(</span>LinkQueue <span class="token operator">&amp;</span>gjj<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>yhk<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>lck<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>customer1<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>customer2<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>customer3<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">int</span> i<span class="token punctuation">,</span>data<span class="token punctuation">;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"请输入要办理的业务：\n1.公积金\n2.银行卡\n3.理财卡\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	number<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token keyword">switch</span> <span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+	<span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>gjj<span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">deQueue</span><span class="token punctuation">(</span>gjj<span class="token punctuation">,</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			windows<span class="token punctuation">[</span>data<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d号顾客到%d号柜台办理\n"</span><span class="token punctuation">,</span> number<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">else</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">enQueue</span><span class="token punctuation">(</span>customer1<span class="token punctuation">,</span>number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d号顾客到队列1等待\n"</span><span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">break</span><span class="token punctuation">;</span>
+	<span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>yhk<span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">deQueue</span><span class="token punctuation">(</span>yhk<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			windows<span class="token punctuation">[</span>data<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d号顾客到%d号柜台办理\n"</span><span class="token punctuation">,</span> number<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">else</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">enQueue</span><span class="token punctuation">(</span>customer2<span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d号顾客到队列2等待\n"</span><span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">break</span><span class="token punctuation">;</span>
+	<span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>lck<span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">deQueue</span><span class="token punctuation">(</span>lck<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			windows<span class="token punctuation">[</span>data<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d号顾客到%d号柜台办理\n"</span><span class="token punctuation">,</span> number<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>yhk<span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">deQueue</span><span class="token punctuation">(</span>yhk<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			windows<span class="token punctuation">[</span>data<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d号顾客到%d号柜台办理\n"</span><span class="token punctuation">,</span> number<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">else</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">enQueue</span><span class="token punctuation">(</span>customer3<span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d号顾客到队列3等待\n"</span><span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token keyword">default</span><span class="token operator">:</span>
+		<span class="token keyword">break</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">leaveBank</span><span class="token punctuation">(</span>LinkQueue <span class="token operator">&amp;</span>gjj<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>yhk<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>lck<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>customer1<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>customer2<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>customer3<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">int</span> i<span class="token punctuation">,</span>number<span class="token punctuation">;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"请输入办理完成的窗口（1-6）\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">switch</span> <span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+	<span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>customer1<span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">deQueue</span><span class="token punctuation">(</span>customer1<span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d号顾客到%d号柜台办理\n"</span><span class="token punctuation">,</span> number<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">else</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">enQueue</span><span class="token punctuation">(</span>gjj<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			windows<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">break</span><span class="token punctuation">;</span>
+	<span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+	<span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span>
+	<span class="token keyword">case</span> <span class="token number">4</span><span class="token operator">:</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>customer2<span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">deQueue</span><span class="token punctuation">(</span>customer2<span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d号顾客到%d号柜台办理\n"</span><span class="token punctuation">,</span> number<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>customer3<span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">deQueue</span><span class="token punctuation">(</span>customer3<span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d号顾客到%d号柜台办理\n"</span><span class="token punctuation">,</span> number<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">else</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">enQueue</span><span class="token punctuation">(</span>yhk<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			windows<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">break</span><span class="token punctuation">;</span>
+	<span class="token keyword">case</span> <span class="token number">5</span><span class="token operator">:</span>
+	<span class="token keyword">case</span> <span class="token number">6</span><span class="token operator">:</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>customer3<span class="token punctuation">)</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">deQueue</span><span class="token punctuation">(</span>customer3<span class="token punctuation">,</span> number<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d号顾客到%d号柜台办理\n"</span><span class="token punctuation">,</span> number<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">else</span>
+		<span class="token punctuation">&#123;</span>
+			<span class="token function">enQueue</span><span class="token punctuation">(</span>lck<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+			windows<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">break</span><span class="token punctuation">;</span>
+	<span class="token keyword">default</span><span class="token operator">:</span>
+		<span class="token keyword">break</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">startSystem</span><span class="token punctuation">(</span>LinkQueue <span class="token operator">&amp;</span>gjj<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>yhk<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>lck<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>customer1<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>customer2<span class="token punctuation">,</span> LinkQueue <span class="token operator">&amp;</span>customer3<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">int</span> i<span class="token punctuation">;</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"请输入顾客行为：\n1.进入\n2.离开\n3.查看窗口状态\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">switch</span> <span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+	<span class="token keyword">case</span> <span class="token number">1</span><span class="token operator">:</span>
+		<span class="token function">entryBank</span><span class="token punctuation">(</span>gjj<span class="token punctuation">,</span> yhk<span class="token punctuation">,</span> lck<span class="token punctuation">,</span> customer1<span class="token punctuation">,</span> customer2<span class="token punctuation">,</span> customer3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">break</span><span class="token punctuation">;</span>
+	<span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>
+		<span class="token function">leaveBank</span><span class="token punctuation">(</span>gjj<span class="token punctuation">,</span> yhk<span class="token punctuation">,</span> lck<span class="token punctuation">,</span> customer1<span class="token punctuation">,</span> customer2<span class="token punctuation">,</span> customer3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">break</span><span class="token punctuation">;</span>
+	<span class="token keyword">case</span> <span class="token number">3</span><span class="token operator">:</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">7</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			windows<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">?</span> <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d号窗口有人\n"</span><span class="token punctuation">,</span> j<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d号窗口无人\n"</span><span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">break</span><span class="token punctuation">;</span>
+	<span class="token keyword">default</span><span class="token operator">:</span>
+		<span class="token keyword">break</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	LinkQueue gjj<span class="token punctuation">,</span> yhk<span class="token punctuation">,</span> lck<span class="token punctuation">;</span> <span class="token comment">//窗口队列</span>
+	LinkQueue customer1<span class="token punctuation">,</span> customer2<span class="token punctuation">,</span> customer3<span class="token punctuation">;</span> <span class="token comment">//顾客队列</span>
+	<span class="token comment">//窗口队列初始化</span>
+	<span class="token function">initQueue</span><span class="token punctuation">(</span>gjj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">enQueue</span><span class="token punctuation">(</span>gjj<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">initQueue</span><span class="token punctuation">(</span>yhk<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">enQueue</span><span class="token punctuation">(</span>yhk<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">enQueue</span><span class="token punctuation">(</span>yhk<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">enQueue</span><span class="token punctuation">(</span>yhk<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">initQueue</span><span class="token punctuation">(</span>lck<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">enQueue</span><span class="token punctuation">(</span>lck<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">enQueue</span><span class="token punctuation">(</span>lck<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//窗口队列初始化完毕</span>
+	<span class="token comment">//顾客队列初始化</span>
+	<span class="token function">initQueue</span><span class="token punctuation">(</span>customer1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">initQueue</span><span class="token punctuation">(</span>customer2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">initQueue</span><span class="token punctuation">(</span>customer3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//顾客队列初始化完毕</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>true<span class="token punctuation">)</span>
+	<span class="token punctuation">&#123;</span>
+		<span class="token function">startSystem</span><span class="token punctuation">(</span>gjj<span class="token punctuation">,</span> yhk<span class="token punctuation">,</span> lck<span class="token punctuation">,</span> customer1<span class="token punctuation">,</span> customer2<span class="token punctuation">,</span> customer3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="运行结果-1"><a href="#运行结果-1" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/posts/959bb1f8/2-1.png"></p><p><img src="/posts/959bb1f8/2-2.png"></p><h2 id="4阶斐波那契序列"><a href="#4阶斐波那契序列" class="headerlink" title="4阶斐波那契序列"></a>4阶斐波那契序列</h2><h3 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h3><p>​ 4阶斐波那契序列如下：f0=f1=f2=0, f3=1,…,fi=fi-1+fi-2+fi-3+fi-4，</p><p>​ 利用容量为k=4的循环队列，构造序列的前n+1项（f0, f1 , f2 ,… fn ），要求满足fn ≤200而fn+1 &gt;200。</p><h3 id="解答-2"><a href="#解答-2" class="headerlink" title="解答"></a>解答</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">define</span> kk 4</span>
+<span class="token macro property">#<span class="token directive keyword">define</span> max 200</span>
+<span class="token keyword">struct</span> <span class="token class-name">queue</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">int</span> elem<span class="token punctuation">[</span>kk<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">int</span> rear<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>cq<span class="token punctuation">;</span>
+<span class="token keyword">int</span> f<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">,</span> n<span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">fb</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">int</span> i<span class="token punctuation">,</span> j<span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> k <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> 
+	<span class="token punctuation">&#123;</span> 
+		f<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> cq<span class="token punctuation">.</span>elem<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 
+	<span class="token punctuation">&#125;</span>       
+	cq<span class="token punctuation">.</span>elem<span class="token punctuation">[</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> f<span class="token punctuation">[</span>k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>    <span class="token comment">//为第k个元素赋值，并放入队列cq</span>
+	cq<span class="token punctuation">.</span>rear <span class="token operator">=</span> k <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>   
+	n <span class="token operator">=</span> k<span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>cq<span class="token punctuation">.</span>elem<span class="token punctuation">[</span>cq<span class="token punctuation">.</span>rear<span class="token punctuation">]</span> <span class="token operator">&lt;</span> max<span class="token punctuation">)</span>    <span class="token comment">//利用循环队列依次求f[n]</span>
+	<span class="token punctuation">&#123;</span>
+		f<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> k<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#123;</span>
+			f<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">=</span> f<span class="token punctuation">[</span>n<span class="token punctuation">]</span> <span class="token operator">+</span> cq<span class="token punctuation">.</span>elem<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		cq<span class="token punctuation">.</span>rear <span class="token operator">=</span> <span class="token punctuation">(</span>cq<span class="token punctuation">.</span>rear <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> k<span class="token punctuation">;</span>
+		cq<span class="token punctuation">.</span>elem<span class="token punctuation">[</span>cq<span class="token punctuation">.</span>rear<span class="token punctuation">]</span> <span class="token operator">=</span> f<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+		n<span class="token operator">++</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>                       <span class="token comment">//利用循环队列依次求f[n]</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>cq<span class="token punctuation">.</span>elem<span class="token punctuation">[</span>cq<span class="token punctuation">.</span>rear<span class="token punctuation">]</span> <span class="token operator">></span> max<span class="token punctuation">)</span>  
+		n <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">;</span> 
+	<span class="token keyword">else</span> 
+		n <span class="token operator">=</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">int</span> i<span class="token punctuation">;</span>
+	<span class="token function">fb</span><span class="token punctuation">(</span>kk<span class="token punctuation">)</span><span class="token punctuation">;</span>   
+	<span class="token keyword">for</span> <span class="token punctuation">(</span>i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>   
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"  %d  "</span><span class="token punctuation">,</span> f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="运行结果-2"><a href="#运行结果-2" class="headerlink" title="运行结果"></a>运行结果</h3><p><img src="/posts/959bb1f8/3.png"></p><h2 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h2><h3 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h3><p>八皇后问题：设8皇后问题的解为 (x1, x2, x3, …,x8), 约束条件为：在8x8的棋盘上，其中任意两个xi 和xj不能位于棋盘的同行、同列及同对角线。要求用一位数组进行存储，输出所有可能的排列。</p><h3 id="解答-3"><a href="#解答-3" class="headerlink" title="解答"></a>解答</h3><pre class="line-numbers language-none"><code class="language-none">#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+#define N 8
+int count &#x3D; 0, position[N];
+int isLegal(int i, int j)  &#x2F;&#x2F;检查(i,j)上能否放棋子
+&#123;
+	int j1 &#x3D; j,i1 &#x3D; i,ok1 &#x3D; 1;  &#x2F;&#x2F;检查第i行上能否放棋子
+	while ((j1 &gt; 1) &amp;&amp; ok1)
+	&#123;
+		j1--;         
+		ok1 &#x3D; position[j1] !&#x3D; i;
+	&#125;
+	j1 &#x3D; j; 
+	i1 &#x3D; i;    &#x2F;&#x2F;检查对角线上能否放棋子
+	while ((j1 &gt; 1) &amp;&amp; (i1 &gt; 1) &amp;&amp; ok1)
+	&#123;
+		j1--; 
+		i1--; 
+		ok1 &#x3D; position[j1] !&#x3D; i1;
+	&#125;
+	j1 &#x3D; j; 
+	i1 &#x3D; i;     &#x2F;&#x2F;检查另一对角线上能否放棋子
+	while ((j1 &gt; 1) &amp;&amp; (i1 &lt; N) &amp;&amp; ok1)
+	&#123;
+		j1--; 
+		i1++; 
+		ok1 &#x3D; position[j1] !&#x3D; i1;
+	&#125;
+	return  ok1;
+&#125;
+int queen(int j) &#x2F;&#x2F;从第j列开始逐个试探
+&#123;
+	if (j &gt; N)
+	&#123;
+		count++;  
+		printf(&quot;count&#x3D;%d   &quot;, count);
+		for (int i &#x3D; 1; i &lt;&#x3D; N; i++)  
+			printf(&quot;    %d&quot;, position[i]);
+		printf(&quot;\n&quot;);
+	&#125;
+	else  
+		for (int i &#x3D; 1; i &lt;&#x3D; N; i++)
+		if (isLegal(i,j))    &#x2F;&#x2F;检查(i,j)上能否放棋子
+		&#123;
+			position[j] &#x3D; i;  &#x2F;&#x2F;在(i,j)上放一个棋子
+			queen(j + 1);
+		&#125;
+	return 0;
+&#125;
+int main()
+&#123;
+	queen(1);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="运行结果-3"><a href="#运行结果-3" class="headerlink" title="运行结果"></a>运行结果</h3><p>一共92种，比较多，就不截图了</p><pre class="line-numbers language-none"><code class="language-none">count&#x3D;1       1    5    8    6    3    7    2    4
+count&#x3D;2       1    6    8    3    7    4    2    5
+count&#x3D;3       1    7    4    6    8    2    5    3
+count&#x3D;4       1    7    5    8    2    4    6    3
+count&#x3D;5       2    4    6    8    3    1    7    5
+count&#x3D;6       2    5    7    1    3    8    6    4
+count&#x3D;7       2    5    7    4    1    8    6    3
+count&#x3D;8       2    6    1    7    4    8    3    5
+count&#x3D;9       2    6    8    3    1    4    7    5
+count&#x3D;10       2    7    3    6    8    5    1    4
+count&#x3D;11       2    7    5    8    1    4    6    3
+count&#x3D;12       2    8    6    1    3    5    7    4
+count&#x3D;13       3    1    7    5    8    2    4    6
+count&#x3D;14       3    5    2    8    1    7    4    6
+count&#x3D;15       3    5    2    8    6    4    7    1
+count&#x3D;16       3    5    7    1    4    2    8    6
+count&#x3D;17       3    5    8    4    1    7    2    6
+count&#x3D;18       3    6    2    5    8    1    7    4
+count&#x3D;19       3    6    2    7    1    4    8    5
+count&#x3D;20       3    6    2    7    5    1    8    4
+count&#x3D;21       3    6    4    1    8    5    7    2
+count&#x3D;22       3    6    4    2    8    5    7    1
+count&#x3D;23       3    6    8    1    4    7    5    2
+count&#x3D;24       3    6    8    1    5    7    2    4
+count&#x3D;25       3    6    8    2    4    1    7    5
+count&#x3D;26       3    7    2    8    5    1    4    6
+count&#x3D;27       3    7    2    8    6    4    1    5
+count&#x3D;28       3    8    4    7    1    6    2    5
+count&#x3D;29       4    1    5    8    2    7    3    6
+count&#x3D;30       4    1    5    8    6    3    7    2
+count&#x3D;31       4    2    5    8    6    1    3    7
+count&#x3D;32       4    2    7    3    6    8    1    5
+count&#x3D;33       4    2    7    3    6    8    5    1
+count&#x3D;34       4    2    7    5    1    8    6    3
+count&#x3D;35       4    2    8    5    7    1    3    6
+count&#x3D;36       4    2    8    6    1    3    5    7
+count&#x3D;37       4    6    1    5    2    8    3    7
+count&#x3D;38       4    6    8    2    7    1    3    5
+count&#x3D;39       4    6    8    3    1    7    5    2
+count&#x3D;40       4    7    1    8    5    2    6    3
+count&#x3D;41       4    7    3    8    2    5    1    6
+count&#x3D;42       4    7    5    2    6    1    3    8
+count&#x3D;43       4    7    5    3    1    6    8    2
+count&#x3D;44       4    8    1    3    6    2    7    5
+count&#x3D;45       4    8    1    5    7    2    6    3
+count&#x3D;46       4    8    5    3    1    7    2    6
+count&#x3D;47       5    1    4    6    8    2    7    3
+count&#x3D;48       5    1    8    4    2    7    3    6
+count&#x3D;49       5    1    8    6    3    7    2    4
+count&#x3D;50       5    2    4    6    8    3    1    7
+count&#x3D;51       5    2    4    7    3    8    6    1
+count&#x3D;52       5    2    6    1    7    4    8    3
+count&#x3D;53       5    2    8    1    4    7    3    6
+count&#x3D;54       5    3    1    6    8    2    4    7
+count&#x3D;55       5    3    1    7    2    8    6    4
+count&#x3D;56       5    3    8    4    7    1    6    2
+count&#x3D;57       5    7    1    3    8    6    4    2
+count&#x3D;58       5    7    1    4    2    8    6    3
+count&#x3D;59       5    7    2    4    8    1    3    6
+count&#x3D;60       5    7    2    6    3    1    4    8
+count&#x3D;61       5    7    2    6    3    1    8    4
+count&#x3D;62       5    7    4    1    3    8    6    2
+count&#x3D;63       5    8    4    1    3    6    2    7
+count&#x3D;64       5    8    4    1    7    2    6    3
+count&#x3D;65       6    1    5    2    8    3    7    4
+count&#x3D;66       6    2    7    1    3    5    8    4
+count&#x3D;67       6    2    7    1    4    8    5    3
+count&#x3D;68       6    3    1    7    5    8    2    4
+count&#x3D;69       6    3    1    8    4    2    7    5
+count&#x3D;70       6    3    1    8    5    2    4    7
+count&#x3D;71       6    3    5    7    1    4    2    8
+count&#x3D;72       6    3    5    8    1    4    2    7
+count&#x3D;73       6    3    7    2    4    8    1    5
+count&#x3D;74       6    3    7    2    8    5    1    4
+count&#x3D;75       6    3    7    4    1    8    2    5
+count&#x3D;76       6    4    1    5    8    2    7    3
+count&#x3D;77       6    4    2    8    5    7    1    3
+count&#x3D;78       6    4    7    1    3    5    2    8
+count&#x3D;79       6    4    7    1    8    2    5    3
+count&#x3D;80       6    8    2    4    1    7    5    3
+count&#x3D;81       7    1    3    8    6    4    2    5
+count&#x3D;82       7    2    4    1    8    5    3    6
+count&#x3D;83       7    2    6    3    1    4    8    5
+count&#x3D;84       7    3    1    6    8    5    2    4
+count&#x3D;85       7    3    8    2    5    1    6    4
+count&#x3D;86       7    4    2    5    8    1    3    6
+count&#x3D;87       7    4    2    8    6    1    3    5
+count&#x3D;88       7    5    3    1    6    8    2    4
+count&#x3D;89       8    2    4    1    7    5    3    6
+count&#x3D;90       8    2    5    3    1    7    4    6
+count&#x3D;91       8    3    1    6    2    5    7    4
+count&#x3D;92       8    4    1    3    6    2    7    5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><link rel="stylesheet" href="/css/spoiler.css"><script src="/js/spoiler.js" async></script></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:chenjintao1999@foxmail.com" rel="external nofollow noreferrer">Loststar</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://loststar.tech/posts/959bb1f8/">https://loststar.tech/posts/959bb1f8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://loststar.tech" target="_blank">Loststar's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AE%9E%E9%AA%8C/">实验</a><a class="post-meta__tags" href="/tags/%E6%A0%88/">栈</a><a class="post-meta__tags" href="/tags/%E9%98%9F%E5%88%97/">队列</a><a class="post-meta__tags" href="/tags/%E5%81%9C%E8%BD%A6%E5%9C%BA/">停车场</a><a class="post-meta__tags" href="/tags/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97/">斐波那契数列</a><a class="post-meta__tags" href="/tags/N%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/">N皇后问题</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/9de5b70b/"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">操作系统实验1--Linux命令解析程序设计与实现</div></div></a></div><div class="next-post pull-right"><a href="/posts/e6fc5c45/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">数据结构实验1--线性表</div></div></a></div></nav><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="waline-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%95%86%E5%9C%BA%E5%81%9C%E8%BD%A6%E5%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">商场停车场</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94"><span class="toc-number">1.2.</span> <span class="toc-text">解答</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">1.3.</span> <span class="toc-text">运行结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E8%90%A5%E4%B8%9A%E5%8E%85"><span class="toc-number">2.</span> <span class="toc-text">银行营业厅</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-number">2.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-1"><span class="toc-number">2.2.</span> <span class="toc-text">解答</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C-1"><span class="toc-number">2.3.</span> <span class="toc-text">运行结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%E9%98%B6%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E5%BA%8F%E5%88%97"><span class="toc-number">3.</span> <span class="toc-text">4阶斐波那契序列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-number">3.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-2"><span class="toc-number">3.2.</span> <span class="toc-text">解答</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C-2"><span class="toc-number">3.3.</span> <span class="toc-text">运行结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">八皇后问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-number">4.1.</span> <span class="toc-text">题目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E7%AD%94-3"><span class="toc-number">4.2.</span> <span class="toc-text">解答</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C-3"><span class="toc-number">4.3.</span> <span class="toc-text">运行结果</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2015 - 2022 By Loststar</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div></div><hr><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>function panguFn(){"object"==typeof pangu?pangu.autoSpacingPage():getScript("https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js").then(()=>{pangu.autoSpacingPage()})}function panguInit(){panguFn()}document.addEventListener("DOMContentLoaded",panguInit)</script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadWaline(){function e(){new Waline(Object.assign({el:"#waline-wrap",serverURL:"waline.loststar.tech",avatar:"monsterid",avatarCDN:"https://sdn.geekzu.org/avatar/",path:location.pathname,visitor:!0,dark:'html[data-theme="dark"]'},{emoji:["https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/alus","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tieba","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo","https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq"]}))}"function"==typeof Waline?e():getScript("https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js").then(e)}function loadOtherComment(){loadWaline()}btf.loadComment(document.getElementById("waline-wrap"),loadWaline)</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors=["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"];var pjax=new Pjax({elements:'a:not([target="_blank"])',selectors:pjaxSelectors,cacheBust:!1,analytics:!1,scrollRestoration:!1});document.addEventListener("pjax:send",function(){if(window.removeEventListener("scroll",window.tocScrollFn),window.removeEventListener("scroll",scrollCollect),"object"==typeof preloader&&preloader.initLoading(),window.aplayers)for(let e=0;e<window.aplayers.length;e++)window.aplayers[e].options.fixed||window.aplayers[e].destroy();"object"==typeof typed&&typed.destroy();const e=document.body.classList;e.contains("read-mode")&&e.remove("read-mode")}),document.addEventListener("pjax:complete",function(){window.refreshFn(),document.querySelectorAll("script[data-pjax]").forEach(e=>{const t=document.createElement("script");var o=e.text||e.textContent||e.innerHTML||"";Array.from(e.attributes).forEach(e=>t.setAttribute(e.name,e.value)),t.appendChild(document.createTextNode(o)),e.parentNode.replaceChild(t,e)}),GLOBAL_CONFIG.islazyload&&window.lazyLoadInstance.update(),"function"==typeof chatBtnFn&&chatBtnFn(),"function"==typeof panguInit&&panguInit(),"function"==typeof gtag&&gtag("config","",{page_path:window.location.pathname}),"object"==typeof _hmt&&_hmt.push(["_trackPageview",window.location.pathname]),"function"==typeof loadMeting&&document.getElementsByClassName("aplayer").length&&loadMeting(),"object"==typeof Prism&&Prism.highlightAll(),"object"==typeof preloader&&preloader.endLoading()}),document.addEventListener("pjax:error",e=>{404===e.request.status&&pjax.loadUrl("/404.html")})</script><script async data-pjax src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
